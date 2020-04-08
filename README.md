@@ -1,6 +1,10 @@
 # Oliveiras
+Felipe Luna, Julia Mestre, Marina Aranha, Matheus Oliveira
 
-# Ideia:
+# Mentor
+Fernando Celarino
+
+# Ideia
 
 Fornecer informações de forma rápida e confiáveis sobre saúde mundial e pandemias.
 
