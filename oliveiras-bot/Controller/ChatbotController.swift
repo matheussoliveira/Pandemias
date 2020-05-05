@@ -13,10 +13,10 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
     private let cellId = "cellId"
     
     let messages = ["Oi, tudo bem?"
-        , "Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil?",
-          "Quais os sintomas?",
-          "Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil?",
-          "Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil? Quantos casos no Brasil?"]
+        , "Olá, quantos casos no Brasil?",
+          "54.000 casos ativos",
+          "Quantas mortes no Brasil?",
+          "7300 óbitos"]
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -25,7 +25,30 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBAction func sendButtonPressed(_ sender: Any) {
-        print("send button pressed")
+        let session = URLSession.shared
+        var question:String = inputTextField.text ?? ""
+        question = self.formatStringToURL(string: question)
+        guard let url = URL(string: "https://oliver-fxdvmp.appspot.com/?question=\(question)")
+            else {
+                print("errorr")
+                return
+            }
+        
+        session.dataTask(with: url, completionHandler: { data, response, error in
+            if let data = data {
+                let queriedString:String = String(data: data, encoding: String.Encoding.utf8) ?? ""
+                DispatchQueue.main.async {
+                    print(queriedString)
+                }
+            }
+        }).resume()
+    }
+    
+    func formatStringToURL(string: String) -> String {
+        // Formats string to a URL standard
+        
+        let formatedString:String = string.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        return formatedString
     }
     
     override func viewDidLoad() {
@@ -33,13 +56,27 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        overrideUserInterfaceStyle = .dark
 
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
                    
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.navigationController!.navigationBar.barStyle = .black
+        self.navigationController!.navigationBar.isTranslucent = true
+
+        self.navigationController!.navigationBar.tintColor = UIColor.black
+
 
     }
+
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        self.tabBarController?.navigationItem.title = "Chatbot"
+//
+//    }
+
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         inputTextField.endEditing(true)
@@ -87,16 +124,16 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
         if indexPath.item % 2 == 0{
             cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: 8 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
-            cell.messageTextView.textColor = UIColor.black
+            cell.messageTextView.textColor = UIColor.white
             cell.bubbleImageView.image = MessageCell.leftBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(white: 0.95, alpha: 1)
+            cell.bubbleImageView.tintColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
 
         } else{
             cell.messageTextView.frame = CGRect(x: view.frame.width -  estimatedFrame.width - 16 - 8 - 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: view.frame.width -  estimatedFrame.width - 16 - 16 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 10, height: estimatedFrame.height + 20 + 6)
             cell.messageTextView.textColor = UIColor.white
             cell.bubbleImageView.image = MessageCell.rightBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+            cell.bubbleImageView.tintColor = UIColor(red: 0.68, green: 0.03, blue: 0.16, alpha: 1.00)
         }
         
         return cell

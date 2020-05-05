@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sPb-MP-b2D">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5k3-fb-Uxl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-791" y="860"/>
+            <point key="canvasLocation" x="529" y="865"/>
         </scene>
         <!--Estatísticas-->
         <scene sceneID="bUQ-Xp-KJy">
@@ -38,29 +38,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7C-Iv-eNa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536" y="860"/>
+            <point key="canvasLocation" x="1690" y="865"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Or-x6-UYg">
+            <objects>
+                <navigationController id="sPb-MP-b2D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="z52-O3-M5B">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rmE-u2-3g5" kind="relationship" relationship="rootViewController" id="pwE-tQ-MEN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qd8-54-1EK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="46" y="113"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rmE-u2-3g5" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BLa-EH-Zw9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNe-XA-9V3">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BWn-cM-3Nr" kind="relationship" relationship="viewControllers" id="0jW-OW-Ryw"/>
+                        <segue destination="BWn-cM-3Nr" kind="relationship" relationship="viewControllers" id="vvd-1S-3hV"/>
                         <segue destination="XDU-wG-5E1" kind="relationship" relationship="viewControllers" id="oWQ-sq-p9Z"/>
                         <segue destination="z72-GE-uEJ" kind="relationship" relationship="viewControllers" id="XIJ-A1-6Xy"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-94" y="113"/>
+            <point key="canvasLocation" x="983" y="113"/>
         </scene>
-        <!--Item-->
+        <!--Chatbot-->
         <scene sceneID="SXr-6I-tWd">
             <objects>
                 <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +88,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7i-20-lNg">
                                 <rect key="frame" x="0.0" y="763" width="414" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Digite uma mensagem" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta ao bot" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
                                         <rect key="frame" x="8" y="8" width="345" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -85,7 +102,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FEn-fJ-FrI" secondAttribute="trailing" constant="8" id="ESE-C8-rlR"/>
                                     <constraint firstItem="yZB-1A-7aI" firstAttribute="top" secondItem="FEn-fJ-FrI" secondAttribute="top" id="F24-1a-H4s"/>
@@ -99,8 +116,8 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-u4-TPP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="719"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="619"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XkN-h4-7mc">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -133,11 +150,12 @@
                             <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="bNr-u4-TPP" secondAttribute="trailing" id="Yql-Zn-JgX"/>
                             <constraint firstItem="F7i-20-lNg" firstAttribute="bottom" secondItem="RNb-b7-bCZ" secondAttribute="bottom" id="cJA-xl-XDs"/>
                             <constraint firstItem="F7i-20-lNg" firstAttribute="width" secondItem="fGv-KH-gv3" secondAttribute="width" id="dZn-u3-jYD"/>
-                            <constraint firstItem="bNr-u4-TPP" firstAttribute="top" secondItem="RNb-b7-bCZ" secondAttribute="top" id="uor-Ui-d3h"/>
+                            <constraint firstItem="bNr-u4-TPP" firstAttribute="top" secondItem="RNb-b7-bCZ" secondAttribute="top" constant="4" id="uor-Ui-d3h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNb-b7-bCZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Tzf-Ra-zEd"/>
+                    <tabBarItem key="tabBarItem" title="Chatbot" id="6AQ-SM-7X0"/>
+                    <navigationItem key="navigationItem" title="Chatbot" largeTitleDisplayMode="always" id="VTM-LL-Zd3"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="cJA-xl-XDs" id="yEl-AG-NSJ"/>
                         <outlet property="collectionView" destination="bNr-u4-TPP" id="lL3-Z0-uMi"/>
@@ -148,42 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sl-54-awW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="786.95652173913049" y="112.5"/>
-        </scene>
-        <!--Chatbot-->
-        <scene sceneID="4ql-bk-Ybx">
-            <objects>
-                <collectionViewController id="Pzi-r3-qFy" customClass="Chatbot" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oGo-RP-hYK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="J6H-h9-dAR">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="O4d-iH-nCY">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bmA-ic-4nS">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Pzi-r3-qFy" id="dCt-Vf-RC3"/>
-                            <outlet property="delegate" destination="Pzi-r3-qFy" id="tWa-Fp-guU"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Chatbot" id="8Va-xo-Fzi"/>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fYL-eB-vfp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1645" y="113"/>
+            <point key="canvasLocation" x="1877" y="113"/>
         </scene>
     </scenes>
 </document>
