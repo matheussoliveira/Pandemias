@@ -8,15 +8,11 @@
 
 import UIKit
 
-class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class ChatbotController: UIViewController{
     
     private let cellId = "cellId"
     
-    let messages = ["Oi, tudo bem?"
-        , "Olá, quantos casos no Brasil?",
-          "54.000 casos ativos",
-          "Quantas mortes no Brasil?",
-          "7300 óbitos"]
+    var messages: [Message] = []
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,6 +23,19 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
     @IBAction func sendButtonPressed(_ sender: Any) {
         let session = URLSession.shared
         var question:String = inputTextField.text ?? ""
+        
+        //insert question to messages array
+        let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
+        self.messages.append(userQuestion)
+        //insert message to chatlog
+        let item = messages.count - 1
+        let insertionIndexpath = IndexPath(item: item, section: 0)
+        collectionView.insertItems(at: [insertionIndexpath])
+        collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
+        
+        inputTextField.text = nil
+        
+        //get bot response
         question = self.formatStringToURL(string: question)
         guard let url = URL(string: "https://oliver-fxdvmp.appspot.com/?question=\(question)")
             else {
@@ -38,7 +47,15 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
             if let data = data {
                 let queriedString:String = String(data: data, encoding: String.Encoding.utf8) ?? ""
                 DispatchQueue.main.async {
-                    print(queriedString)
+                    //insert answer to messages array
+                    let botAnswer = Message(text: queriedString, date: NSDate(), isFromUser: false)
+                    self.messages.append(botAnswer)
+                    
+                    //insert answer to chatlog
+                    let item = self.messages.count - 1
+                    let insertionIndexpath = IndexPath(item: item, section: 0)
+                    self.collectionView.insertItems(at: [insertionIndexpath])
+                    self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
                 }
             }
         }).resume()
@@ -63,23 +80,8 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
                    
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-        self.navigationController!.navigationBar.barStyle = .black
-        self.navigationController!.navigationBar.isTranslucent = true
-
-        self.navigationController!.navigationBar.tintColor = UIColor.black
 
 
-    }
-
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        self.tabBarController?.navigationItem.title = "Chatbot"
-//
-//    }
-
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        inputTextField.endEditing(true)
     }
     
     @objc func handleKeyBoardNotification(notification: NSNotification){
@@ -103,25 +105,46 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
             }
         }
     }
+}
+
+extension ChatbotController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        inputTextField.endEditing(true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
-
-        cell.messageTextView.text = messages[indexPath.item]
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         //use safe unwrap when using with message model
-        let messageText = messages[indexPath.item]
+        let messageText = messages[indexPath.item].text
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         //calculates frame size based on text
         let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
 
-        if indexPath.item % 2 == 0{
+        return CGSize(width: view.frame.width, height: estimatedFrame.height+20)
+        //default return when using safe unwrap
+//        return CGSize(width: view.frame.width, height: 100)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
+        
+        let message = messages[indexPath.item]
+
+        cell.messageTextView.text = message.text
+
+        //use safe unwrap when using with message model
+        let size = CGSize(width: 250, height: 1000)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        //calculates frame size based on text
+        let estimatedFrame = NSString(string: message.text).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
+
+        if message.isFromUser == false{
             cell.messageTextView.frame = CGRect(x: 16, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: 8 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
             cell.messageTextView.textColor = UIColor.white
@@ -137,84 +160,5 @@ class ChatbotController: UIViewController, UICollectionViewDelegate, UICollectio
         }
         
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        //use safe unwrap when using with message model
-        let messageText = messages[indexPath.item]
-        let size = CGSize(width: 250, height: 1000)
-        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        //calculates frame size based on text
-        let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
-
-        return CGSize(width: view.frame.width, height: estimatedFrame.height+20)
-        //default return when using safe unwrap
-//        return CGSize(width: view.frame.width, height: 100)
-    }
-    
-}
-
-class MessageCell: UICollectionViewCell{
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        setUpViews()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    let textBubbleView: UIView = {
-        let view = UIView()
-//        view.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        view.layer.cornerRadius = 15
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    static let leftBubbleImage = UIImage(named: "bubble_left")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
-    
-    static let rightBubbleImage = UIImage(named: "bubble_right")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26)).withRenderingMode(.alwaysTemplate)
-    
-    let bubbleImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = MessageCell.leftBubbleImage
-        imageView.tintColor = UIColor(white: 0.90, alpha: 1)
-        return imageView
-    }()
-
-    let messageTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.systemFont(ofSize: 18)
-        textView.backgroundColor = UIColor.clear
-        textView.text = "Sample Message"
-        textView.isEditable = false
-        return textView
-    }()
-
-    func setUpViews(){
-
-        addSubview(textBubbleView)
-        addSubview(messageTextView)
-        textBubbleView.addSubview(bubbleImageView)
-        textBubbleView.addConstraintWithFormat("H:|[v0]|", views: bubbleImageView)
-        textBubbleView.addConstraintWithFormat("V:|[v0]|", views: bubbleImageView)
-
-    }
-}
-
-extension UIView{
-func addConstraintWithFormat(_ format : String, views : UIView...) {
-
-    var viewsDictionary = [String : UIView]()
-
-    for(index, view) in views.enumerated(){
-        let key = "v\(index)"
-        view.translatesAutoresizingMaskIntoConstraints = false
-        viewsDictionary[key] = view
-    }
-    addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
-
     }
 }

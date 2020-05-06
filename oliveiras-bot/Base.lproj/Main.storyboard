@@ -43,6 +43,7 @@
         <!--Navigation Controller-->
         <scene sceneID="5Or-x6-UYg">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qd8-54-1EK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="sPb-MP-b2D" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="z52-O3-M5B">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -52,14 +53,12 @@
                         <segue destination="rmE-u2-3g5" kind="relationship" relationship="rootViewController" id="pwE-tQ-MEN"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qd8-54-1EK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="46" y="113"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rmE-u2-3g5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BLa-EH-Zw9"/>
@@ -74,6 +73,7 @@
                         <segue destination="z72-GE-uEJ" kind="relationship" relationship="viewControllers" id="XIJ-A1-6Xy"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="983" y="113"/>
         </scene>
