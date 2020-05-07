@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sPb-MP-b2D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,12 +13,12 @@
             <objects>
                 <viewController id="z72-GE-uEJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Szd-h7-zeX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ZjG-v3-7nF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="FAQ" id="0cc-Yo-IQL"/>
+                    <tabBarItem key="tabBarItem" title="FAQ" image="faq" id="0cc-Yo-IQL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5k3-fb-Uxl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -29,94 +29,50 @@
             <objects>
                 <viewController id="XDU-wG-5E1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wZo-qz-Zlw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="cje-1k-CGw"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Estatísticas" id="8cA-Ax-IoK"/>
+                    <tabBarItem key="tabBarItem" title="Estatísticas" image="stats" id="8cA-Ax-IoK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7C-Iv-eNa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1690" y="865"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5Or-x6-UYg">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qd8-54-1EK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController id="sPb-MP-b2D" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="z52-O3-M5B">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="rmE-u2-3g5" kind="relationship" relationship="rootViewController" id="pwE-tQ-MEN"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="46" y="113"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rmE-u2-3g5" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rmE-u2-3g5" customClass="TabBarController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BLa-EH-Zw9"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GNe-XA-9V3">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="GNe-XA-9V3">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.99607843137254903" green="0.21568627450980393" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BWn-cM-3Nr" kind="relationship" relationship="viewControllers" id="vvd-1S-3hV"/>
+                        <segue destination="xmZ-e3-HXD" kind="relationship" relationship="viewControllers" id="qcd-aJ-xOq"/>
                         <segue destination="XDU-wG-5E1" kind="relationship" relationship="viewControllers" id="oWQ-sq-p9Z"/>
                         <segue destination="z72-GE-uEJ" kind="relationship" relationship="viewControllers" id="XIJ-A1-6Xy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="983" y="113"/>
+            <point key="canvasLocation" x="826" y="113"/>
         </scene>
         <!--Chatbot-->
         <scene sceneID="SXr-6I-tWd">
             <objects>
                 <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGv-KH-gv3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7i-20-lNg">
-                                <rect key="frame" x="0.0" y="763" width="414" height="50"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta ao bot" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
-                                        <rect key="frame" x="8" y="8" width="345" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEn-fJ-FrI">
-                                        <rect key="frame" x="361" y="8" width="45" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Enviar"/>
-                                        <connections>
-                                            <action selector="sendButtonPressed:" destination="BWn-cM-3Nr" eventType="touchUpInside" id="9DD-gq-NG1"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="FEn-fJ-FrI" secondAttribute="trailing" constant="8" id="ESE-C8-rlR"/>
-                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="top" secondItem="FEn-fJ-FrI" secondAttribute="top" id="F24-1a-H4s"/>
-                                    <constraint firstAttribute="bottom" secondItem="FEn-fJ-FrI" secondAttribute="bottom" constant="8" id="JHw-zm-lb2"/>
-                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="width" secondItem="F7i-20-lNg" secondAttribute="width" multiplier="0.833333" id="WYK-Jj-KCw"/>
-                                    <constraint firstItem="FEn-fJ-FrI" firstAttribute="leading" secondItem="yZB-1A-7aI" secondAttribute="trailing" constant="8" id="awo-UJ-wjT"/>
-                                    <constraint firstItem="FEn-fJ-FrI" firstAttribute="top" secondItem="F7i-20-lNg" secondAttribute="top" constant="8" id="dTq-ll-Qt7"/>
-                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="leading" secondItem="F7i-20-lNg" secondAttribute="leadingMargin" id="g9e-VX-QAP"/>
-                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="height" secondItem="F7i-20-lNg" secondAttribute="height" multiplier="0.68" id="ier-yN-MHB"/>
-                                    <constraint firstAttribute="height" constant="50" id="rfu-Ta-Qco"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-u4-TPP">
-                                <rect key="frame" x="0.0" y="144" width="414" height="619"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XkN-h4-7mc">
                                     <size key="itemSize" width="50" height="50"/>
@@ -139,8 +95,43 @@
                                     <outlet property="delegate" destination="BWn-cM-3Nr" id="Ib5-VU-hZV"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7i-20-lNg">
+                                <rect key="frame" x="0.0" y="671" width="414" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta ao bot" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
+                                        <rect key="frame" x="8" y="8" width="345" height="34"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEn-fJ-FrI">
+                                        <rect key="frame" x="361" y="8" width="45" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Enviar">
+                                            <color key="titleColor" red="0.99607843139999996" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendButtonPressed:" destination="BWn-cM-3Nr" eventType="touchUpInside" id="9DD-gq-NG1"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FEn-fJ-FrI" secondAttribute="trailing" constant="8" id="ESE-C8-rlR"/>
+                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="top" secondItem="FEn-fJ-FrI" secondAttribute="top" id="F24-1a-H4s"/>
+                                    <constraint firstAttribute="bottom" secondItem="FEn-fJ-FrI" secondAttribute="bottom" constant="8" id="JHw-zm-lb2"/>
+                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="width" secondItem="F7i-20-lNg" secondAttribute="width" multiplier="0.833333" id="WYK-Jj-KCw"/>
+                                    <constraint firstItem="FEn-fJ-FrI" firstAttribute="leading" secondItem="yZB-1A-7aI" secondAttribute="trailing" constant="8" id="awo-UJ-wjT"/>
+                                    <constraint firstItem="FEn-fJ-FrI" firstAttribute="top" secondItem="F7i-20-lNg" secondAttribute="top" constant="8" id="dTq-ll-Qt7"/>
+                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="leading" secondItem="F7i-20-lNg" secondAttribute="leadingMargin" id="g9e-VX-QAP"/>
+                                    <constraint firstItem="yZB-1A-7aI" firstAttribute="height" secondItem="F7i-20-lNg" secondAttribute="height" multiplier="0.68" id="ier-yN-MHB"/>
+                                    <constraint firstAttribute="height" constant="50" id="rfu-Ta-Qco"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="F7i-20-lNg" firstAttribute="leading" secondItem="RNb-b7-bCZ" secondAttribute="leading" id="1wB-uN-PIl"/>
                             <constraint firstItem="F7i-20-lNg" firstAttribute="top" secondItem="bNr-u4-TPP" secondAttribute="bottom" id="7Cj-6S-JFC"/>
@@ -148,14 +139,13 @@
                             <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="F7i-20-lNg" secondAttribute="trailing" id="Fsp-oF-nmD"/>
                             <constraint firstItem="bNr-u4-TPP" firstAttribute="width" secondItem="fGv-KH-gv3" secondAttribute="width" id="RNt-Yu-USt"/>
                             <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="bNr-u4-TPP" secondAttribute="trailing" id="Yql-Zn-JgX"/>
-                            <constraint firstItem="F7i-20-lNg" firstAttribute="bottom" secondItem="RNb-b7-bCZ" secondAttribute="bottom" id="cJA-xl-XDs"/>
+                            <constraint firstItem="F7i-20-lNg" firstAttribute="bottom" secondItem="RNb-b7-bCZ" secondAttribute="bottom" constant="-4" id="cJA-xl-XDs"/>
                             <constraint firstItem="F7i-20-lNg" firstAttribute="width" secondItem="fGv-KH-gv3" secondAttribute="width" id="dZn-u3-jYD"/>
                             <constraint firstItem="bNr-u4-TPP" firstAttribute="top" secondItem="RNb-b7-bCZ" secondAttribute="top" constant="4" id="uor-Ui-d3h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNb-b7-bCZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chatbot" id="6AQ-SM-7X0"/>
-                    <navigationItem key="navigationItem" title="Chatbot" largeTitleDisplayMode="always" id="VTM-LL-Zd3"/>
+                    <navigationItem key="navigationItem" title="Chatbot" id="1Pb-kM-zPe"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="cJA-xl-XDs" id="yEl-AG-NSJ"/>
                         <outlet property="collectionView" destination="bNr-u4-TPP" id="lL3-Z0-uMi"/>
@@ -166,7 +156,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sl-54-awW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1877" y="113"/>
+            <point key="canvasLocation" x="2784.057971014493" y="112.5"/>
+        </scene>
+        <!--Chatbot-->
+        <scene sceneID="saF-U0-xkq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xmZ-e3-HXD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chatbot" image="chatbot" id="onn-or-VDu"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="X2l-ir-KHD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BWn-cM-3Nr" kind="relationship" relationship="rootViewController" id="vig-6h-scF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTT-D5-Xcs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.913043478261" y="112.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chatbot" width="48" height="32"/>
+        <image name="faq" width="48" height="32"/>
+        <image name="stats" width="48" height="32"/>
+    </resources>
 </document>

@@ -71,17 +71,26 @@ class ChatbotController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.title = "Chatbot"
+        
+        setUpTextField()
+        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        
-        overrideUserInterfaceStyle = .dark
-
+    
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
                    
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
-
-
+        
+    }
+    
+    func setUpTextField(){
+        inputTextField.layer.cornerRadius = 18
+        inputTextField.layer.borderWidth = 0.8
+        inputTextField.layer.borderColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00).cgColor
+        inputTextField.attributedPlaceholder = NSAttributedString(string: "Faça uma pergunta ao bot",attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00)])
     }
     
     @objc func handleKeyBoardNotification(notification: NSNotification){
