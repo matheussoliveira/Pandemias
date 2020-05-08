@@ -43,22 +43,58 @@ class ChatbotController: UIViewController{
                 return
             }
         
+        var retriedToAnswer = false
+        
         session.dataTask(with: url, completionHandler: { data, response, error in
             if let data = data {
-                let queriedString:String = String(data: data, encoding: String.Encoding.utf8) ?? ""
-                DispatchQueue.main.async {
-                    //insert answer to messages array
-                    let botAnswer = Message(text: queriedString, date: NSDate(), isFromUser: false)
-                    self.messages.append(botAnswer)
+                var queriedString: [String] = []
                     
-                    //insert answer to chatlog
-                    let item = self.messages.count - 1
-                    let insertionIndexpath = IndexPath(item: item, section: 0)
-                    self.collectionView.insertItems(at: [insertionIndexpath])
-                    self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
+                do {
+                    // make sure this JSON is in the format we expect
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        // read out the bot response
+                        if let fulfillmentMessages = json["fulfillmentMessages"] as? [[String:Any]] {
+                            for message in fulfillmentMessages {
+                                let textDict = message["text"] as? [String:Any]
+                                let textValue = textDict?["text"] as? [Any]
+                                let textString = textValue?[0] as? String
+                                queriedString.append(textString ?? "")
+                            }
+                        }
+                    }
+                    
+//                    //If the chat fails to get the answer the first time
+//                    if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == false {
+//                        retriedToAnswer = true
+//                        
+//                        self.sendButtonPressed(self.sendButton)
+//                    } else if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == true {
+//                        let answer = "Desculpe, não consegui obter a resposta. Você poderia reformular a pergunta?"
+//                        queriedString[0] = answer
+//                    }
+                    
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+                
+                DispatchQueue.main.async {
+                    retriedToAnswer = false
+                    //insert answer to messages array
+                    for answer in queriedString {
+                        let botAnswer = Message(text: answer, date: NSDate(), isFromUser: false)
+                        self.messages.append(botAnswer)
+                        
+                        //insert answer to chatlog
+                        let item = self.messages.count - 1
+                        let insertionIndexpath = IndexPath(item: item, section: 0)
+                        self.collectionView.insertItems(at: [insertionIndexpath])
+                        self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
+                    }
+                    
                 }
             }
         }).resume()
+
     }
     
     func formatStringToURL(string: String) -> String {
