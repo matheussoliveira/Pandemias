@@ -21,7 +21,6 @@ class ChatbotController: UIViewController{
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBAction func sendButtonPressed(_ sender: Any) {
-        let session = URLSession.shared
         var question:String = inputTextField.text ?? ""
         
         //insert question to messages array
@@ -35,9 +34,16 @@ class ChatbotController: UIViewController{
         
         inputTextField.text = nil
         
-        //get bot response
-        question = self.formatStringToURL(string: question)
-        guard let url = URL(string: "https://oliver-fxdvmp.appspot.com/?question=\(question)")
+        getBotResponse(question: question)
+
+    }
+    
+    func getBotResponse(question: String){
+        let session = URLSession.shared
+        
+        //access url to get response
+        let questionURL = self.formatStringToURL(string: question)
+        guard let url = URL(string: "https://oliver-fxdvmp.appspot.com/?question=\(questionURL)")
             else {
                 print("errorr")
                 return
@@ -45,6 +51,7 @@ class ChatbotController: UIViewController{
         
         var retriedToAnswer = false
         
+        //get response
         session.dataTask(with: url, completionHandler: { data, response, error in
             if let data = data {
                 var queriedString: [String] = []
@@ -63,15 +70,15 @@ class ChatbotController: UIViewController{
                         }
                     }
                     
-//                    //If the chat fails to get the answer the first time
-//                    if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == false {
-//                        retriedToAnswer = true
-//                        
-//                        self.sendButtonPressed(self.sendButton)
-//                    } else if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == true {
-//                        let answer = "Desculpe, não consegui obter a resposta. Você poderia reformular a pergunta?"
-//                        queriedString[0] = answer
-//                    }
+                    //If the chat fails to get the answer the first time
+                    if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == false {
+                        retriedToAnswer = true
+                    
+                        self.getBotResponse(question: question)
+                    } else if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == true {
+                        let answer = "Desculpe, não consegui obter a resposta. Você poderia reformular a pergunta?"
+                        queriedString[0] = answer
+                    }
                     
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
@@ -81,20 +88,21 @@ class ChatbotController: UIViewController{
                     retriedToAnswer = false
                     //insert answer to messages array
                     for answer in queriedString {
-                        let botAnswer = Message(text: answer, date: NSDate(), isFromUser: false)
-                        self.messages.append(botAnswer)
-                        
-                        //insert answer to chatlog
-                        let item = self.messages.count - 1
-                        let insertionIndexpath = IndexPath(item: item, section: 0)
-                        self.collectionView.insertItems(at: [insertionIndexpath])
-                        self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
+                        if answer != ""{
+                            let botAnswer = Message(text: answer, date: NSDate(), isFromUser: false)
+                            self.messages.append(botAnswer)
+                            
+                            //insert answer to chatlog
+                            let item = self.messages.count - 1
+                            let insertionIndexpath = IndexPath(item: item, section: 0)
+                            self.collectionView.insertItems(at: [insertionIndexpath])
+                            self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
+                        }
                     }
                     
                 }
             }
         }).resume()
-
     }
     
     func formatStringToURL(string: String) -> String {
