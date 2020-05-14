@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "chatbot.png",
+      "filename" : "new-chat.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "chatbot@2x.png",
+      "filename" : "new-chat@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "chatbot@3x.png",
+      "filename" : "new-chat@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

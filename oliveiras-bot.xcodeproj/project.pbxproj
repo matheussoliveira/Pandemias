@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
 		2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08224322A8E006C8BD3 /* AppDelegate.swift */; };
 		2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */; };
-		2F99D08724322A8E006C8BD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08624322A8E006C8BD3 /* ViewController.swift */; };
 		2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08824322A8E006C8BD3 /* Main.storyboard */; };
 		2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08B24322A90006C8BD3 /* Assets.xcassets */; };
 		2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */; };
@@ -26,7 +25,6 @@
 		2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oliveiras-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99D08224322A8E006C8BD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2F99D08624322A8E006C8BD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2F99D08924322A8E006C8BD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F99D08B24322A90006C8BD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F99D08E24322A90006C8BD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				9C0500C32459CCA800B7EC97 /* Model */,
 				2F99D08224322A8E006C8BD3 /* AppDelegate.swift */,
 				2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */,
-				2F99D08624322A8E006C8BD3 /* ViewController.swift */,
 				2F99D08824322A8E006C8BD3 /* Main.storyboard */,
 				2F99D08B24322A90006C8BD3 /* Assets.xcassets */,
 				2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */,
@@ -96,7 +93,6 @@
 				6D56B23623790BC180C2590F /* Pods-oliveiras-bot.debug.xcconfig */,
 				A3A533FA133524D938187BA1 /* Pods-oliveiras-bot.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -250,7 +246,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F99D08724322A8E006C8BD3 /* ViewController.swift in Sources */,
 				2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */,
 				9CF4996B2462DCA2005699EC /* Message.swift in Sources */,
 				2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */,

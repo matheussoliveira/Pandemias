@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "faq.png",
+      "filename" : "new-faq.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "faq@2x.png",
+      "filename" : "new-faq@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "faq@3x.png",
+      "filename" : "new-faq@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
