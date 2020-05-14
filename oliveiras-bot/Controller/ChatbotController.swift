@@ -21,7 +21,7 @@ class ChatbotController: UIViewController{
     @IBOutlet weak var inputTextField: UITextField!
     
     @IBAction func sendButtonPressed(_ sender: Any) {
-        var question:String = inputTextField.text ?? ""
+        let question:String = inputTextField.text ?? ""
         
         //insert question to messages array
         let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
@@ -202,14 +202,14 @@ extension ChatbotController: UICollectionViewDelegate, UICollectionViewDataSourc
             cell.textBubbleView.frame = CGRect(x: 8 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 16, height: estimatedFrame.height + 20 + 6)
             cell.messageTextView.textColor = UIColor.white
             cell.bubbleImageView.image = MessageCell.leftBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
+            cell.bubbleImageView.tintColor = UIColor(red: 0.68, green: 0.03, blue: 0.16, alpha: 1.00)
 
         } else{
             cell.messageTextView.frame = CGRect(x: view.frame.width -  estimatedFrame.width - 16 - 8 - 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
             cell.textBubbleView.frame = CGRect(x: view.frame.width -  estimatedFrame.width - 16 - 16 - 10, y: -4, width: estimatedFrame.width + 16 + 8 + 10, height: estimatedFrame.height + 20 + 6)
             cell.messageTextView.textColor = UIColor.white
             cell.bubbleImageView.image = MessageCell.rightBubbleImage
-            cell.bubbleImageView.tintColor = UIColor(red: 0.68, green: 0.03, blue: 0.16, alpha: 1.00)
+            cell.bubbleImageView.tintColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1.00)
         }
         
         return cell

@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
+		2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */; };
 		2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08224322A8E006C8BD3 /* AppDelegate.swift */; };
 		2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */; };
-		2F99D08724322A8E006C8BD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08624322A8E006C8BD3 /* ViewController.swift */; };
 		2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08824322A8E006C8BD3 /* Main.storyboard */; };
 		2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08B24322A90006C8BD3 /* Assets.xcassets */; };
 		2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */; };
@@ -21,19 +22,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oliveiras-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99D08224322A8E006C8BD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2F99D08624322A8E006C8BD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2F99D08924322A8E006C8BD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2F99D08B24322A90006C8BD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F99D08E24322A90006C8BD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F99D09024322A90006C8BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D56B23623790BC180C2590F /* Pods-oliveiras-bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oliveiras-bot.debug.xcconfig"; path = "Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot.debug.xcconfig"; sourceTree = "<group>"; };
 		9C2D93F524643D030028F0EC /* StatisticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsController.swift; sourceTree = "<group>"; };
 		9C2D93F724643D150028F0EC /* FAQController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQController.swift; sourceTree = "<group>"; };
 		9CD47AF92460355A0098D864 /* ChatbotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotController.swift; sourceTree = "<group>"; };
 		9CF4996A2462DCA2005699EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9CF4996C2462E962005699EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		A3A533FA133524D938187BA1 /* Pods-oliveiras-bot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oliveiras-bot.release.xcconfig"; path = "Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot.release.xcconfig"; sourceTree = "<group>"; };
+		FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oliveiras_bot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				2F99D08124322A8E006C8BD3 /* oliveiras-bot */,
 				2F99D08024322A8E006C8BD3 /* Products */,
+				55FFB8C31B51B1FA7B19B560 /* Pods */,
+				5EF91106AB8D75DE4C799591 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,13 +78,30 @@
 				9C0500C32459CCA800B7EC97 /* Model */,
 				2F99D08224322A8E006C8BD3 /* AppDelegate.swift */,
 				2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */,
-				2F99D08624322A8E006C8BD3 /* ViewController.swift */,
 				2F99D08824322A8E006C8BD3 /* Main.storyboard */,
 				2F99D08B24322A90006C8BD3 /* Assets.xcassets */,
 				2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */,
+				2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */,
 				2F99D09024322A90006C8BD3 /* Info.plist */,
 			);
 			path = "oliveiras-bot";
+			sourceTree = "<group>";
+		};
+		55FFB8C31B51B1FA7B19B560 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D56B23623790BC180C2590F /* Pods-oliveiras-bot.debug.xcconfig */,
+				A3A533FA133524D938187BA1 /* Pods-oliveiras-bot.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5EF91106AB8D75DE4C799591 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9C0500C32459CCA800B7EC97 /* Model */ = {
@@ -113,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F99D09324322A90006C8BD3 /* Build configuration list for PBXNativeTarget "oliveiras-bot" */;
 			buildPhases = (
+				B3F244CFADA6C3BEA8161377 /* [CP] Check Pods Manifest.lock */,
 				2F99D07B24322A8E006C8BD3 /* Sources */,
 				2F99D07C24322A8E006C8BD3 /* Frameworks */,
 				2F99D07D24322A8E006C8BD3 /* Resources */,
+				1FFAD9AB51CCBC65652568C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */,
+				2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */,
 				2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */,
 				2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */,
 			);
@@ -172,12 +199,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1FFAD9AB51CCBC65652568C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3F244CFADA6C3BEA8161377 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oliveiras-bot-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2F99D07B24322A8E006C8BD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F99D08724322A8E006C8BD3 /* ViewController.swift in Sources */,
 				2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */,
 				9CF4996B2462DCA2005699EC /* Message.swift in Sources */,
 				2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */,
@@ -326,6 +394,7 @@
 		};
 		2F99D09424322A90006C8BD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D56B23623790BC180C2590F /* Pods-oliveiras-bot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -344,6 +413,7 @@
 		};
 		2F99D09524322A90006C8BD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3A533FA133524D938187BA1 /* Pods-oliveiras-bot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
