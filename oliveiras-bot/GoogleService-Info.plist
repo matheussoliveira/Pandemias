@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1091724165843-ceqiqf4hec3m0u0cb3gdmnctmja80hlc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1091724165843-ceqiqf4hec3m0u0cb3gdmnctmja80hlc</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAVSeSsaMRzFh3BsZBWNAKAUtmD4zDKXS8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1091724165843</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.oliveiras.oliveiras-bot.oliveiras-bot</string>
+	<key>PROJECT_ID</key>
+	<string>oliver-fxdvmp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>oliver-fxdvmp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1091724165843:ios:2d8cdf40589068487f8a26</string>
+	<key>DATABASE_URL</key>
+	<string>https://oliver-fxdvmp.firebaseio.com</string>
+</dict>
+</plist>
