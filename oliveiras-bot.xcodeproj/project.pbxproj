@@ -16,6 +16,10 @@
 		2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */; };
 		9C2D93F624643D030028F0EC /* StatisticsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D93F524643D030028F0EC /* StatisticsController.swift */; };
 		9C2D93F824643D150028F0EC /* FAQController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2D93F724643D150028F0EC /* FAQController.swift */; };
+		9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C196A246ED5E200A46C55 /* BubbleCircle.swift */; };
+		9C4C196D246ED62900A46C55 /* TypingBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C196C246ED62900A46C55 /* TypingBubble.swift */; };
+		9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */; };
+		9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */; };
 		9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD47AF92460355A0098D864 /* ChatbotController.swift */; };
 		9CF4996B2462DCA2005699EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996A2462DCA2005699EC /* Message.swift */; };
 		9CF4996D2462E962005699EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996C2462E962005699EC /* MessageCell.swift */; };
@@ -33,6 +37,10 @@
 		6D56B23623790BC180C2590F /* Pods-oliveiras-bot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oliveiras-bot.debug.xcconfig"; path = "Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot.debug.xcconfig"; sourceTree = "<group>"; };
 		9C2D93F524643D030028F0EC /* StatisticsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsController.swift; sourceTree = "<group>"; };
 		9C2D93F724643D150028F0EC /* FAQController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQController.swift; sourceTree = "<group>"; };
+		9C4C196A246ED5E200A46C55 /* BubbleCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleCircle.swift; sourceTree = "<group>"; };
+		9C4C196C246ED62900A46C55 /* TypingBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBubble.swift; sourceTree = "<group>"; };
+		9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBubbleCell.swift; sourceTree = "<group>"; };
+		9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
 		9CD47AF92460355A0098D864 /* ChatbotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotController.swift; sourceTree = "<group>"; };
 		9CF4996A2462DCA2005699EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9CF4996C2462E962005699EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -125,9 +133,21 @@
 		9C0500C52459CCCA00B7EC97 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9C4C1972246ED67100A46C55 /* TypingIndicator */,
 				9CF4996C2462E962005699EC /* MessageCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9C4C1972246ED67100A46C55 /* TypingIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				9C4C196A246ED5E200A46C55 /* BubbleCircle.swift */,
+				9C4C196C246ED62900A46C55 /* TypingBubble.swift */,
+				9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */,
+				9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */,
+			);
+			path = TypingIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,8 +268,12 @@
 			files = (
 				2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */,
 				9CF4996B2462DCA2005699EC /* Message.swift in Sources */,
+				9C4C196D246ED62900A46C55 /* TypingBubble.swift in Sources */,
 				2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */,
+				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsController.swift in Sources */,
+				9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */,
+				9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */,
 				9C2D93F824643D150028F0EC /* FAQController.swift in Sources */,
 				9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */,
 				9CF4996D2462E962005699EC /* MessageCell.swift in Sources */,
