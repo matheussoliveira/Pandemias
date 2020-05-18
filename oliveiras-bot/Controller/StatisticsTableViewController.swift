@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import Charts
 
 class StatisticsTableViewController: UITableViewController {
     
     // LOCATION SECTION
-    
     @IBOutlet weak var countryIcon: UIImageView!
     @IBOutlet weak var disclosureLabel: UILabel!
+    
+    // GRAPHIC SECTION
+    @IBOutlet weak var segmented: UISegmentedControl!
+    @IBOutlet weak var chartView: LineChartView!
+    
+    var chartNumbers: [Double] = [200,500,100,800,300,120,600]
+    
+    enum ChartColor {
+        case confirmed
+        case recovered
+        case deaths
+    }
     
     let headerHight: CGFloat = 55
     
@@ -21,7 +33,47 @@ class StatisticsTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Estatísticas"
+        
+        //Set segment control properties
+        segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
+        segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
+        
+        plotGraphic()
     
+    }
+    
+    func plotGraphic() {
+        //Array that will display the graphic
+        var chartEntry = [ChartDataEntry]()
+        
+        for i in 0..<chartNumbers.count {
+            //Set x and y status in a data chart entry
+            let value = ChartDataEntry(x: Double(i), y: chartNumbers[i])
+            
+            chartEntry.append(value)
+        }
+        
+        //Convert the entry to a data set
+        let line = LineChartDataSet(chartEntry)
+        line.colors = [#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)]
+        line.drawCirclesEnabled = false
+        line.fill = Fill.fillWithCGColor(#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
+        line.fillAlpha = 0.6
+        line.drawFilledEnabled = true
+        line.lineWidth = 2.0
+        
+        //Data to add to the chart
+        let data = LineChartData()
+        data.addDataSet(line)
+        data.setDrawValues(false)
+    
+        chartView.data = data
+        chartView.legend.enabled = false
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelTextColor = .white
+        chartView.leftAxis.labelTextColor = .white
+        chartView.rightAxis.enabled = false
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
