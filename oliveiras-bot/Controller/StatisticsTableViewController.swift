@@ -19,13 +19,14 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var chartView: LineChartView!
     
-    var chartNumbers: [Double] = [200,500,100,800,300,120,600]
-    
-    enum ChartColor {
+    enum ChartType {
         case confirmed
         case recovered
         case deaths
     }
+    
+    var chartNumbers: [Double] = [200,500,100,800,300,120,600]
+    var chartType: ChartType = .confirmed
     
     let headerHight: CGFloat = 55
     
@@ -38,11 +39,10 @@ class StatisticsTableViewController: UITableViewController {
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         
-        plotGraphic()
-    
+        plotGraphic(chartColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
     }
     
-    func plotGraphic() {
+    func plotGraphic(chartColor: UIColor) {
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
         
@@ -55,9 +55,9 @@ class StatisticsTableViewController: UITableViewController {
         
         //Convert the entry to a data set
         let line = LineChartDataSet(chartEntry)
-        line.colors = [#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)]
+        line.colors = [chartColor]
         line.drawCirclesEnabled = false
-        line.fill = Fill.fillWithCGColor(#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
+        line.fill = Fill.fillWithCGColor(chartColor.cgColor)
         line.fillAlpha = 0.6
         line.drawFilledEnabled = true
         line.lineWidth = 2.0
@@ -73,9 +73,42 @@ class StatisticsTableViewController: UITableViewController {
         chartView.xAxis.labelTextColor = .white
         chartView.leftAxis.labelTextColor = .white
         chartView.rightAxis.enabled = false
-        
     }
     
+    
+    @IBAction func changeChartType(_ sender: UISegmentedControl) {
+        var chartColor = UIColor()
+//        var chartNumbers: [Double] = []
+        //set api values
+        
+        switch sender.selectedSegmentIndex {
+        //CONFIRMED
+        case 0:
+            chartType = .confirmed
+            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+            
+        //RECOVERED
+        case 1:
+            chartType = .recovered
+            chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+        //DEATHS
+        case 2:
+            chartType = .deaths
+            chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+        default:
+            chartType = .confirmed
+            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+        }
+        
+        plotGraphic(chartColor: chartColor)
+        print(sender.selectedSegmentIndex)
+    }
+    
+
+}
+
+// MARK: TableView Controller Functions
+extension StatisticsTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleView = UIView()
         let labelHeight: CGFloat = 18
@@ -123,5 +156,4 @@ class StatisticsTableViewController: UITableViewController {
         
         return cell
     }
-
 }
