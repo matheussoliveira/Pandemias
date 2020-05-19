@@ -35,7 +35,7 @@ class MessageCell: UICollectionViewCell{
         imageView.tintColor = UIColor(white: 0.90, alpha: 1)
         return imageView
     }()
-
+    
     let messageTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.systemFont(ofSize: 18)
@@ -44,6 +44,8 @@ class MessageCell: UICollectionViewCell{
         textView.isEditable = false
         return textView
     }()
+    
+    let typingIndicatorView = TypingBubble()
 
     func setUpViews(){
 
