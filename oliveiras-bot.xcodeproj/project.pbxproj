@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
+		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
+		2F4A5559246EECEC00AD592F /* SSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5558246EECEC00AD592F /* SSTableViewController.swift */; };
 		2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */; };
+		2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */; };
 		2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08224322A8E006C8BD3 /* AppDelegate.swift */; };
 		2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */; };
 		2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F99D08824322A8E006C8BD3 /* Main.storyboard */; };
@@ -22,7 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
+		2F4A5558246EECEC00AD592F /* SSTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSTableViewController.swift; sourceTree = "<group>"; };
 		2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisaoGeralTableViewCell.xib; sourceTree = "<group>"; };
 		2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oliveiras-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99D08224322A8E006C8BD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 				9CD47AF92460355A0098D864 /* ChatbotController.swift */,
 				9C2D93F524643D030028F0EC /* StatisticsController.swift */,
 				9C2D93F724643D150028F0EC /* FAQController.swift */,
+				2F4A5558246EECEC00AD592F /* SSTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -126,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				9CF4996C2462E962005699EC /* MessageCell.swift */,
+				2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */,
+				2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */,
+				2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */,
 				2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */,
 				2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */,
 				2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */,
@@ -246,9 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */,
 				2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */,
 				9CF4996B2462DCA2005699EC /* Message.swift in Sources */,
 				2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */,
+				2F4A5559246EECEC00AD592F /* SSTableViewController.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsController.swift in Sources */,
 				9C2D93F824643D150028F0EC /* FAQController.swift in Sources */,
 				9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */,
