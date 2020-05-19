@@ -29,7 +29,7 @@ open class TypingBubbleCell: UICollectionViewCell {
     
     // MARK: - Subviews
     
-    open var typingBubble = TypingBubble()
+    var typingBubble = TypingBubble()
     
     // MARK: - Initialization
     

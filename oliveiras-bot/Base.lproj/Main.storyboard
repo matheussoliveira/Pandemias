@@ -151,7 +151,6 @@
                         <outlet property="collectionView" destination="bNr-u4-TPP" id="lL3-Z0-uMi"/>
                         <outlet property="containerView" destination="F7i-20-lNg" id="6UJ-gX-BJ2"/>
                         <outlet property="inputTextField" destination="yZB-1A-7aI" id="7JY-kR-4Pb"/>
-                        <outlet property="sendButton" destination="FEn-fJ-FrI" id="Trz-wO-OUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sl-54-awW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
