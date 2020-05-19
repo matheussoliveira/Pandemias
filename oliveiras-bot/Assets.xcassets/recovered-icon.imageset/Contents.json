@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "recovered-icon.png",
+      "filename" : "recovered-icon.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "recovered-icon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "recovered-icon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -19,5 +17,8 @@
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
   }
 }

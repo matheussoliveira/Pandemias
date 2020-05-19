@@ -11,6 +11,9 @@ import Charts
 
 class StatisticsTableViewController: UITableViewController {
     
+    // Cell identifier
+    let cellId = "VisaoGeralTableViewCell"
+    
     // LOCATION SECTION
     @IBOutlet weak var countryIcon: UIImageView!
     @IBOutlet weak var disclosureLabel: UILabel!
@@ -39,6 +42,10 @@ class StatisticsTableViewController: UITableViewController {
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         
+        // Registering cell
+        self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        
+    
         plotGraphic(chartColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
     }
     
@@ -143,17 +150,25 @@ extension StatisticsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
+        if (indexPath.row == 0 && indexPath.section == 2) {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! VisaoGeralTableViewCell
+            return cell
+            
+        } else {
         
-        switch indexPath.section {
-        case 0:
-            let chevron = UIImage(named: "chevron-icon")
-            cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = UIImageView(image: chevron!)
-        default:
-            break
+            let cell = super.tableView(tableView, cellForRowAt: indexPath)
+            
+            switch indexPath.section {
+            case 0:
+                let chevron = UIImage(named: "chevron-icon")
+                cell.accessoryType = .disclosureIndicator
+                cell.accessoryView = UIImageView(image: chevron!)
+            default:
+                break
+            }
+            
+            return cell
         }
-        
-        return cell
     }
 }
