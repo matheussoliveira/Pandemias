@@ -117,6 +117,39 @@
             </objects>
             <point key="canvasLocation" x="2347.826086956522" y="600"/>
         </scene>
+        <!--Selecionar região-->
+        <scene sceneID="82N-uP-RxX">
+            <objects>
+                <tableViewController storyboardIdentifier="Filter" title="Selecionar região" id="4my-nf-2pd" customClass="FilterTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Pg-X5-4Au">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Procurar região" id="mhg-vs-qh6">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hay-2E-XXD">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hay-2E-XXD" id="V1F-AG-Kc6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4my-nf-2pd" id="9v5-1M-pes"/>
+                            <outlet property="delegate" destination="4my-nf-2pd" id="6Gh-5h-7Be"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-gn-N36" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3290" y="600"/>
+        </scene>
         <!--Estatíticas-->
         <scene sceneID="bzv-x5-hwX">
             <objects>
@@ -138,6 +171,7 @@
             <point key="canvasLocation" x="1437.68115942029" y="600"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99607843139999996" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="stats" width="48" height="32"/>
         <image name="world-icon" width="29" height="29"/>
