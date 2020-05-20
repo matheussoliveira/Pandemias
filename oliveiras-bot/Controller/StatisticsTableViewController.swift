@@ -11,9 +11,6 @@ import Charts
 
 class StatisticsTableViewController: UITableViewController {
     
-    // Cell identifier
-    let cellId = "VisaoGeralTableViewCell"
-    
     // LOCATION SECTION
     @IBOutlet weak var countryIcon: UIImageView!
     @IBOutlet weak var disclosureLabel: UILabel!
@@ -32,6 +29,18 @@ class StatisticsTableViewController: UITableViewController {
     
     let headerHight: CGFloat = 55
     
+    // VISAO GERAL SECTION
+    let cellId = "VisaoGeralTableViewCell"
+    
+    // coronaStatistics[0] - Confirmed
+    // coronaStatistics[1] - Recovered
+    // coronaStatistics[2] - Active
+    // coronaStatistics[3] - Deaths
+    var coronaStatistics: [Int]!
+    
+    // SELECTED LOCATION
+    var selectedLocation: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -41,11 +50,16 @@ class StatisticsTableViewController: UITableViewController {
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         segmented.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.normal)
         
+        plotGraphic()
+        
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
         
-        plotGraphic()
-    
+        // TODO: Get selected location based
+        // on user selection
+        self.selectedLocation = "Mundo"
+        
+        getCasesNumber(location: selectedLocation)
     }
     
     func plotGraphic() {
@@ -82,6 +96,7 @@ class StatisticsTableViewController: UITableViewController {
         
     }
     
+    // MARK: - Table View Data Source
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleView = UIView()
         let labelHeight: CGFloat = 18
@@ -119,6 +134,15 @@ class StatisticsTableViewController: UITableViewController {
         if (indexPath.row == 0 && indexPath.section == 2) {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! VisaoGeralTableViewCell
+            
+            if (self.coronaStatistics != nil) {
+                
+                cell.confirmedNumber.text = formatNumber(number: coronaStatistics[0])
+                cell.recoveredNumber.text = formatNumber(number: coronaStatistics[1])
+                cell.activeNumber.text = formatNumber(number: coronaStatistics[2])
+                cell.deathsNumber.text = formatNumber(number: coronaStatistics[3])
+            }
+            
             return cell
             
         } else {
@@ -136,6 +160,69 @@ class StatisticsTableViewController: UITableViewController {
             
             return cell
         }
+    }
+    
+    // MARK: - API Functions
+    func getCasesNumber(location: String) {
+        // Builds an array with
+        // confirmed, recoreved, active
+        // and deaths cases, using corona api
+        
+        var apiURL: String!
+        
+        if (location == "Mundo") {
+            apiURL = "https://covid19.mathdro.id/api/"
+        } else {
+            apiURL = "https://covid19.mathdro.id/api/countries/\(location)"
+        }
+        
+        guard let url = URL(string: apiURL)
+            
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url) { (data, response, error) in
+            
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        
+                        if let deaths = json["deaths"] as? [String:Any],
+                           let recovered = json["recovered"] as? [String:Any],
+                           let confirmed = json["confirmed"] as? [String:Any] {
+                            
+                            let deathsNumber = deaths["value"] as? Int ?? 0
+                            let confirmedNumber = confirmed["value"] as? Int ?? 0
+                            let recoveredNumber = recovered["value"] as? Int ?? 0
+                            let activeNumber = confirmedNumber - deathsNumber - recoveredNumber
+                            self.coronaStatistics = [confirmedNumber, recoveredNumber, activeNumber, deathsNumber]
+                         }
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    
+                } catch { print(error) }
+            }
+        }.resume()
+    }
+    
+    // MARK: - Auxiliary Functions
+    
+    func formatNumber(number: Int) -> String {
+        // Formats large numbers to
+        // a String with a comma
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:number)) ?? "-"
+        
+        return formattedNumber
     }
 
 }

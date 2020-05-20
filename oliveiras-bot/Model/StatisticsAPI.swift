@@ -40,7 +40,7 @@ class StatisticsAPI {
                             let confirmedNumber = confirmed["value"] as? Int ?? 0
                             let recoveredNumber = recovered["value"] as? Int ?? 0
                             let activeNumber = confirmedNumber - deathsNumber - recoveredNumber
-                            casesNumberArray = [deathsNumber, confirmedNumber, recoveredNumber, activeNumber]
+                            casesNumberArray = [confirmedNumber, recoveredNumber, activeNumber, deathsNumber]
                          }
                     }
                     
@@ -50,6 +50,4 @@ class StatisticsAPI {
         
         return casesNumberArray
     }
-
-    
 }
