@@ -28,8 +28,8 @@ class StatisticsTableViewController: UITableViewController {
         case deaths
     }
     
-    var chartNumbers: [Double] = [200,500,100,800,300,120,600]
     var chartType: ChartType = .confirmed
+    var chartColor = UIColor()
     
     let headerHight: CGFloat = 55
     
@@ -45,18 +45,42 @@ class StatisticsTableViewController: UITableViewController {
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
         
-    
-        plotGraphic(chartColor: #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
+        //Set Charts Properties
+        setChartProperties()
     }
     
-    func plotGraphic(chartColor: UIColor) {
+    func setChartProperties() {
+        let index = segmented.selectedSegmentIndex
+        
+        switch index {
+        case 0:
+            chartType = .confirmed
+            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+            dailyGlobalCases(caseType: "confirmed")
+        case 1:
+            chartType = .recovered
+            chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+        case 2:
+            chartType = .deaths
+            chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+            dailyGlobalCases(caseType: "deaths")
+        default:
+            chartType = .confirmed
+        }
+    }
+    
+    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)]) {
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
+        var days: [String] = []
         
-        for i in 0..<chartNumbers.count {
+        for i in 0..<chartValues.count {
             //Set x and y status in a data chart entry
-            let value = ChartDataEntry(x: Double(i), y: chartNumbers[i])
+            let xValue = chartValues[i].x
+            let yValue = chartValues[i].y
+            let value = ChartDataEntry(x: Double(i), y: Double(yValue))
             
+            days.append(xValue)
             chartEntry.append(value)
         }
         
@@ -80,38 +104,61 @@ class StatisticsTableViewController: UITableViewController {
         chartView.xAxis.labelTextColor = .white
         chartView.leftAxis.labelTextColor = .white
         chartView.rightAxis.enabled = false
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: days)
+        chartView.xAxis.granularity = 1.0
+        chartView.xAxis.axisMinimum = 0
+        chartView.leftAxis.axisMinimum = 0
+        
     }
     
-    
     @IBAction func changeChartType(_ sender: UISegmentedControl) {
-        var chartColor = UIColor()
-//        var chartNumbers: [Double] = []
-        //set api values
-        
-        switch sender.selectedSegmentIndex {
-        //CONFIRMED
-        case 0:
-            chartType = .confirmed
-            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-            
-        //RECOVERED
-        case 1:
-            chartType = .recovered
-            chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
-        //DEATHS
-        case 2:
-            chartType = .deaths
-            chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-        default:
-            chartType = .confirmed
-            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-        }
-        
-        plotGraphic(chartColor: chartColor)
-        print(sender.selectedSegmentIndex)
+        setChartProperties()
     }
     
 
+}
+
+// MARK: API Calls
+extension StatisticsTableViewController {
+    func dailyGlobalCases(caseType: String) {
+        var result: [(x: String, y: Int)] = []
+        
+        guard let url = URL(string: "https://covid19.mathdro.id/api/daily")
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
+                        
+                        for data in json {
+                            let caseType = data[caseType] as? [String:Any]
+
+                            let caseNumber = caseType?["total"] as? Int ?? 0
+                            let day = data["reportDate"] as? String ?? ""
+                            let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd", newFormat: "dd/MM")
+                            
+                            let value = (x: formatedDay, y: caseNumber)
+                            
+                            result.append(value)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.tableView.reloadData()
+                        }
+                    }
+                } catch { print(error) }
+            }
+        }).resume()
+    }
+    
 }
 
 // MARK: TableView Controller Functions
@@ -170,5 +217,19 @@ extension StatisticsTableViewController {
             
             return cell
         }
+    }
+}
+
+extension Date {
+    static func getFormattedDate(dateToFormat: String, originalFormat: String, newFormat:String) -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = originalFormat
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = newFormat
+
+        let date: Date? = dateFormatterGet.date(from: dateToFormat)
+        print("Date",dateFormatterPrint.string(from: date!))
+        return dateFormatterPrint.string(from: date!);
     }
 }
