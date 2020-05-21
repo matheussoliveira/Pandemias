@@ -26,6 +26,7 @@
 		9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */; };
 		9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */; };
 		9C90DC24247553E100449918 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC23247553E100449918 /* Country.swift */; };
+		9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC2524757BD000449918 /* FilterTableViewCell.swift */; };
 		9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD47AF92460355A0098D864 /* ChatbotController.swift */; };
 		9CF4996B2462DCA2005699EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996A2462DCA2005699EC /* Message.swift */; };
 		9CF4996D2462E962005699EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996C2462E962005699EC /* MessageCell.swift */; };
@@ -53,6 +54,7 @@
 		9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
 		9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		9C90DC23247553E100449918 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		9C90DC2524757BD000449918 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		9CD47AF92460355A0098D864 /* ChatbotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotController.swift; sourceTree = "<group>"; };
 		9CF4996A2462DCA2005699EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9CF4996C2462E962005699EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				9CF4996C2462E962005699EC /* MessageCell.swift */,
 				2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */,
 				2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */,
+				9C90DC2524757BD000449918 /* FilterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */,
 				2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */,
+				9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */,
 				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				9C90DC24247553E100449918 /* Country.swift in Sources */,
