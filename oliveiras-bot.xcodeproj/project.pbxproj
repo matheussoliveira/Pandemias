@@ -12,6 +12,10 @@
 		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
 		2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */; };
 		2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */; };
+		2F9127652476B0BB006F7648 /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9127642476B0BB006F7648 /* FAQ.storyboard */; };
+		2F9127682476B9BB006F7648 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9127662476B9BB006F7648 /* FAQTableViewCell.swift */; };
+		2F9127692476B9BB006F7648 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9127672476B9BB006F7648 /* FAQTableViewCell.xib */; };
+		2F91276B2476BC12006F7648 /* DataInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F91276A2476BC12006F7648 /* DataInformationTableViewController.swift */; };
 		2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */; };
 		2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08224322A8E006C8BD3 /* AppDelegate.swift */; };
 		2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */; };
@@ -34,6 +38,10 @@
 		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
 		2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsAPI.swift; sourceTree = "<group>"; };
 		2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F9127642476B0BB006F7648 /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
+		2F9127662476B9BB006F7648 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
+		2F9127672476B9BB006F7648 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQTableViewCell.xib; sourceTree = "<group>"; };
+		2F91276A2476BC12006F7648 /* DataInformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInformationTableViewController.swift; sourceTree = "<group>"; };
 		2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisaoGeralTableViewCell.xib; sourceTree = "<group>"; };
 		2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oliveiras-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99D08224322A8E006C8BD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +103,7 @@
 				2F99D08224322A8E006C8BD3 /* AppDelegate.swift */,
 				2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */,
 				2F99D08824322A8E006C8BD3 /* Main.storyboard */,
+				2F9127642476B0BB006F7648 /* FAQ.storyboard */,
 				0B7CEA9C246EC339004B4255 /* Statistics.storyboard */,
 				2F99D08B24322A90006C8BD3 /* Assets.xcassets */,
 				2F99D08D24322A90006C8BD3 /* LaunchScreen.storyboard */,
@@ -136,6 +145,7 @@
 				9CD47AF92460355A0098D864 /* ChatbotController.swift */,
 				9C2D93F524643D030028F0EC /* StatisticsTableViewController.swift */,
 				9C2D93F724643D150028F0EC /* FAQController.swift */,
+				2F91276A2476BC12006F7648 /* DataInformationTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -150,6 +160,8 @@
 				9CF4996C2462E962005699EC /* MessageCell.swift */,
 				2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */,
 				2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */,
+				2F9127662476B9BB006F7648 /* FAQTableViewCell.swift */,
+				2F9127672476B9BB006F7648 /* FAQTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -214,10 +226,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F9127692476B9BB006F7648 /* FAQTableViewCell.xib in Resources */,
 				2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */,
 				2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */,
 				2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */,
 				2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */,
+				2F9127652476B0BB006F7648 /* FAQ.storyboard in Resources */,
 				0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */,
 				2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */,
 			);
@@ -272,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F91276B2476BC12006F7648 /* DataInformationTableViewController.swift in Sources */,
 				2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */,
 				2F99D08324322A8E006C8BD3 /* AppDelegate.swift in Sources */,
 				9CF4996B2462DCA2005699EC /* Message.swift in Sources */,
@@ -284,6 +299,7 @@
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */,
 				9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */,
+				2F9127682476B9BB006F7648 /* FAQTableViewCell.swift in Sources */,
 				9C2D93F824643D150028F0EC /* FAQController.swift in Sources */,
 				9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */,
 				9CF4996D2462E962005699EC /* MessageCell.swift in Sources */,
