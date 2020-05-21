@@ -113,6 +113,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chartView" destination="ty6-T7-CO0" id="IoB-nu-j8g"/>
+                        <outlet property="countryIcon" destination="BpY-em-iFl" id="4pP-GO-Lfd"/>
+                        <outlet property="disclosureLabel" destination="G92-gT-rkD" id="JfK-YG-fAi"/>
                         <outlet property="segmented" destination="z3M-iZ-wsy" id="YT4-Od-GyY"/>
                     </connections>
                 </tableViewController>

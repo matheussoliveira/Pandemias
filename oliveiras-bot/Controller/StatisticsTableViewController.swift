@@ -52,21 +52,46 @@ class StatisticsTableViewController: UITableViewController {
     func setChartProperties() {
         let index = segmented.selectedSegmentIndex
         
-        switch index {
-        case 0:
-            chartType = .confirmed
-            chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-            dailyGlobalCases(caseType: "confirmed")
-        case 1:
-            chartType = .recovered
-            chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
-        case 2:
-            chartType = .deaths
-            chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-            dailyGlobalCases(caseType: "deaths")
-        default:
-            chartType = .confirmed
+        if disclosureLabel.text == "Mundo" {
+            if segmented.numberOfSegments == 3 {
+                segmented.removeSegment(at: 1, animated: true)
+            }
+            switch index {
+            case 0:
+                chartType = .confirmed
+                chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+                dailyGlobalCases(caseType: "confirmed")
+            case 1:
+                chartType = .deaths
+                chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+                dailyGlobalCases(caseType: "deaths")
+            default:
+                chartType = .confirmed
+            }
+            
+        } else {
+            if segmented.numberOfSegments == 2 {
+                segmented.insertSegment(withTitle: "Recuperados", at: 1, animated: true)
+            }
+            switch index {
+            case 0:
+                chartType = .confirmed
+                chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+                dailyGlobalCases(caseType: "confirmed")
+            case 1:
+                chartType = .recovered
+                chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+            case 2:
+                chartType = .deaths
+                chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+                dailyGlobalCases(caseType: "deaths")
+            default:
+                chartType = .confirmed
+            }
+
         }
+        
+        
     }
     
     func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)]) {
@@ -229,7 +254,6 @@ extension Date {
         dateFormatterPrint.dateFormat = newFormat
 
         let date: Date? = dateFormatterGet.date(from: dateToFormat)
-        print("Date",dateFormatterPrint.string(from: date!))
         return dateFormatterPrint.string(from: date!);
     }
 }
