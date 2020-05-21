@@ -22,8 +22,6 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var chartView: LineChartView!
     
-    
-    
     enum ChartType {
         case confirmed
         case recovered

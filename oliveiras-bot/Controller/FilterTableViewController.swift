@@ -49,12 +49,17 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
     }
     
     func setupArray(){
+        
+        let world = Country(name: "Mundo", image: UIImage(named: "world")!)
+        let firstSection = Section(letter: " ", countries: [world])
+        
         //setup sections in alphabetical order
         let sortedCountries = countries.sorted(by: { $0.0 < $1.0 })
         for (key, value) in sortedCountries {
             sectionArray.append(Section(letter: key, countries: value))
         }
         
+        sectionArray.insert(firstSection, at: 0)
         sectionTitles = [String](countries.keys)
     }
     
