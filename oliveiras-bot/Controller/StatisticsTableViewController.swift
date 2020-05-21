@@ -46,6 +46,10 @@ class StatisticsTableViewController: UITableViewController {
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         //Set Charts Properties
         setChartProperties()
@@ -54,6 +58,7 @@ class StatisticsTableViewController: UITableViewController {
     func setChartProperties() {
         let index = segmented.selectedSegmentIndex
         
+        //GLOBAL STATISTICS
         if disclosureLabel.text == "Mundo" {
             if segmented.numberOfSegments == 3 {
                 segmented.removeSegment(at: 1, animated: true)
@@ -70,7 +75,7 @@ class StatisticsTableViewController: UITableViewController {
             default:
                 chartType = .confirmed
             }
-            
+        //COUNTRY STATISTICS
         } else {
             if segmented.numberOfSegments == 2 {
                 segmented.insertSegment(withTitle: "Recuperados", at: 1, animated: true)
@@ -79,14 +84,15 @@ class StatisticsTableViewController: UITableViewController {
             case 0:
                 chartType = .confirmed
                 chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-                dailyGlobalCases(caseType: "confirmed")
+                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Confirmed")
             case 1:
                 chartType = .recovered
                 chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Recovered")
             case 2:
                 chartType = .deaths
                 chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-                dailyGlobalCases(caseType: "deaths")
+                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Deaths")
             default:
                 chartType = .confirmed
             }
@@ -171,6 +177,43 @@ extension StatisticsTableViewController {
                             let day = data["reportDate"] as? String ?? ""
                             let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd", newFormat: "dd/MM")
                             
+                            let value = (x: formatedDay, y: caseNumber)
+                            
+                            result.append(value)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.tableView.reloadData()
+                        }
+                    }
+                } catch { print(error) }
+            }
+        }).resume()
+    }
+    
+    func dailyCountryCases(country: String, caseType: String) {
+        var result: [(x: String, y: Int)] = []
+        
+        guard let url = URL(string: "https://api.covid19api.com/country/\(country)")
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
+                        
+                        for data in json {
+                            let caseNumber = data[caseType] as? Int ?? 0
+                            let day = data["Date"] as? String ?? ""
+                            
+                            let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd'T'HH:mm:ssZ", newFormat: "dd/MM")
                             let value = (x: formatedDay, y: caseNumber)
                             
                             result.append(value)
