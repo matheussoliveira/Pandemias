@@ -51,5 +51,80 @@ class StatisticsAPI {
         return casesNumberArray
     }
 
+//    func dailyGlobalDeaths() -> [[Any]] {
+//        var dailyDeath: [Int] = []
+//        var days: [String] = []
+//        
+//        guard let url = URL(string: "https://covid19.mathdro.id/api/daily")
+//            else {
+//                print("Error while getting api url")
+//                return [[0]]
+//            }
+//        
+//        let session = URLSession.shared
+//        
+//        session.dataTask(with: url) { (data, response, error) in
+//            
+//            if let data = data {
+//                
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                        
+//                        if let dailyData = json[""] as? [[String:Any]] {
+//
+//                            for data in dailyData {
+//                                let deaths = data["deaths"] as? [String:Any]
+//                                
+//                                let deathsNumber = deaths?["total"] as? Int ?? 0
+//                                let day = data["reportDate"] as? String ?? ""
+//                                
+//                                dailyDeath.append(deathsNumber)
+//                                days.append(day)
+//                            }
+//                        }
+//                        
+//                    }
+//                    
+//                } catch { print(error) }
+//            }
+//        }.resume()
+//        
+//        return [days, dailyDeath]
+//    }
     
+    static func dailyGlobalConfirmed() -> [(x: String, y: Int)] {
+        var result: [(x: String, y: Int)] = []
+        
+        guard let url = URL(string: "https://covid19.mathdro.id/api/daily")
+            else {
+                print("Error while getting api url")
+                return result
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
+                        
+                        for data in json {
+                            let confirmed = data["confirmed"] as? [String:Any]
+
+                            let confirmedNumber = confirmed?["total"] as? Int ?? 0
+                            let day = data["reportDate"] as? String ?? ""
+                            let value = (x: day, y: confirmedNumber)
+                            
+                            result.append(value)
+                        }
+                        
+                    }
+                    
+                } catch { print(error) }
+            }
+        }).resume()
+        
+        return result
+    }
 }

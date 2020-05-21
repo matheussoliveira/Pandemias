@@ -22,13 +22,16 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var chartView: LineChartView!
     
-    var chartNumbers: [Double] = [200,500,100,800,300,120,600]
     
-    enum ChartColor {
+    
+    enum ChartType {
         case confirmed
         case recovered
         case deaths
     }
+    
+    var chartType: ChartType = .confirmed
+    var chartColor = UIColor()
     
     let headerHight: CGFloat = 55
     
@@ -44,26 +47,75 @@ class StatisticsTableViewController: UITableViewController {
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
         
-        plotGraphic()
-    
+        //Set Charts Properties
+        setChartProperties()
     }
     
-    func plotGraphic() {
+    func setChartProperties() {
+        let index = segmented.selectedSegmentIndex
+        
+        if disclosureLabel.text == "Mundo" {
+            if segmented.numberOfSegments == 3 {
+                segmented.removeSegment(at: 1, animated: true)
+            }
+            switch index {
+            case 0:
+                chartType = .confirmed
+                chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+                dailyGlobalCases(caseType: "confirmed")
+            case 1:
+                chartType = .deaths
+                chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+                dailyGlobalCases(caseType: "deaths")
+            default:
+                chartType = .confirmed
+            }
+            
+        } else {
+            if segmented.numberOfSegments == 2 {
+                segmented.insertSegment(withTitle: "Recuperados", at: 1, animated: true)
+            }
+            switch index {
+            case 0:
+                chartType = .confirmed
+                chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
+                dailyGlobalCases(caseType: "confirmed")
+            case 1:
+                chartType = .recovered
+                chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+            case 2:
+                chartType = .deaths
+                chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
+                dailyGlobalCases(caseType: "deaths")
+            default:
+                chartType = .confirmed
+            }
+
+        }
+        
+        
+    }
+    
+    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)]) {
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
+        var days: [String] = []
         
-        for i in 0..<chartNumbers.count {
+        for i in 0..<chartValues.count {
             //Set x and y status in a data chart entry
-            let value = ChartDataEntry(x: Double(i), y: chartNumbers[i])
+            let xValue = chartValues[i].x
+            let yValue = chartValues[i].y
+            let value = ChartDataEntry(x: Double(i), y: Double(yValue))
             
+            days.append(xValue)
             chartEntry.append(value)
         }
         
         //Convert the entry to a data set
         let line = LineChartDataSet(chartEntry)
-        line.colors = [#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)]
+        line.colors = [chartColor]
         line.drawCirclesEnabled = false
-        line.fill = Fill.fillWithCGColor(#colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1))
+        line.fill = Fill.fillWithCGColor(chartColor.cgColor)
         line.fillAlpha = 0.6
         line.drawFilledEnabled = true
         line.lineWidth = 2.0
@@ -79,9 +131,65 @@ class StatisticsTableViewController: UITableViewController {
         chartView.xAxis.labelTextColor = .white
         chartView.leftAxis.labelTextColor = .white
         chartView.rightAxis.enabled = false
+        chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: days)
+        chartView.xAxis.granularity = 1.0
+        chartView.xAxis.axisMinimum = 0
+        chartView.leftAxis.axisMinimum = 0
         
     }
     
+    @IBAction func changeChartType(_ sender: UISegmentedControl) {
+        setChartProperties()
+    }
+    
+
+}
+
+// MARK: API Calls
+extension StatisticsTableViewController {
+    func dailyGlobalCases(caseType: String) {
+        var result: [(x: String, y: Int)] = []
+        
+        guard let url = URL(string: "https://covid19.mathdro.id/api/daily")
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
+                        
+                        for data in json {
+                            let caseType = data[caseType] as? [String:Any]
+
+                            let caseNumber = caseType?["total"] as? Int ?? 0
+                            let day = data["reportDate"] as? String ?? ""
+                            let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd", newFormat: "dd/MM")
+                            
+                            let value = (x: formatedDay, y: caseNumber)
+                            
+                            result.append(value)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.tableView.reloadData()
+                        }
+                    }
+                } catch { print(error) }
+            }
+        }).resume()
+    }
+    
+}
+
+// MARK: TableView Controller Functions
+extension StatisticsTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleView = UIView()
         let labelHeight: CGFloat = 18
@@ -144,6 +252,19 @@ class StatisticsTableViewController: UITableViewController {
             if let viewController = storyboard?.instantiateViewController(identifier: "Filter") as? FilterTableViewController {                navigationController?.pushViewController(viewController, animated: true)
             }
         }
+    }
+}
+
+extension Date {
+    static func getFormattedDate(dateToFormat: String, originalFormat: String, newFormat:String) -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = originalFormat
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = newFormat
+
+        let date: Date? = dateFormatterGet.date(from: dateToFormat)
+        return dateFormatterPrint.string(from: date!);
     }
     
 }

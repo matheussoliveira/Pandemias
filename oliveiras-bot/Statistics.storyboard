@@ -71,6 +71,9 @@
                                                     </segments>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="selectedSegmentTintColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="changeChartType:" destination="4lg-eB-1Dw" eventType="valueChanged" id="so0-XG-kuF"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-T7-CO0" customClass="LineChartView" customModule="Charts">
                                                     <rect key="frame" x="20" y="50" width="334" height="153"/>
@@ -110,6 +113,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chartView" destination="ty6-T7-CO0" id="IoB-nu-j8g"/>
+                        <outlet property="countryIcon" destination="BpY-em-iFl" id="4pP-GO-Lfd"/>
+                        <outlet property="disclosureLabel" destination="G92-gT-rkD" id="JfK-YG-fAi"/>
                         <outlet property="segmented" destination="z3M-iZ-wsy" id="YT4-Od-GyY"/>
                     </connections>
                 </tableViewController>
