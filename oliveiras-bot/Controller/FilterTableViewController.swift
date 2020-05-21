@@ -8,24 +8,47 @@
 
 import UIKit
 
-class FilterTableViewController: UITableViewController{
-    
+class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
+
     struct Section {
         let letter : String
         let countries : [Country]
     }
     
+
+    @IBOutlet weak var searchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
+
+    
     let countries = Country.alphaDictionary()
     var sectionArray = [Section]()
     var sectionTitles = [String]()
-
+    var filteredSections = [Section]()
+    var filteredCountries = [Country]()
+    var lastSelection: NSIndexPath!
+    
+    var selectedCountry = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                                
         //setup navigation bar
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(rightButtonTapped))
         
+        //setup search controller
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Buscar região"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
+        
+        setupArray()
+
+    }
+    
+    func setupArray(){
         //setup sections in alphabetical order
         let sortedCountries = countries.sorted(by: { $0.0 < $1.0 })
         for (key, value) in sortedCountries {
@@ -33,11 +56,10 @@ class FilterTableViewController: UITableViewController{
         }
         
         sectionTitles = [String](countries.keys)
-
     }
     
     @objc func rightButtonTapped(){
-        print("tapped")
+        print(selectedCountry)
     }
 
     // MARK: - Table view data source
@@ -57,26 +79,99 @@ class FilterTableViewController: UITableViewController{
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionArray.count
+        if isFiltering {
+            return 1
+        } else{
+            return sectionArray.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionArray[section].countries.count
+        if isFiltering {
+            return filteredCountries.count
+        } else {
+            return sectionArray[section].countries.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionArray[section].letter
+        if isFiltering {
+            return nil
+        } else {
+            return sectionArray[section].letter
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isFiltering {
+            return 0
+        }
+
+        return tableView.sectionHeaderHeight
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as! FilterTableViewCell
-        cell.label.text = sectionArray[indexPath.section].countries[indexPath.row].name
-        cell.flag.image = sectionArray[indexPath.section].countries[indexPath.row].image
+        
+        if isFiltering {
+            cell.label.text = filteredCountries[indexPath.row].name
+            cell.flag.image = filteredCountries[indexPath.row].image
+        } else {
+            cell.label.text = sectionArray[indexPath.section].countries[indexPath.row].name
+            cell.flag.image = sectionArray[indexPath.section].countries[indexPath.row].image
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.lastSelection != nil {
+            self.tableView.cellForRow(at: self.lastSelection as IndexPath)?.accessoryType = .none
+        }
+        
+        if isFiltering{
+            selectedCountry = filteredCountries[indexPath.row].name
+        } else{
+            selectedCountry = sectionArray[indexPath.section].countries[indexPath.row].name
+        }
+        
+        self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        self.lastSelection = indexPath as NSIndexPath
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sectionTitles.sorted()
     }
 
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    var isSearchBarEmpty: Bool {
+      return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+      let searchBar = searchController.searchBar
+      filterContentForSearchText(searchBar.text!)
+        
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredCountries = []
+        filteredSections = sectionArray.filter({ (section) -> Bool in
+            for item in section.countries{
+                if item.name.lowercased() == searchText.lowercased(){
+                    filteredCountries.append(item)
+                    return true
+                }
+            }
+             return false
+        })
+        
+        tableView.reloadData()
+    }
+    
+
 }
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Country {
+struct Country: Equatable {
     let name: String
     let image: UIImage
     
