@@ -44,6 +44,8 @@ class StatisticsTableViewController: UITableViewController {
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        
+        compareCountryNames()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -253,9 +255,11 @@ extension StatisticsTableViewController {
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
-
+                        var counter = 0
+                        var datanumber = 0
                         for data in json {
                             var found: Bool = false
+                            
                             let countryUS = data["Country"] as? String ?? ""
                             let countrySlug = data["Slug"] as? String ?? ""
                             
@@ -264,21 +268,31 @@ extension StatisticsTableViewController {
                                 let countryUSDic = country.value
                                 let countrySlugDic = Countries().countryToSlugAPI(countryNameUS: countryUSDic)
                                 
-                                if countryUS == countryUSDic {
-                                    found = true
-                                    if countrySlug != countrySlugDic {
-                                        print(countrySlugDic)
-                                    }
+//                                if countryUS == countryUSDic {
+//                                    found = true
+//                                    if countrySlug != countrySlugDic {
+//                                        print(countrySlugDic)
+//                                    }
+//                                }
+                                
+                                if countrySlug == countrySlugDic {
+                                    counter += 1
+                                    print(countrySlug)
+                                    print(counter)
                                 }
                             }
+//
+//                            if !found {
+//                                counter += 1
+//                                print(countrySlug)
+//                                print(counter)
+//                            }
                             
-                            if !found {
-                                print(countrySlug)
-                            }
+                            datanumber += 1
                         }
                         
+                        
                         DispatchQueue.main.async {
-                            
                         }
                     }
                 } catch { print(error) }
