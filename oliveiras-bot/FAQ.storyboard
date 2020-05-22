@@ -51,6 +51,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dúvidas Frequentes" id="hLJ-0z-gbq">
+                        <barButtonItem key="backBarButtonItem" title="Dúvidas Frequentes" id="yek-Xr-Mdg"/>
                         <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="YWi-Zn-ilI">
                             <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -58,41 +59,81 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="7N0-Bt-LXc" kind="show" identifier="goToAnswer" id="OSb-Mx-UyB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N6d-kx-tyy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="326" y="130"/>
         </scene>
-        <!--Fonte  de Dados-->
-        <scene sceneID="h5z-ZL-Ro9">
+        <!--Resposta-->
+        <scene sceneID="HG9-S0-fVP">
             <objects>
-                <tableViewController id="BHq-qh-dQr" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D1g-4O-g4d">
+                <tableViewController id="7N0-Bt-LXc" customClass="FAQAnswerTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sSo-BM-Q66">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="747.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection headerTitle="FONTE DE DADOS:" id="E7Z-et-mY4">
+                            <tableViewSection headerTitle="O que é o corona vírus?" id="Z1W-6u-AmY">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SxK-Zd-aNy">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQAnswerTableViewCell" id="Sp6-zd-ONW">
+                                        <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SxK-Zd-aNy" id="zS4-H6-C4P">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sp6-zd-ONW" id="Z0h-9Z-vuY">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="ÚLTIMAS ATUALIZAÇÕES:" id="Yfs-dB-eUw">
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="7N0-Bt-LXc" id="HMf-kI-80x"/>
+                            <outlet property="delegate" destination="7N0-Bt-LXc" id="M6D-hu-yXa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Resposta" id="ent-aG-pJK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kyo-dI-jGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="580"/>
+        </scene>
+        <!--Fonte  de Dados-->
+        <scene sceneID="h5z-ZL-Ro9">
+            <objects>
+                <tableViewController id="BHq-qh-dQr" customClass="ReferenceTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="D1g-4O-g4d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="747.5"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection headerTitle="FONTE DE DADOS:" id="E7Z-et-mY4">
+                                <string key="footerTitle">As fontes acima tem permissão para atualizar
+os dados sobre dúvidas frequentes. </string>
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LKb-JJ-XWl">
-                                        <rect key="frame" x="0.0" y="127.5" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReferenceTableViewCell" id="SxK-Zd-aNy">
+                                        <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LKb-JJ-XWl" id="bJP-zY-hRY">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SxK-Zd-aNy" id="zS4-H6-C4P">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="ÚLTIMAS ATUALIZAÇÕES:" footerTitle="As fontes são atualizadas automaticamente. " id="Yfs-dB-eUw">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReferenceTableViewCell" id="LKb-JJ-XWl">
+                                        <rect key="frame" x="20" y="190.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LKb-JJ-XWl" id="bJP-zY-hRY">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -106,7 +147,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Otl-jH-zkj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="130"/>
+            <point key="canvasLocation" x="1197" y="-108"/>
         </scene>
         <!--Dúvidas-->
         <scene sceneID="sJR-Nx-Sqn">
@@ -115,8 +156,9 @@
                     <tabBarItem key="tabBarItem" title="Dúvidas" image="faq" id="K7s-Er-2z9"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="Qwi-7l-pZr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99607843137254903" green="0.21568627450980393" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Yoh-nh-JxJ" kind="relationship" relationship="rootViewController" id="Rvs-JY-OVr"/>

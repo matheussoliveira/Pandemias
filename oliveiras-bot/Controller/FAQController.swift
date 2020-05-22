@@ -38,6 +38,19 @@ class FAQController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToAnswer", sender: nil)
+    }
     
-
+    // MARK: - Navigaton
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "goToAnswer") {
+            if let newVC = segue.destination as? FAQAnswerTableViewController {
+                // TODO: Pass real question tittle
+                newVC.questionTitle = "O que é o corona vírus?"
+            }
+        }
+    }
 }
