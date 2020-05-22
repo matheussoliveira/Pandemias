@@ -139,7 +139,11 @@ class FilterTableViewController: UITableViewController{
         if selectedIndexPath == indexPath {
             // selected
             cell.accessoryType = .checkmark
-            self.selectedCountry = sectionArray[indexPath.section].countries[indexPath.row]
+            if isFiltering{
+                self.selectedCountry = filteredCountries[indexPath.row]
+            } else {
+                self.selectedCountry = sectionArray[indexPath.section].countries[indexPath.row]
+            }
         }
         else {
             // not selected
@@ -149,7 +153,7 @@ class FilterTableViewController: UITableViewController{
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    
         if selectedIndexPath != nil && selectedIndexPath! as IndexPath == indexPath {
             // selected same cell -> deselect all
             selectedIndexPath = nil
