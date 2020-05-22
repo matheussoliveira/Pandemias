@@ -12,7 +12,7 @@ protocol selectedCountryProtocol: NSObjectProtocol {
     func setCountry(country: Country)
 }
 
-class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
+class FilterTableViewController: UITableViewController{
 
     struct Section {
         let letter : String
@@ -21,7 +21,6 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
     
 
     @IBOutlet weak var searchBar: UISearchBar!
-    let searchController = UISearchController(searchResultsController: nil)
 
     
     let countries = Country.alphaDictionary()
@@ -41,13 +40,6 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
         //setup navigation bar
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "OK", style: .plain, target: self, action: #selector(rightButtonTapped))
-        
-        //setup search controller
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Buscar região"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
 
         
         setupArray()
@@ -155,35 +147,24 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
         return sectionTitles.sorted()
     }
 
-    var isFiltering: Bool {
-      return searchController.isActive && !isSearchBarEmpty
-    }
-    
-    var isSearchBarEmpty: Bool {
-      return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-      let searchBar = searchController.searchBar
-      filterContentForSearchText(searchBar.text!)
-        
-    }
-    
-    func filterContentForSearchText(_ searchText: String) {
+}
+
+extension FilterTableViewController: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredCountries = []
-        filteredSections = sectionArray.filter({ (section) -> Bool in
-            for item in section.countries{
-                if item.name.lowercased() == searchText.lowercased(){
-                    filteredCountries.append(item)
-                    return true
+        
+        for item in sectionArray{
+            for country in item.countries{
+                if country.name.contains(searchText){
+                    filteredCountries.append(country)
                 }
             }
-             return false
-        })
+        }
         
         tableView.reloadData()
     }
     
-
+    var isFiltering: Bool {
+        return !searchBar.text!.isEmpty ?? true
+    }
 }
-
