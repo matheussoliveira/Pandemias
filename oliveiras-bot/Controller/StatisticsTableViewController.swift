@@ -55,6 +55,8 @@ class StatisticsTableViewController: UITableViewController {
     
     func setChartProperties() {
         let index = segmented.selectedSegmentIndex
+        var countryNameUS = Countries().countryBRtoUS(countryNameBR: disclosureLabel.text ?? "")
+        countryNameUS = Countries().countryToSlugAPI(countryNameUS: countryNameUS)
         
         //GLOBAL STATISTICS
         if disclosureLabel.text == "Mundo" {
@@ -82,15 +84,15 @@ class StatisticsTableViewController: UITableViewController {
             case 0:
                 chartType = .confirmed
                 chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Confirmed")
+                dailyCountryCases(country: countryNameUS, caseType: "Confirmed")
             case 1:
                 chartType = .recovered
                 chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Recovered")
+                dailyCountryCases(country: countryNameUS, caseType: "Recovered")
             case 2:
                 chartType = .deaths
                 chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Deaths")
+                dailyCountryCases(country: countryNameUS, caseType: "Deaths")
             default:
                 chartType = .confirmed
             }
@@ -100,7 +102,7 @@ class StatisticsTableViewController: UITableViewController {
         
     }
     
-    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)]) {
+    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)], xAxisMin: Int) {
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
         var days: [String] = []
@@ -137,7 +139,7 @@ class StatisticsTableViewController: UITableViewController {
         chartView.rightAxis.enabled = false
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: days)
         chartView.xAxis.granularity = 1.0
-        chartView.xAxis.axisMinimum = 0
+        chartView.xAxis.axisMinimum = Double(xAxisMin)
         chartView.leftAxis.axisMinimum = 0
         
     }
@@ -181,7 +183,7 @@ extension StatisticsTableViewController {
                         }
                         
                         DispatchQueue.main.async {
-                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: 0)
                             self.tableView.reloadData()
                         }
                     }
@@ -207,19 +209,76 @@ extension StatisticsTableViewController {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
                         
+                        var foundFirstConfirmed: Bool = false
+                        var dayCounter: Int = 0
+                        
                         for data in json {
+                            let confirmedNumber = data["Confirmed"] as? Int ?? 0
                             let caseNumber = data[caseType] as? Int ?? 0
                             let day = data["Date"] as? String ?? ""
                             
                             let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd'T'HH:mm:ssZ", newFormat: "dd/MM")
                             let value = (x: formatedDay, y: caseNumber)
                             
+                            if !foundFirstConfirmed && confirmedNumber != 0 {
+                                foundFirstConfirmed = true
+                            } else if !foundFirstConfirmed {
+                                dayCounter += 1
+                            }
+                            
                             result.append(value)
                         }
                         
                         DispatchQueue.main.async {
-                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: dayCounter - 1)
                             self.tableView.reloadData()
+                        }
+                    }
+                } catch { print(error) }
+            }
+        }).resume()
+    }
+    
+    func compareCountryNames() {
+        guard let url = URL(string: "https://api.covid19api.com/countries")
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
+
+                        for data in json {
+                            var found: Bool = false
+                            let countryUS = data["Country"] as? String ?? ""
+                            let countrySlug = data["Slug"] as? String ?? ""
+                            
+                            for country in Countries().countryDictionary {
+                                
+                                let countryUSDic = country.value
+                                let countrySlugDic = Countries().countryToSlugAPI(countryNameUS: countryUSDic)
+                                
+                                if countryUS == countryUSDic {
+                                    found = true
+                                    if countrySlug != countrySlugDic {
+                                        print(countrySlugDic)
+                                    }
+                                }
+                            }
+                            
+                            if !found {
+                                print(countrySlug)
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            
                         }
                     }
                 } catch { print(error) }
@@ -288,6 +347,7 @@ extension StatisticsTableViewController {
     }
 }
 
+// MARK: Date Formatter
 extension Date {
     static func getFormattedDate(dateToFormat: String, originalFormat: String, newFormat:String) -> String {
         let dateFormatterGet = DateFormatter()

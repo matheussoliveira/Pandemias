@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
 		0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7CEA9C246EC339004B4255 /* Statistics.storyboard */; };
+		0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */; };
 		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
 		2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */; };
 		2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0B7CEA9C246EC339004B4255 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
+		0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDictionary.swift; sourceTree = "<group>"; };
 		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
 		2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsAPI.swift; sourceTree = "<group>"; };
 		2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			children = (
 				9CF4996A2462DCA2005699EC /* Message.swift */,
 				2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */,
+				0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				9C4C196D246ED62900A46C55 /* TypingBubble.swift in Sources */,
 				2F99D08524322A8E006C8BD3 /* SceneDelegate.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
+				0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */,
 				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
@@ -432,7 +436,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FH5Q2A622;
+				DEVELOPMENT_TEAM = FKFGBBGDU2;
 				INFOPLIST_FILE = "oliveiras-bot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FH5Q2A622;
+				DEVELOPMENT_TEAM = FKFGBBGDU2;
 				INFOPLIST_FILE = "oliveiras-bot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
