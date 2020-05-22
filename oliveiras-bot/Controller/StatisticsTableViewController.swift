@@ -58,14 +58,16 @@ class StatisticsTableViewController: UITableViewController{
     }
     
     func setChartProperties() {
-        let index = segmented.selectedSegmentIndex
-        var countryNameUS = Countries().countryBRtoUS(countryNameBR: disclosureLabel.text ?? "")
-        countryNameUS = Countries().countryToSlugAPI(countryNameUS: countryNameUS)
+        var index = segmented.selectedSegmentIndex
+        let countryNameUS = Countries().countryBRtoUS(countryNameBR: country.name)
+        let countryNameSlug = Countries().countryToSlugAPI(countryNameUS: countryNameUS)
         
         //GLOBAL STATISTICS
-        if disclosureLabel.text == "Mundo" {
+        if country.name == "Mundo" {
             if segmented.numberOfSegments == 3 {
                 segmented.removeSegment(at: 1, animated: true)
+                segmented.selectedSegmentIndex = 0
+                index = segmented.selectedSegmentIndex
             }
             switch index {
             case 0:
@@ -83,20 +85,22 @@ class StatisticsTableViewController: UITableViewController{
         } else {
             if segmented.numberOfSegments == 2 {
                 segmented.insertSegment(withTitle: "Recuperados", at: 1, animated: true)
+                segmented.selectedSegmentIndex = 0
+                index = segmented.selectedSegmentIndex
             }
             switch index {
             case 0:
                 chartType = .confirmed
                 chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-                dailyCountryCases(country: countryNameUS, caseType: "Confirmed")
+                dailyCountryCases(country: countryNameSlug, caseType: "Confirmed")
             case 1:
                 chartType = .recovered
                 chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
-                dailyCountryCases(country: countryNameUS, caseType: "Recovered")
+                dailyCountryCases(country: countryNameSlug, caseType: "Recovered")
             case 2:
                 chartType = .deaths
                 chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-                dailyCountryCases(country: countryNameUS, caseType: "Deaths")
+                dailyCountryCases(country: countryNameSlug, caseType: "Deaths")
             default:
                 chartType = .confirmed
             }
@@ -199,7 +203,7 @@ extension StatisticsTableViewController {
     func dailyCountryCases(country: String, caseType: String) {
         var result: [(x: String, y: Int)] = []
         
-        guard let url = URL(string: "https://api.covid19api.com/country/\(country)")
+        guard let url = URL(string: "https://api.covid19api.com/total/country/\(country)")
             else {
                 print("Error while getting api url")
                 return
@@ -244,9 +248,25 @@ extension StatisticsTableViewController {
     }
     
     func compareCountryNames() {
-        guard let url = URL(string: "https://api.covid19api.com/countries")
+        var countryUS = ""
+        var countrySlug = ""
+        
+        let countriesBR = Country.getNames()
+        
+        for countryBR in countriesBR {
+            countryUS = Countries().countryBRtoUS(countryNameBR: countryBR)
+            countrySlug = Countries().countryToSlugAPI(countryNameUS: countryUS)
+            
+            getAPIResultTest(countrySlug: countrySlug)
+            
+        }
+    }
+    
+    func getAPIResultTest(countrySlug: String) {
+        
+        guard let url = URL(string: "https://api.covid19api.com/total/country/\(countrySlug)")
             else {
-                print("Error while getting api url")
+                print(countrySlug)
                 return
             }
         
@@ -257,51 +277,27 @@ extension StatisticsTableViewController {
                 
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
-                        var counter = 0
-                        var datanumber = 0
-                        for data in json {
-                            var found: Bool = false
-                            
-                            let countryUS = data["Country"] as? String ?? ""
-                            let countrySlug = data["Slug"] as? String ?? ""
-                            
-                            for country in Countries().countryDictionary {
-                                
-                                let countryUSDic = country.value
-                                let countrySlugDic = Countries().countryToSlugAPI(countryNameUS: countryUSDic)
-                                
-//                                if countryUS == countryUSDic {
-//                                    found = true
-//                                    if countrySlug != countrySlugDic {
-//                                        print(countrySlugDic)
-//                                    }
-//                                }
-                                
-                                if countrySlug == countrySlugDic {
-                                    counter += 1
-                                    print(countrySlug)
-                                    print(counter)
-                                }
-                            }
-//
-//                            if !found {
-//                                counter += 1
-//                                print(countrySlug)
-//                                print(counter)
-//                            }
-                            
-                            datanumber += 1
-                        }
                         
+                        var foundFirstConfirmed: Bool = false
+                        var dayCounter: Int = 0
+                        
+                        for data in json {
+                            let day = data["Date"] as? String ?? ""
+                            
+                            if day == "" {
+                                print(countrySlug)
+                            }
+                        }
                         
                         DispatchQueue.main.async {
+
                         }
                     }
-                } catch { print(error) }
+                } catch { print(countrySlug) }
             }
         }).resume()
     }
-    
+                        
 }
 
 // MARK: TableView Controller Functions
