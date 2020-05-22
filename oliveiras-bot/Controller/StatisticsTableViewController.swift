@@ -46,8 +46,6 @@ class StatisticsTableViewController: UITableViewController{
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
-        
-        compareCountryNames()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -243,57 +241,6 @@ extension StatisticsTableViewController {
                         }
                     }
                 } catch { print(error) }
-            }
-        }).resume()
-    }
-    
-    func compareCountryNames() {
-        var countryUS = ""
-        var countrySlug = ""
-        
-        let countriesBR = Country.getNames()
-        
-        for countryBR in countriesBR {
-            countryUS = Countries().countryBRtoUS(countryNameBR: countryBR)
-            countrySlug = Countries().countryToSlugAPI(countryNameUS: countryUS)
-            
-            getAPIResultTest(countrySlug: countrySlug)
-            
-        }
-    }
-    
-    func getAPIResultTest(countrySlug: String) {
-        
-        guard let url = URL(string: "https://api.covid19api.com/total/country/\(countrySlug)")
-            else {
-                print(countrySlug)
-                return
-            }
-        
-        let session = URLSession.shared
-        
-        session.dataTask(with: url, completionHandler: { (data, response, error) in
-            if let data = data {
-                
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
-                        
-                        var foundFirstConfirmed: Bool = false
-                        var dayCounter: Int = 0
-                        
-                        for data in json {
-                            let day = data["Date"] as? String ?? ""
-                            
-                            if day == "" {
-                                print(countrySlug)
-                            }
-                        }
-                        
-                        DispatchQueue.main.async {
-
-                        }
-                    }
-                } catch { print(countrySlug) }
             }
         }).resume()
     }
