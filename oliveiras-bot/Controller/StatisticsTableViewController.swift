@@ -9,8 +9,8 @@
 import UIKit
 import Charts
 
-class StatisticsTableViewController: UITableViewController {
-    
+class StatisticsTableViewController: UITableViewController{
+
     // Cell identifier
     let cellId = "VisaoGeralTableViewCell"
     
@@ -33,6 +33,8 @@ class StatisticsTableViewController: UITableViewController {
     
     let headerHight: CGFloat = 55
     
+    var country = Country(name: "Mundo", image: UIImage(named: "world")!)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -44,6 +46,7 @@ class StatisticsTableViewController: UITableViewController {
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -279,6 +282,8 @@ extension StatisticsTableViewController {
                 let chevron = UIImage(named: "chevron-icon")
                 cell.accessoryType = .disclosureIndicator
                 cell.accessoryView = UIImageView(image: chevron!)
+                self.countryIcon.image = self.country.image
+                self.disclosureLabel.text = self.country.name
             default:
                 break
             }
@@ -290,7 +295,10 @@ extension StatisticsTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if (indexPath.row == 0 && indexPath.section == 0){
-            if let viewController = storyboard?.instantiateViewController(identifier: "Filter") as? FilterTableViewController {                navigationController?.pushViewController(viewController, animated: true)
+
+            if let viewController = storyboard?.instantiateViewController(identifier: "Filter") as? FilterTableViewController {
+                viewController.delegate = self
+                navigationController?.pushViewController(viewController, animated: true)
             }
         }
     }
@@ -307,5 +315,17 @@ extension Date {
         let date: Date? = dateFormatterGet.date(from: dateToFormat)
         return dateFormatterPrint.string(from: date!);
     }
+    
+}
+
+extension StatisticsTableViewController: selectedCountryProtocol{
+    func setCountry(country: Country) {
+        
+        self.country = country
+        navigationController?.popViewController(animated: true)
+        self.tableView.reloadData()
+
+    }
+    
     
 }

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol selectedCountryProtocol: NSObjectProtocol {
+    func setCountry(country: Country)
+}
+
 class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
 
     struct Section {
@@ -27,7 +31,9 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
     var filteredCountries = [Country]()
     var lastSelection: NSIndexPath!
     
-    var selectedCountry = String()
+    var selectedCountry = Country(name: "Mundo", image: UIImage(named: "world")!)
+    weak var delegate:selectedCountryProtocol?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +69,9 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
         sectionTitles = [String](countries.keys)
     }
     
+    
     @objc func rightButtonTapped(){
-        print(selectedCountry)
+        delegate?.setCountry(country: self.selectedCountry)
     }
 
     // MARK: - Table view data source
@@ -134,9 +141,9 @@ class FilterTableViewController: UITableViewController, UISearchResultsUpdating{
         }
         
         if isFiltering{
-            selectedCountry = filteredCountries[indexPath.row].name
+            selectedCountry = filteredCountries[indexPath.row]
         } else{
-            selectedCountry = sectionArray[indexPath.section].countries[indexPath.row].name
+            selectedCountry = sectionArray[indexPath.section].countries[indexPath.row]
         }
         
         self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
