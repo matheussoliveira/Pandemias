@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatbotController: UIViewController{
-    
+
     private let cellId = "cellId"
     private let typingIndicadorId = "typingIndicator"
     

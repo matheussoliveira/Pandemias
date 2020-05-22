@@ -25,6 +25,9 @@
 		9C4C196D246ED62900A46C55 /* TypingBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C196C246ED62900A46C55 /* TypingBubble.swift */; };
 		9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */; };
 		9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */; };
+		9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */; };
+		9C90DC24247553E100449918 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC23247553E100449918 /* Country.swift */; };
+		9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC2524757BD000449918 /* FilterTableViewCell.swift */; };
 		9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD47AF92460355A0098D864 /* ChatbotController.swift */; };
 		9CF4996B2462DCA2005699EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996A2462DCA2005699EC /* Message.swift */; };
 		9CF4996D2462E962005699EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996C2462E962005699EC /* MessageCell.swift */; };
@@ -51,6 +54,9 @@
 		9C4C196C246ED62900A46C55 /* TypingBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBubble.swift; sourceTree = "<group>"; };
 		9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingBubbleCell.swift; sourceTree = "<group>"; };
 		9C4C1970246ED65D00A46C55 /* TypingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
+		9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
+		9C90DC23247553E100449918 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		9C90DC2524757BD000449918 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		9CD47AF92460355A0098D864 /* ChatbotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotController.swift; sourceTree = "<group>"; };
 		9CF4996A2462DCA2005699EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9CF4996C2462E962005699EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				9CF4996A2462DCA2005699EC /* Message.swift */,
 				2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */,
 				0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */,
+				9C90DC23247553E100449918 /* Country.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 				9CD47AF92460355A0098D864 /* ChatbotController.swift */,
 				9C2D93F524643D030028F0EC /* StatisticsTableViewController.swift */,
 				9C2D93F724643D150028F0EC /* FAQController.swift */,
+				9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -153,6 +161,7 @@
 				9CF4996C2462E962005699EC /* MessageCell.swift */,
 				2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */,
 				2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */,
+				9C90DC2524757BD000449918 /* FilterTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,9 +292,12 @@
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
+				9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */,
 				2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */,
+				9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */,
 				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
+				9C90DC24247553E100449918 /* Country.swift in Sources */,
 				9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */,
 				9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */,
 				9C2D93F824643D150028F0EC /* FAQController.swift in Sources */,

@@ -130,6 +130,82 @@
             </objects>
             <point key="canvasLocation" x="2347.826086956522" y="600"/>
         </scene>
+        <!--Selecionar região-->
+        <scene sceneID="82N-uP-RxX">
+            <objects>
+                <tableViewController storyboardIdentifier="Filter" title="Selecionar região" id="4my-nf-2pd" customClass="FilterTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Pg-X5-4Au">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" red="0.2627450980392157" green="0.26379683613777161" blue="0.26379683613777161" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Buscar região" id="daq-Cq-BaP">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="searchField.textColor">
+                                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="delegate" destination="4my-nf-2pd" id="DEk-Fu-RQZ"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="filterCell" id="hay-2E-XXD" customClass="FilterTableViewCell" customModule="oliveiras_bot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="414" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hay-2E-XXD" id="V1F-AG-Kc6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brazil" translatesAutoresizingMaskIntoConstraints="NO" id="FOo-K1-CQQ">
+                                            <rect key="frame" x="20" y="7" width="29" height="29.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="29" id="9yz-SF-fBI"/>
+                                                <constraint firstAttribute="width" constant="29" id="l9f-Js-SwE"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJh-2g-7cR">
+                                            <rect key="frame" x="63" y="11" width="42" height="22"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="FOo-K1-CQQ" firstAttribute="leading" secondItem="V1F-AG-Kc6" secondAttribute="leading" constant="20" id="09T-1N-cyg"/>
+                                        <constraint firstItem="bJh-2g-7cR" firstAttribute="top" secondItem="V1F-AG-Kc6" secondAttribute="topMargin" id="KzD-mL-Zcr"/>
+                                        <constraint firstItem="FOo-K1-CQQ" firstAttribute="top" secondItem="V1F-AG-Kc6" secondAttribute="top" constant="7" id="QEl-lO-6Zh"/>
+                                        <constraint firstAttribute="bottom" secondItem="FOo-K1-CQQ" secondAttribute="bottom" constant="8" id="UPP-ma-7qY"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bJh-2g-7cR" secondAttribute="bottom" constant="0.5" id="qLA-lK-I6e"/>
+                                        <constraint firstItem="bJh-2g-7cR" firstAttribute="leading" secondItem="FOo-K1-CQQ" secondAttribute="trailing" constant="14" id="qvB-BD-QJo"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="flag" destination="FOo-K1-CQQ" id="qBi-gC-wwE"/>
+                                    <outlet property="label" destination="bJh-2g-7cR" id="RVW-Ay-p5R"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4my-nf-2pd" id="9v5-1M-pes"/>
+                            <outlet property="delegate" destination="4my-nf-2pd" id="6Gh-5h-7Be"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="daq-Cq-BaP" id="XsB-JE-u6B"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gc8-gn-N36" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3289.8550724637685" y="600"/>
+        </scene>
         <!--Estatíticas-->
         <scene sceneID="bzv-x5-hwX">
             <objects>
@@ -151,7 +227,9 @@
             <point key="canvasLocation" x="1437.68115942029" y="600"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.99607843139999996" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
+        <image name="brazil" width="512" height="512"/>
         <image name="stats" width="48" height="32"/>
         <image name="world-icon" width="29" height="29"/>
     </resources>
