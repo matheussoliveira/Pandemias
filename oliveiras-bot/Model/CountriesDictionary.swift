@@ -244,12 +244,14 @@ class Countries {
             let countryUS = countryDictionary[countryNameBR] ?? worldStr
             return countryUS
         } else {
-            print("Error while translation country")
+            print("Error while translation country: \(countryNameBR)")
             return worldStr
         }
     }
     
     func countryToSlugAPI(countryNameUS: String) -> String {
+        guard countryNameUS != "Mundo" else { return countryNameUS }
+        
         var countrySlugUS: String = ""
         if countryNameUS.contains(" ") {
             countrySlugUS = countryNameUS.replacingOccurrences(of: " ", with: "-")
