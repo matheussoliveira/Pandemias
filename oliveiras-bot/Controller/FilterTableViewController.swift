@@ -19,9 +19,7 @@ class FilterTableViewController: UITableViewController{
         let countries : [Country]
     }
     
-
     @IBOutlet weak var searchBar: UISearchBar!
-
     
     let countries = Country.alphaDictionary()
     var sectionArray = [Section]()
@@ -124,24 +122,57 @@ class FilterTableViewController: UITableViewController{
             cell.label.text = sectionArray[indexPath.section].countries[indexPath.row].name
             cell.flag.image = sectionArray[indexPath.section].countries[indexPath.row].image
         }
+        
+        cell.selectionStyle = .none
+        configure(cell: cell, forRowAtIndexPath: indexPath as NSIndexPath)
+        
+        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.lastSelection != nil {
-            self.tableView.cellForRow(at: self.lastSelection as IndexPath)?.accessoryType = .none
+    
+    var selectedIndexPath: NSIndexPath?
+
+    func configure(cell: FilterTableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if selectedIndexPath == indexPath {
+            // selected
+            cell.accessoryType = .checkmark
+            if isFiltering{
+                self.selectedCountry = filteredCountries[indexPath.row]
+            } else {
+                self.selectedCountry = sectionArray[indexPath.section].countries[indexPath.row]
+            }
         }
-        
-        if isFiltering{
-            selectedCountry = filteredCountries[indexPath.row]
-        } else{
-            selectedCountry = sectionArray[indexPath.section].countries[indexPath.row]
+        else {
+            // not selected
+            cell.accessoryType = .none
         }
-        
-        self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        self.lastSelection = indexPath as NSIndexPath
-        self.tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        if selectedIndexPath != nil && selectedIndexPath! as IndexPath == indexPath {
+            // selected same cell -> deselect all
+            selectedIndexPath = nil
+        }
+        else {
+            // select different cell
+            let oldSelectedIndexPath = selectedIndexPath
+            selectedIndexPath = indexPath as NSIndexPath
+
+            // refresh old cell to clear old selection indicators
+            if let previousSelectedIndexPath = oldSelectedIndexPath {
+                if let previousSelectedCell = tableView.cellForRow(at: previousSelectedIndexPath as IndexPath) {
+                    configure(cell: previousSelectedCell as! FilterTableViewCell, forRowAtIndexPath: previousSelectedIndexPath)
+                }
+            }
+        }
+        let selectedCell = tableView.cellForRow(at: indexPath)!
+        configure(cell: selectedCell as! FilterTableViewCell, forRowAtIndexPath: indexPath as NSIndexPath)
+    }
+    
+    
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sectionTitles.sorted()

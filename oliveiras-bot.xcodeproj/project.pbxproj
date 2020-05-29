@@ -37,7 +37,10 @@
 		9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */; };
 		9C90DC24247553E100449918 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC23247553E100449918 /* Country.swift */; };
 		9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C90DC2524757BD000449918 /* FilterTableViewCell.swift */; };
+		9CC178D3248132E700720524 /* IntroView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CC178D2248132E700720524 /* IntroView.xib */; };
+		9CC178D72481355900720524 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC178D62481355900720524 /* IntroView.swift */; };
 		9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD47AF92460355A0098D864 /* ChatbotController.swift */; };
+		9CED44D1247FD9AC00E658CC /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED44D0247FD9AC00E658CC /* IntroViewController.swift */; };
 		9CF4996B2462DCA2005699EC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996A2462DCA2005699EC /* Message.swift */; };
 		9CF4996D2462E962005699EC /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF4996C2462E962005699EC /* MessageCell.swift */; };
 /* End PBXBuildFile section */
@@ -75,7 +78,10 @@
 		9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewController.swift; sourceTree = "<group>"; };
 		9C90DC23247553E100449918 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		9C90DC2524757BD000449918 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		9CC178D2248132E700720524 /* IntroView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntroView.xib; sourceTree = "<group>"; };
+		9CC178D62481355900720524 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		9CD47AF92460355A0098D864 /* ChatbotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatbotController.swift; sourceTree = "<group>"; };
+		9CED44D0247FD9AC00E658CC /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		9CF4996A2462DCA2005699EC /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9CF4996C2462E962005699EC /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		A3A533FA133524D938187BA1 /* Pods-oliveiras-bot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oliveiras-bot.release.xcconfig"; path = "Target Support Files/Pods-oliveiras-bot/Pods-oliveiras-bot.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				9C2D93F524643D030028F0EC /* StatisticsTableViewController.swift */,
 				9C2D93F724643D150028F0EC /* FAQController.swift */,
 				9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */,
+				9CED44D0247FD9AC00E658CC /* IntroViewController.swift */,
 				2F9127702476C867006F7648 /* FAQAnswerTableViewController.swift */,
 				2F9127762476D779006F7648 /* ReferenceTableViewController.swift */,
 			);
@@ -188,6 +195,8 @@
 		9C0500C52459CCCA00B7EC97 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CC178D2248132E700720524 /* IntroView.xib */,
+				9CC178D62481355900720524 /* IntroView.swift */,
 				9C4C196A246ED5E200A46C55 /* BubbleCircle.swift */,
 				9C4C196C246ED62900A46C55 /* TypingBubble.swift */,
 				9C4C196E246ED64500A46C55 /* TypingBubbleCell.swift */,
@@ -267,6 +276,7 @@
 				2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */,
 				2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */,
 				2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */,
+				9CC178D3248132E700720524 /* IntroView.xib in Resources */,
 				2F9127652476B0BB006F7648 /* FAQ.storyboard in Resources */,
 				2F91276F2476C686006F7648 /* FAQAnswerTableViewCell.xib in Resources */,
 				0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */,
@@ -338,6 +348,7 @@
 				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				9C90DC24247553E100449918 /* Country.swift in Sources */,
+				9CC178D72481355900720524 /* IntroView.swift in Sources */,
 				9C4C196F246ED64500A46C55 /* TypingBubbleCell.swift in Sources */,
 				9C4C1971246ED65D00A46C55 /* TypingIndicator.swift in Sources */,
 				2F9127682476B9BB006F7648 /* FAQTableViewCell.swift in Sources */,
@@ -347,6 +358,7 @@
 				9CD47AFA2460355A0098D864 /* ChatbotController.swift in Sources */,
 				2F9127772476D779006F7648 /* ReferenceTableViewController.swift in Sources */,
 				9CF4996D2462E962005699EC /* MessageCell.swift in Sources */,
+				9CED44D1247FD9AC00E658CC /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
