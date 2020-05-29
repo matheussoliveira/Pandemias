@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="z72-GE-uEJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Szd-h7-zeX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="ZjG-v3-7nF"/>
@@ -35,9 +35,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHX-77-K5p">
                                 <rect key="frame" x="184" y="433" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="K14-Dj-t5F" kind="show" id="Nmk-Qh-LgH"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -63,38 +60,15 @@
             </objects>
             <point key="canvasLocation" x="1127" y="550"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="7XC-dL-dzm">
+        <!--FAQNavigation-->
+        <scene sceneID="vMz-A8-bvW">
             <objects>
-                <tableViewController id="K14-Dj-t5F" customClass="SSTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bS4-Ub-3qh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <sections>
-                            <tableViewSection id="p7s-Fq-tkq">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisaoGeral" rowHeight="200" id="25P-Ud-I9t" customClass="VisaoGeralTableViewCell" customModule="oliveiras_bot" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="200"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="25P-Ud-I9t" id="7pc-5p-DSo">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="K14-Dj-t5F" id="hUW-Gw-bRz"/>
-                            <outlet property="delegate" destination="K14-Dj-t5F" id="MZT-AF-0hf"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="p98-8E-8Tx"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6KH-HF-Jdp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="FAQ" referencedIdentifier="FAQNavigation" id="eh0-Zx-XMj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="tSF-Ai-65X"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehA-BF-vhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2571.0144927536235" y="864.50892857142856"/>
+            <point key="canvasLocation" x="538" y="550"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
@@ -112,7 +86,7 @@
                     <connections>
                         <segue destination="xmZ-e3-HXD" kind="relationship" relationship="viewControllers" id="qcd-aJ-xOq"/>
                         <segue destination="czF-wY-5M9" kind="relationship" relationship="viewControllers" id="sgw-hr-P25"/>
-                        <segue destination="z72-GE-uEJ" kind="relationship" relationship="viewControllers" id="XIJ-A1-6Xy"/>
+                        <segue destination="eh0-Zx-XMj" kind="relationship" relationship="viewControllers" id="vha-34-gTF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wp2-FP-hKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

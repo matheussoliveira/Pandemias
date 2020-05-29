@@ -9,10 +9,7 @@
 import UIKit
 import Charts
 
-class StatisticsTableViewController: UITableViewController{
-
-    // Cell identifier
-    let cellId = "VisaoGeralTableViewCell"
+class StatisticsTableViewController: UITableViewController {
     
     // LOCATION SECTION
     @IBOutlet weak var countryIcon: UIImageView!
@@ -33,6 +30,19 @@ class StatisticsTableViewController: UITableViewController{
     
     let headerHight: CGFloat = 55
     
+    // VISAO GERAL SECTION
+    let cellId = "VisaoGeralTableViewCell"
+    
+    // coronaStatistics[0] - Confirmed
+    // coronaStatistics[1] - Recovered
+    // coronaStatistics[2] - Active
+    // coronaStatistics[3] - Deaths
+    var coronaStatistics: [Int]!
+    var lastUpdated: String = ""
+    
+    // SELECTED LOCATION
+    var selectedLocation: String!
+    
     var country = Country(name: "Mundo", image: UIImage(named: "world")!)
     
     override func viewDidLoad() {
@@ -46,23 +56,28 @@ class StatisticsTableViewController: UITableViewController{
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
-                
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        updateGeneralData()
         
         //Set Charts Properties
         setChartProperties()
     }
     
     func setChartProperties() {
-        let index = segmented.selectedSegmentIndex
+        var index = segmented.selectedSegmentIndex
+        let countryNameUS = Countries().countryBRtoUS(countryNameBR: country.name)
+        let countryNameSlug = Countries().countryToSlugAPI(countryNameUS: countryNameUS)
         
         //GLOBAL STATISTICS
-        if disclosureLabel.text == "Mundo" {
+        if country.name == "Mundo" {
             if segmented.numberOfSegments == 3 {
                 segmented.removeSegment(at: 1, animated: true)
+                segmented.selectedSegmentIndex = 0
+                index = segmented.selectedSegmentIndex
             }
             switch index {
             case 0:
@@ -80,20 +95,22 @@ class StatisticsTableViewController: UITableViewController{
         } else {
             if segmented.numberOfSegments == 2 {
                 segmented.insertSegment(withTitle: "Recuperados", at: 1, animated: true)
+                segmented.selectedSegmentIndex = 0
+                index = segmented.selectedSegmentIndex
             }
             switch index {
             case 0:
                 chartType = .confirmed
                 chartColor = #colorLiteral(red: 1, green: 0.6235294118, blue: 0.03921568627, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Confirmed")
+                dailyCountryCases(country: countryNameSlug, caseType: "Confirmed")
             case 1:
                 chartType = .recovered
                 chartColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Recovered")
+                dailyCountryCases(country: countryNameSlug, caseType: "Recovered")
             case 2:
                 chartType = .deaths
                 chartColor = #colorLiteral(red: 1, green: 0.2705882353, blue: 0.2274509804, alpha: 1)
-                dailyCountryCases(country: disclosureLabel.text ?? "", caseType: "Deaths")
+                dailyCountryCases(country: countryNameSlug, caseType: "Deaths")
             default:
                 chartType = .confirmed
             }
@@ -103,7 +120,7 @@ class StatisticsTableViewController: UITableViewController{
         
     }
     
-    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)]) {
+    func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)], xAxisMin: Int) {
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
         var days: [String] = []
@@ -140,9 +157,15 @@ class StatisticsTableViewController: UITableViewController{
         chartView.rightAxis.enabled = false
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: days)
         chartView.xAxis.granularity = 1.0
-        chartView.xAxis.axisMinimum = 0
+        chartView.xAxis.axisMinimum = Double(xAxisMin)
         chartView.leftAxis.axisMinimum = 0
         
+    }
+    
+    func updateGeneralData() {
+        let countryUS = Countries().countryBRtoUS(countryNameBR: country.name)
+        let countrySlug = Countries().countryToSlugAPI(countryNameUS: countryUS)
+        generalCases(location: countrySlug)
     }
     
     @IBAction func changeChartType(_ sender: UISegmentedControl) {
@@ -184,7 +207,7 @@ extension StatisticsTableViewController {
                         }
                         
                         DispatchQueue.main.async {
-                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: 0)
                             self.tableView.reloadData()
                         }
                     }
@@ -196,7 +219,7 @@ extension StatisticsTableViewController {
     func dailyCountryCases(country: String, caseType: String) {
         var result: [(x: String, y: Int)] = []
         
-        guard let url = URL(string: "https://api.covid19api.com/country/\(country)")
+        guard let url = URL(string: "https://api.covid19api.com/total/country/\(country)")
             else {
                 print("Error while getting api url")
                 return
@@ -210,18 +233,28 @@ extension StatisticsTableViewController {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String:Any]] {
                         
+                        var foundFirstConfirmed: Bool = false
+                        var dayCounter: Int = 0
+                        
                         for data in json {
+                            let confirmedNumber = data["Confirmed"] as? Int ?? 0
                             let caseNumber = data[caseType] as? Int ?? 0
                             let day = data["Date"] as? String ?? ""
                             
                             let formatedDay = Date.getFormattedDate(dateToFormat: day, originalFormat: "yyyy-MM-dd'T'HH:mm:ssZ", newFormat: "dd/MM")
                             let value = (x: formatedDay, y: caseNumber)
                             
+                            if !foundFirstConfirmed && confirmedNumber != 0 {
+                                foundFirstConfirmed = true
+                            } else if !foundFirstConfirmed {
+                                dayCounter += 1
+                            }
+                            
                             result.append(value)
                         }
                         
                         DispatchQueue.main.async {
-                            self.plotGraphic(chartColor: self.chartColor, chartValues: result)
+                            self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: dayCounter - 1)
                             self.tableView.reloadData()
                         }
                     }
@@ -230,6 +263,86 @@ extension StatisticsTableViewController {
         }).resume()
     }
     
+    func generalCases(location: String) {
+        guard let url = URL(string: "https://api.covid19api.com/summary")
+            else {
+                print("Error while getting api url")
+                return
+            }
+        
+        let session = URLSession.shared
+        
+        session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String:Any] {
+                        
+                        let global = json["Global"] as? [String:Any]
+                        let countries = json["Countries"] as! [[String:Any]]
+                        var confirmed: Int = 0
+                        var recovered: Int = 0
+                        var deaths: Int = 0
+                        var active: Int = 0
+                        
+                        //Get last Update
+                        for country in countries {
+                            let slug = country["Slug"] as? String ?? ""
+                            
+                            if slug == "afghanistan" {
+                                var dateString = country["Date"] as? String ?? ""
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                                dateFormatter.calendar = Calendar(identifier: .iso8601)
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                                if let dateFromString = dateFormatter.date(from: dateString) {
+                                    dateFormatter.dateFormat = "dd/MM HH:mm"
+                                    dateFormatter.timeZone = .current
+                                    dateString = dateFormatter.string(from: dateFromString)
+                                }
+
+                                
+                                self.lastUpdated = "\(dateString)"
+                                break
+                            }
+                        }
+                        
+                        //Get numbers
+                        if location == "Mundo" {
+                            confirmed = global?["TotalConfirmed"] as? Int ?? 0
+                            recovered = global?["TotalRecovered"] as? Int ?? 0
+                            deaths = global?["TotalDeaths"] as? Int ?? 0
+                            active = confirmed - deaths - recovered
+                        } else {
+                            for country in countries {
+                                let slug = country["Slug"] as? String ?? ""
+                                
+                                if slug == location {
+                                    confirmed = country["TotalConfirmed"] as? Int ?? 0
+                                    recovered = country["TotalRecovered"] as? Int ?? 0
+                                    deaths = country["TotalDeaths"] as? Int ?? 0
+                                    active = confirmed - deaths - recovered
+                                    break
+                                }
+                            }
+                        }
+                        
+                        self.coronaStatistics = [confirmed, recovered, active, deaths]
+                        
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                } catch {
+                    print(error)
+                    self.coronaStatistics = [0,0,0,0]
+                    
+                }
+            }
+        }).resume()
+    }
+                        
 }
 
 // MARK: TableView Controller Functions
@@ -262,6 +375,31 @@ extension StatisticsTableViewController {
         return titleView
     }
     
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        let labelHeight: CGFloat = 18
+        
+        let label = UILabel(frame: CGRect(x: 0,
+                                          y: 4,
+                                          width: footerView.frame.size.width,
+                                          height: labelHeight))
+        label.textColor = #colorLiteral(red: 0.6196078431, green: 0.6196078431, blue: 0.6470588235, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
+        label.numberOfLines = 0
+        
+        switch section {
+        case 2:
+            label.text = "Última atualização: \(lastUpdated) \nFonte: api.covid19api.com"
+            label.sizeToFit()
+        default:
+            label.text = ""
+        }
+        
+        footerView.addSubview(label)
+
+        return footerView
+    }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return headerHight
     }
@@ -271,6 +409,23 @@ extension StatisticsTableViewController {
         if (indexPath.row == 0 && indexPath.section == 2) {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! VisaoGeralTableViewCell
+            
+            if (self.coronaStatistics != nil) {
+                
+                if self.coronaStatistics == [0,0,0,0] {
+                    cell.confirmedNumber.text = "-"
+                    cell.recoveredNumber.text = "-"
+                    cell.activeNumber.text = "-"
+                    cell.deathsNumber.text = "-"
+                } else {
+                    cell.confirmedNumber.text = formatNumber(number: coronaStatistics[0])
+                    cell.recoveredNumber.text = formatNumber(number: coronaStatistics[1])
+                    cell.activeNumber.text = formatNumber(number: coronaStatistics[2])
+                    cell.deathsNumber.text = formatNumber(number: coronaStatistics[3])
+                }
+                
+            }
+            
             return cell
             
         } else {
@@ -302,8 +457,32 @@ extension StatisticsTableViewController {
             }
         }
     }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        if targetContentOffset.pointee.y < scrollView.contentOffset.y {
+            return
+        } else {
+            updateGeneralData()
+        }
+    }
+    
+// MARK: - Auxiliary Functions
+    
+    func formatNumber(number: Int) -> String {
+        // Formats large numbers to
+        // a String with a comma
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber = numberFormatter.string(from: NSNumber(value:number)) ?? "-"
+        
+        return formattedNumber
+    }
+    
 }
 
+// MARK: Date Formatter
 extension Date {
     static func getFormattedDate(dateToFormat: String, originalFormat: String, newFormat:String) -> String {
         let dateFormatterGet = DateFormatter()
@@ -326,6 +505,4 @@ extension StatisticsTableViewController: selectedCountryProtocol{
         self.tableView.reloadData()
 
     }
-    
-    
 }

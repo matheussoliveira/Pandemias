@@ -18,7 +18,7 @@
                         <sections>
                             <tableViewSection headerTitle="Localização" id="wlN-pv-p6R">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="44" id="1Gb-Ec-DaV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="44" id="1Gb-Ec-DaV">
                                         <rect key="frame" x="20" y="55.5" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Gb-Ec-DaV" id="5mT-E5-vcR">
@@ -29,14 +29,6 @@
                                                     <rect key="frame" x="20" y="7" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mundo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G92-gT-rkD">
-                                                    <rect key="frame" x="281" y="11" width="54" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="tintColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Região" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILM-TC-Pk9">
                                                     <rect key="frame" x="57" y="11" width="53" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -44,7 +36,19 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mundo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G92-gT-rkD">
+                                                    <rect key="frame" x="281.5" y="11" width="53.5" height="21"/>
+                                                    <color key="tintColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="G92-gT-rkD" firstAttribute="top" secondItem="5mT-E5-vcR" secondAttribute="topMargin" id="Q1o-hf-oKm"/>
+                                                <constraint firstItem="G92-gT-rkD" firstAttribute="trailing" secondItem="5mT-E5-vcR" secondAttribute="trailingMargin" id="RpM-SU-txm"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="G92-gT-rkD" secondAttribute="bottom" constant="1" id="U0n-jV-M2r"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -87,10 +91,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Visão Geral" id="Vu8-re-9gT">
+                            <tableViewSection headerTitle="Visão Geral" footerTitle="Última atualização" id="Vu8-re-9gT">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="VisaoGeralTableViewCell" rowHeight="176" id="wth-fG-9gt" customClass="VisaoGeralTableViewCell" customModule="oliveiras_bot" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="391.5" width="374" height="176"/>
+                                        <rect key="frame" x="20" y="399" width="374" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wth-fG-9gt" id="FZ9-Lk-TdV">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="176"/>

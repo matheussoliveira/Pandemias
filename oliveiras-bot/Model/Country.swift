@@ -73,7 +73,6 @@ struct Country: Equatable {
             Country(name: "Emirados Árabes Unidos", image: UIImage(named: "united-arab-emirates")!),
             Country(name: "El Salvador", image: UIImage(named: "el-salvador")!),
             Country(name: "Eritreia", image: UIImage(named: "eritrea")!),
-            Country(name: "Escócia", image: UIImage(named: "scotland")!),
             Country(name: "Eslováquia", image: UIImage(named: "slovakia")!),
             Country(name: "Estônia", image: UIImage(named: "estonia")!),
             Country(name: "Fiji", image: UIImage(named: "fiji")!),
@@ -88,18 +87,15 @@ struct Country: Equatable {
             Country(name: "Guatemala", image: UIImage(named: "guatemala")!),
             Country(name: "Guiné Equatorial", image: UIImage(named: "equatorial-guinea")!),
             Country(name: "Guiné", image: UIImage(named: "guinea")!),
-            Country(name: "GuinéBissau", image: UIImage(named: "guinea-bissau")!),
+            Country(name: "Guiné Bissau", image: UIImage(named: "guinea-bissau")!),
             Country(name: "Haiti", image: UIImage(named: "haiti")!),
             Country(name: "Holanda", image: UIImage(named: "netherlands")!),
             Country(name: "Honduras", image: UIImage(named: "honduras")!),
             Country(name: "Hungria", image: UIImage(named: "hungary")!),
             Country(name: "Iêmen", image: UIImage(named: "yemen")!),
-            Country(name: "Ilhas Cook", image: UIImage(named: "cook-islands")!),
             Country(name: "Islândia", image: UIImage(named: "iceland")!),
             Country(name: "Índia", image: UIImage(named: "india")!),
             Country(name: "Ilhas Salomão", image: UIImage(named: "solomon-islands")!),
-            Country(name: "Ilhas Marshall", image: UIImage(named: "marshall-island")!),
-            Country(name: "Inglaterra", image: UIImage(named: "england")!),
             Country(name: "Indonésia", image: UIImage(named: "indonesia")!),
             Country(name: "Irã", image: UIImage(named: "iran")!),
             Country(name: "Irlanda", image: UIImage(named: "ireland")!),
@@ -128,14 +124,13 @@ struct Country: Equatable {
             Country(name: "Mauritânia", image: UIImage(named: "mauritania")!),
             Country(name: "México", image: UIImage(named: "mexico")!),
             Country(name: "Marrocos", image: UIImage(named: "morocco")!),
-            Country(name: "Moldavia", image: UIImage(named: "moldova")!),
+            Country(name: "Moldávia", image: UIImage(named: "moldova")!),
             Country(name: "Mônaco", image: UIImage(named: "monaco")!),
             Country(name: "Mongólia", image: UIImage(named: "mongolia")!),
             Country(name: "Montenegro", image: UIImage(named: "montenegro")!),
             Country(name: "Moçambique", image: UIImage(named: "mozambique")!),
             Country(name: "Myanmar", image: UIImage(named: "myanmar")!),
             Country(name: "Namíbia", image: UIImage(named: "namibia")!),
-            Country(name: "Nauru", image: UIImage(named: "nauru")!),
             Country(name: "Nepal", image: UIImage(named: "nepal")!),
             Country(name: "Nova Zelândia", image: UIImage(named: "new-zealand")!),
             Country(name: "Nicarágua", image: UIImage(named: "nicaragua")!),
@@ -146,9 +141,7 @@ struct Country: Equatable {
             Country(name: "Omã", image: UIImage(named: "oman")!),
             Country(name: "Palestina", image: UIImage(named: "palestine")!),
             Country(name: "Paquistão", image: UIImage(named: "pakistan")!),
-            Country(name: "Palau", image: UIImage(named: "palau")!),
             Country(name: "Panamá", image: UIImage(named: "panama")!),
-            Country(name: "País de Gales", image: UIImage(named: "wales")!),
             Country(name: "Papua Nova Guiné", image: UIImage(named: "papua-new-guinea")!),
             Country(name: "Paraguai", image: UIImage(named: "paraguay")!),
             Country(name: "Peru", image: UIImage(named: "peru")!),
@@ -165,7 +158,6 @@ struct Country: Equatable {
             Country(name: "Rússia", image: UIImage(named: "russia")!),
             Country(name: "Reino Unido", image: UIImage(named: "united-kingdom")!),
             Country(name: "Ruanda", image: UIImage(named: "rwanda")!),
-            Country(name: "Samoa", image: UIImage(named: "samoa")!),
             Country(name: "Santa Lúcia", image: UIImage(named: "st-lucia")!),
             Country(name: "São Cristóvão e Nevis", image: UIImage(named: "saint-kitts-and-nevis")!),
             Country(name: "São Marino", image: UIImage(named: "san-marino")!),
@@ -185,10 +177,9 @@ struct Country: Equatable {
             Country(name: "Suécia", image: UIImage(named: "sweden")!),
             Country(name: "Suíça", image: UIImage(named: "switzerland")!),
             Country(name: "Síria", image: UIImage(named: "syria")!),
-            Country(name: "Tadiquistão", image: UIImage(named: "tajikistan")!),
+            Country(name: "Tajiquistão", image: UIImage(named: "tajikistan")!),
             Country(name: "Tailândia", image: UIImage(named: "thailand")!),
             Country(name: "Togo", image: UIImage(named: "togo")!),
-            Country(name: "Tonga", image: UIImage(named: "tonga")!),
             Country(name: "Timor Leste", image: UIImage(named: "east-timor")!),
             Country(name: "Trindade e Tobago", image: UIImage(named: "trinidad-and-tobago")!),
             Country(name: "Tunísia", image: UIImage(named: "tunisia")!),
@@ -221,27 +212,27 @@ struct Country: Equatable {
         
         let a = Array(countries[0..<12])
         let b = Array(countries[12..<30])
-        let c = Array(countries[30..<47])
-        let d = Array(countries[47..<51])
-        let e = Array(countries[51..<61])
-        let f = Array(countries[61..<65])
-        let g = Array(countries[65..<74])
-        let h = Array(countries[74..<78])
-        let i = Array(countries[78..<90])
-        let j = Array(countries[90..<93])
-        let k = Array(countries[93..<94])
-        let l = Array(countries[94..<102])
-        let m = Array(countries[102..<119])
-        let n = Array(countries[119..<128])
-        let o = Array(countries[128..<129])
-        let p = Array(countries[129..<139])
-        let q = Array(countries[139..<142])
-        let r = Array(countries[142..<150])
-        let s = Array(countries[150..<170])
-        let t = Array(countries[170..<180])
-        let u = Array(countries[180..<183])
-        let v = Array(countries[183..<186])
-        let z = Array(countries[186..<188])
+        let c = Array(countries[30..<48])
+        let d = Array(countries[48..<51])
+        let e = Array(countries[51..<60])
+        let f = Array(countries[60..<64])
+        let g = Array(countries[64..<73])
+        let h = Array(countries[73..<77])
+        let i = Array(countries[77..<86])
+        let j = Array(countries[86..<89])
+        let k = Array(countries[89..<90])
+        let l = Array(countries[90..<98])
+        let m = Array(countries[98..<115])
+        let n = Array(countries[115..<123])
+        let o = Array(countries[123..<124])
+        let p = Array(countries[124..<132])
+        let q = Array(countries[132..<135])
+        let r = Array(countries[135..<143])
+        let s = Array(countries[143..<162])
+        let t = Array(countries[162..<171])
+        let u = Array(countries[171..<174])
+        let v = Array(countries[174..<177])
+        let z = Array(countries[177..<179])
         
         
         
