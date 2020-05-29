@@ -19,9 +19,7 @@ class FilterTableViewController: UITableViewController{
         let countries : [Country]
     }
     
-
     @IBOutlet weak var searchBar: UISearchBar!
-
     
     let countries = Country.alphaDictionary()
     var sectionArray = [Section]()
