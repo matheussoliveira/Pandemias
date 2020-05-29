@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class ReferenceTableViewController: UITableViewController {
     
@@ -15,24 +16,43 @@ class ReferenceTableViewController: UITableViewController {
     let cellId = "ReferenceTableViewCell"
     
     // TODO: Get real information about reference and update date
-    var referenceInformationString: String = "Organização Pan-American da Saúde (OPAS), Organização Mundial da Saúde (OMS)"
-    var referenceUpdateDateString: String = "Última atualização: 22/05/2020"
+    var referenceInformationString: String!
+    var lastUpdate: String!
+    var referenceUpdateDateString: String!
+    
+    var indicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        
+        loadMetaData()
+        
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = .clear
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        
+        if (referenceUpdateDateString != nil) {
+            return 2
+        }
+        
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        if (referenceUpdateDateString != nil) {
+            return 1
+        }
+        
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -107,5 +127,53 @@ class ReferenceTableViewController: UITableViewController {
 
             return cell
         }
+    }
+    
+    
+    func loadMetaData() {
+        
+         let storage = Storage.storage()
+        
+        let forestRef = storage.reference().child("faq.json")
+
+        // Get metadata properties
+        forestRef.getMetadata { metadata, error in
+          if let error = error {
+            print(error)
+          } else {
+            
+            self.lastUpdate = self.formatMetaData(metadata: metadata!)
+            self.buildDataInformation()
+            self.indicator.stopAnimating()
+            self.indicator.hidesWhenStopped = true
+            self.tableView.reloadData()
+          }
+        }
+    }
+    
+    func buildDataInformation() {
+    
+        referenceInformationString = " Organização Pan-American da Saúde (OPAS), Organização Mundial da Saúde (OMS)"
+        referenceUpdateDateString = "Última atualização: \(self.lastUpdate!)"
+    }
+    
+    func formatMetaData(metadata: StorageMetadata) -> String {
+        // TODO: Transform date to brazilian date format
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        
+        return dateFormatter.string(from: (metadata.timeCreated)!)
+    }
+    
+    // MARK: - Activity indicator
+    
+    func activityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = .medium
+        indicator.color = UIColor(rgb: 0xFE375F)
+        indicator.center = CGPoint(x: self.tableView.center.x, y: self.tableView.center.y - 120)
+        self.tableView.addSubview(indicator)
     }
 }

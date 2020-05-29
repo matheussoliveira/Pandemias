@@ -7,11 +7,20 @@
 //
 
 import UIKit
-import  Foundation
+import Foundation
+import FirebaseStorage
 
 class FAQController: UITableViewController {
     
     let cellId = "FAQTableViewCell"
+    var faqData: [FAQQuestion]!
+    var selectedRow: Int!
+    var indicator = UIActivityIndicatorView()
+    
+    struct FAQQuestion: Decodable {
+        var question: String
+        var answer: String
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +28,12 @@ class FAQController: UITableViewController {
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = .clear
+        
+        loadJSON()
     }
     
     //MARK: - Table View Data Source
@@ -28,17 +43,31 @@ class FAQController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        
+        var numberOfRows: Int!
+        
+        if (faqData != nil) {
+            numberOfRows = faqData.count
+        } else {
+            numberOfRows = 0
+        }
+        
+        return numberOfRows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FAQTableViewCell
-        cell.information.text = "Os principais sintomas da Covid-19 são tosse,febre e falta de ar. Mas o que isso quer dizer?"
+        
+        if (faqData != nil) {
+            cell.information.text = faqData[indexPath.row].question
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedRow = indexPath.row
         performSegue(withIdentifier: "goToAnswer", sender: nil)
     }
     
@@ -48,9 +77,65 @@ class FAQController: UITableViewController {
         
         if (segue.identifier == "goToAnswer") {
             if let newVC = segue.destination as? FAQAnswerTableViewController {
-                // TODO: Pass real question tittle
-                newVC.questionTitle = "O que é o corona vírus?"
+                newVC.questionTitle = self.faqData[self.selectedRow].question
+                newVC.questionAnwser = self.faqData[self.selectedRow].answer
             }
         }
     }
+    
+    // MARK: - JSON
+    
+    func loadJSON() {
+        
+        let storage = Storage.storage()
+        let islandRef = storage.reference().child("faq.json")
+        
+        islandRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if let error = error {
+            // Uh-oh, an error occurred!
+            print(error)
+          } else {
+            do {
+                let jsonDecoder = JSONDecoder()
+                let jsonData = try jsonDecoder.decode([FAQQuestion].self, from: data!)
+                self.faqData = jsonData
+                self.indicator.stopAnimating()
+                self.indicator.hidesWhenStopped = true
+                self.tableView.reloadData()
+            } catch let error {
+                print("parse error: \(error.localizedDescription)")
+            }
+          }
+        }
+    }
+    
+    // MARK: - Activity indicator
+    
+    func activityIndicator() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = .medium
+        indicator.color = UIColor(rgb: 0xFE375F)
+        indicator.center = CGPoint(x: self.tableView.center.x, y: self.tableView.center.y - 120)
+        self.tableView.addSubview(indicator)
+    }
+}
+
+// Be able to use HEX colors in UIColor
+
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+       assert(red >= 0 && red <= 255, "Invalid red component")
+       assert(green >= 0 && green <= 255, "Invalid green component")
+       assert(blue >= 0 && blue <= 255, "Invalid blue component")
+
+       self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
+   }
+
+   convenience init(rgb: Int) {
+       self.init(
+           red: (rgb >> 16) & 0xFF,
+           green: (rgb >> 8) & 0xFF,
+           blue: rgb & 0xFF
+       )
+   }
 }

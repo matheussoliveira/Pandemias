@@ -12,6 +12,9 @@
 		0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */; };
 		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
 		2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */; };
+		2F6B1AEB2481379400CF4C4E /* faq_scrape.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B1AEA2481379400CF4C4E /* faq_scrape.csv */; };
+		2F6B1AED248147EA00CF4C4E /* faq.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B1AEC248147EA00CF4C4E /* faq.json */; };
+		2F6B1AF12481578B00CF4C4E /* faq2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B1AF02481578A00CF4C4E /* faq2.json */; };
 		2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */; };
 		2F9127652476B0BB006F7648 /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F9127642476B0BB006F7648 /* FAQ.storyboard */; };
 		2F9127682476B9BB006F7648 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9127662476B9BB006F7648 /* FAQTableViewCell.swift */; };
@@ -50,6 +53,9 @@
 		0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDictionary.swift; sourceTree = "<group>"; };
 		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
 		2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsAPI.swift; sourceTree = "<group>"; };
+		2F6B1AEA2481379400CF4C4E /* faq_scrape.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = faq_scrape.csv; sourceTree = "<group>"; };
+		2F6B1AEC248147EA00CF4C4E /* faq.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = faq.json; sourceTree = "<group>"; };
+		2F6B1AF02481578A00CF4C4E /* faq2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = faq2.json; sourceTree = "<group>"; };
 		2F7E77A1246D947F00DE2FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F9127642476B0BB006F7648 /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		2F9127662476B9BB006F7648 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +119,17 @@
 			path = FAQ;
 			sourceTree = "<group>";
 		};
+		2F6B1AE92481377400CF4C4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F6B1AF02481578A00CF4C4E /* faq2.json */,
+				2F6B1AEC248147EA00CF4C4E /* faq.json */,
+				2F6B1AEA2481379400CF4C4E /* faq_scrape.csv */,
+			);
+			name = Resources;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		2F99D07624322A8E006C8BD3 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +154,7 @@
 				9C0500C52459CCCA00B7EC97 /* View */,
 				9C0500C42459CCBC00B7EC97 /* Controller */,
 				9C0500C32459CCA800B7EC97 /* Model */,
+				2F6B1AE92481377400CF4C4E /* Resources */,
 				2F99D08224322A8E006C8BD3 /* AppDelegate.swift */,
 				2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */,
 				2F99D08824322A8E006C8BD3 /* Main.storyboard */,
@@ -271,13 +289,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F9127692476B9BB006F7648 /* FAQTableViewCell.xib in Resources */,
+				2F6B1AEB2481379400CF4C4E /* faq_scrape.csv in Resources */,
 				2F9127752476D5EE006F7648 /* ReferenceTableViewCell.xib in Resources */,
+				2F6B1AF12481578B00CF4C4E /* faq2.json in Resources */,
 				2F99D08F24322A90006C8BD3 /* LaunchScreen.storyboard in Resources */,
 				2F94DACE2472F32E00ED577C /* VisaoGeralTableViewCell.xib in Resources */,
 				2F7E77A2246D947F00DE2FF0 /* GoogleService-Info.plist in Resources */,
 				2F99D08C24322A90006C8BD3 /* Assets.xcassets in Resources */,
 				9CC178D3248132E700720524 /* IntroView.xib in Resources */,
 				2F9127652476B0BB006F7648 /* FAQ.storyboard in Resources */,
+				2F6B1AED248147EA00CF4C4E /* faq.json in Resources */,
 				2F91276F2476C686006F7648 /* FAQAnswerTableViewCell.xib in Resources */,
 				0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */,
 				2F99D08A24322A8E006C8BD3 /* Main.storyboard in Resources */,
