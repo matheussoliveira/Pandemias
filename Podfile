@@ -7,6 +7,7 @@ target 'oliveiras-bot' do
 
   # Pods for oliveiras-bot
   pod 'Firebase/Analytics'
+  pod 'Firebase/Storage'
   pod 'Charts', '~> 3.5'
 
 end

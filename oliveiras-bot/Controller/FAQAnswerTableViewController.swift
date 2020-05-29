@@ -12,6 +12,7 @@ class FAQAnswerTableViewController: UITableViewController {
     
     let cellId: String = "FAQAnswerTableViewCell"
     var questionTitle: String!
+    var questionAnwser: String!
     
     let headerHight: CGFloat = 55
 
@@ -59,7 +60,7 @@ class FAQAnswerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FAQAnswerTableViewCell
-        cell.answer.text = "Os coronavírus são uma grande família viral, conhecidos desde meados de 1960, que causam infecções respiratórias em seres humanos e em animais. Geralmente, infecções por coronavírus causam doenças respiratórias leves a moderadas, semelhantes a um resfriado comum. Porém, alguns coronavírus podem causar doenças graves com impacto em termos de saúde pública, como já verificado com a Síndrome Respiratória Aguda Grave (SARS), identificada em 2002, e a Síndrome Respiratória do Oriente Médio (MERS)"
+        cell.answer.text = self.questionAnwser
         
         cell.reference.text = "PAHO"
         return cell
