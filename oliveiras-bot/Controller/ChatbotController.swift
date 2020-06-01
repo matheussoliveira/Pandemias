@@ -153,7 +153,6 @@ class ChatbotController: UIViewController{
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Chatbot"
         
         setUpTextField()
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -73,7 +73,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rmE-u2-3g5" customClass="TabBarController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rmE-u2-3g5" customClass="TabBarController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BLa-EH-Zw9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="GNe-XA-9V3">
@@ -93,16 +93,16 @@
             </objects>
             <point key="canvasLocation" x="826" y="113"/>
         </scene>
-        <!--Chatbot-->
+        <!--June-->
         <scene sceneID="SXr-6I-tWd">
             <objects>
-                <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGv-KH-gv3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="651"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-u4-TPP">
-                                <rect key="frame" x="0.0" y="4" width="414" height="645"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="593"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XkN-h4-7mc">
                                     <size key="itemSize" width="50" height="50"/>
@@ -126,7 +126,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7i-20-lNg">
-                                <rect key="frame" x="0.0" y="649" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="597" width="414" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta ao bot" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
                                         <rect key="frame" x="8" y="8" width="345" height="34"/>
@@ -175,7 +175,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNb-b7-bCZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Chatbot" id="1Pb-kM-zPe"/>
+                    <navigationItem key="navigationItem" title="June" id="1Pb-kM-zPe">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="xKc-kA-16j"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomConstraint" destination="cJA-xl-XDs" id="yEl-AG-NSJ"/>
                         <outlet property="collectionView" destination="bNr-u4-TPP" id="lL3-Z0-uMi"/>
@@ -185,7 +187,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sl-54-awW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784.057971014493" y="112.5"/>
+            <point key="canvasLocation" x="3701" y="113"/>
+        </scene>
+        <!--Conversas-->
+        <scene sceneID="ZAB-3y-rzL">
+            <objects>
+                <tableViewController id="tfI-7j-qVk" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Han-3x-t4p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <sections>
+                            <tableViewSection id="org-Py-W9D">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="MFP-JI-eW7">
+                                        <rect key="frame" x="20" y="18" width="374" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MFP-JI-eW7" id="DEa-QT-uJx">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM8-XB-ZlQ">
+                                                    <rect key="frame" x="16" y="16" width="48" height="48"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="june" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-Og-Lpp">
+                                                            <rect key="frame" x="8" y="8" width="32" height="32"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="gwc-Og-Lpp" firstAttribute="top" secondItem="LM8-XB-ZlQ" secondAttribute="top" constant="8" id="4dn-Bf-yaa"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gwc-Og-Lpp" secondAttribute="trailing" constant="8" id="Thi-Tj-g2Z"/>
+                                                        <constraint firstItem="gwc-Og-Lpp" firstAttribute="leading" secondItem="LM8-XB-ZlQ" secondAttribute="leading" constant="8" id="Tnt-6E-71y"/>
+                                                        <constraint firstAttribute="width" secondItem="LM8-XB-ZlQ" secondAttribute="height" multiplier="1:1" id="sCY-LK-ReY"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gwc-Og-Lpp" secondAttribute="bottom" constant="8" id="zEo-x7-yzv"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owz-DB-AGQ">
+                                                    <rect key="frame" x="80" y="27" width="258" height="26"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="LM8-XB-ZlQ" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="top" constant="16" id="CRh-ad-IeX"/>
+                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="leading" secondItem="LM8-XB-ZlQ" secondAttribute="trailing" constant="16" id="S1h-j5-xmt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Owz-DB-AGQ" secondAttribute="trailing" constant="16" id="WV5-Ml-BU4"/>
+                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="topMargin" constant="16" id="cgT-Uc-Qn6"/>
+                                                <constraint firstAttribute="bottom" secondItem="LM8-XB-ZlQ" secondAttribute="bottom" constant="16" id="m4U-vg-JyM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Owz-DB-AGQ" secondAttribute="bottom" constant="16" id="uL6-WY-IlH"/>
+                                                <constraint firstItem="LM8-XB-ZlQ" firstAttribute="leading" secondItem="DEa-QT-uJx" secondAttribute="leading" constant="16" id="vBn-2G-mQU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BWn-cM-3Nr" kind="show" id="kNc-eR-tbw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tfI-7j-qVk" id="xKo-cg-34N"/>
+                            <outlet property="delegate" destination="tfI-7j-qVk" id="HtW-h5-tBd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Conversas" id="qfr-JI-gSy"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUQ-vb-0vC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2815.9420289855075" y="112.5"/>
         </scene>
         <!--Chatbot-->
         <scene sceneID="saF-U0-xkq">
@@ -196,13 +273,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="X2l-ir-KHD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99607843137254903" green="0.21568627450980393" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BWn-cM-3Nr" kind="relationship" relationship="rootViewController" id="vig-6h-scF"/>
+                        <segue destination="tfI-7j-qVk" kind="relationship" relationship="rootViewController" id="vNg-uQ-2Cm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTT-D5-Xcs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -212,7 +290,7 @@
         <!--Intro View Controller-->
         <scene sceneID="lLQ-2p-iYl">
             <objects>
-                <viewController id="B2h-ah-gcl" customClass="IntroViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="B2h-ah-gcl" customClass="IntroViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6h-gc-Q2C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,6 +361,7 @@
     <resources>
         <image name="chatbot" width="48" height="32"/>
         <image name="faq" width="48" height="32"/>
+        <image name="june" width="29" height="30"/>
         <image name="stats" width="48" height="32"/>
     </resources>
 </document>
