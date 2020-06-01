@@ -1,17 +1,17 @@
 //
-//  FAQAnswerTableViewCell.swift
+//  FAQQuestionTableViewCell.swift
 //  oliveiras-bot
 //
-//  Created by Matheus Oliveira on 21/05/20.
+//  Created by Matheus Oliveira on 01/06/20.
 //  Copyright © 2020 Oliveiras. All rights reserved.
 //
 
 import UIKit
 
-class FAQAnswerTableViewCell: UITableViewCell {
+class FAQQuestionTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var question: UILabel!
     
-    
-    @IBOutlet weak var answer: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -61,6 +61,7 @@ class FAQController: UITableViewController {
         
         if (faqData != nil) {
             cell.information.text = faqData[indexPath.row].question
+            cell.selectionStyle = .none
         }
         
         return cell

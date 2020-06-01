@@ -10,6 +10,8 @@
 		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
 		0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7CEA9C246EC339004B4255 /* Statistics.storyboard */; };
 		0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */; };
+		2F3EEBFA248549F500C080AE /* FAQQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EEBF8248549F500C080AE /* FAQQuestionTableViewCell.swift */; };
+		2F3EEBFB248549F600C080AE /* FAQQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EEBF9248549F500C080AE /* FAQQuestionTableViewCell.xib */; };
 		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
 		2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */; };
 		2F6B1AEB2481379400CF4C4E /* faq_scrape.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B1AEA2481379400CF4C4E /* faq_scrape.csv */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		0B7CEA9C246EC339004B4255 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDictionary.swift; sourceTree = "<group>"; };
+		2F3EEBF8248549F500C080AE /* FAQQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQQuestionTableViewCell.swift; sourceTree = "<group>"; };
+		2F3EEBF9248549F500C080AE /* FAQQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
 		2F5ED1DB2474041800E375BE /* StatisticsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsAPI.swift; sourceTree = "<group>"; };
 		2F6B1AEA2481379400CF4C4E /* faq_scrape.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = faq_scrape.csv; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				2F91276D2476C686006F7648 /* FAQAnswerTableViewCell.xib */,
 				2F9127722476D5EE006F7648 /* ReferenceTableViewCell.swift */,
 				2F9127732476D5EE006F7648 /* ReferenceTableViewCell.xib */,
+				2F3EEBF8248549F500C080AE /* FAQQuestionTableViewCell.swift */,
+				2F3EEBF9248549F500C080AE /* FAQQuestionTableViewCell.xib */,
 			);
 			path = FAQ;
 			sourceTree = "<group>";
@@ -279,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F3EEBFB248549F600C080AE /* FAQQuestionTableViewCell.xib in Resources */,
 				2F9127692476B9BB006F7648 /* FAQTableViewCell.xib in Resources */,
 				2F6B1AEB2481379400CF4C4E /* faq_scrape.csv in Resources */,
 				2F9127752476D5EE006F7648 /* ReferenceTableViewCell.xib in Resources */,
@@ -356,6 +363,7 @@
 				9C66058D24742AA800DF3ED9 /* FilterTableViewController.swift in Sources */,
 				2F5ED1DC2474041800E375BE /* StatisticsAPI.swift in Sources */,
 				9C90DC2624757BD000449918 /* FilterTableViewCell.swift in Sources */,
+				2F3EEBFA248549F500C080AE /* FAQQuestionTableViewCell.swift in Sources */,
 				9C4C196B246ED5E200A46C55 /* BubbleCircle.swift in Sources */,
 				9C2D93F624643D030028F0EC /* StatisticsTableViewController.swift in Sources */,
 				9C90DC24247553E100449918 /* Country.swift in Sources */,
