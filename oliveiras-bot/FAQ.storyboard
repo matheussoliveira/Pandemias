@@ -56,11 +56,12 @@
                         <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="YWi-Zn-ilI">
                             <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="BHq-qh-dQr" kind="show" id="I4t-L5-WKQ"/>
+                                <segue destination="BHq-qh-dQr" kind="show" identifier="goToReference" id="I4t-L5-WKQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="infoButton" destination="YWi-Zn-ilI" id="FGv-Xu-wSj"/>
                         <segue destination="7N0-Bt-LXc" kind="show" identifier="goToAnswer" id="OSb-Mx-UyB"/>
                     </connections>
                 </tableViewController>

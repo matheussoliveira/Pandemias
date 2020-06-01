@@ -12,12 +12,19 @@ import FirebaseStorage
 
 class FAQController: UITableViewController {
     
+    @IBOutlet weak var infoButton: UIBarButtonItem!
+    
     let cellId = "FAQTableViewCell"
-    var faqData: [FAQQuestion]!
+    var faqData: FAQJSon!
     var selectedRow: Int!
     var indicator = UIActivityIndicatorView()
     
-    struct FAQQuestion: Decodable {
+    struct FAQJSon: Decodable {
+        var font: String
+        var faq: [FAQ]
+    }
+    
+    struct FAQ: Decodable {
         var question: String
         var answer: String
     }
@@ -33,6 +40,8 @@ class FAQController: UITableViewController {
         indicator.startAnimating()
         indicator.backgroundColor = .clear
         
+        self.infoButton.isEnabled = false
+        
         loadJSON()
     }
     
@@ -47,7 +56,7 @@ class FAQController: UITableViewController {
         var numberOfRows: Int!
         
         if (faqData != nil) {
-            numberOfRows = faqData.count
+            numberOfRows = faqData.faq.count
         } else {
             numberOfRows = 0
         }
@@ -60,7 +69,7 @@ class FAQController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FAQTableViewCell
         
         if (faqData != nil) {
-            cell.information.text = faqData[indexPath.row].question
+            cell.information.text = faqData.faq[indexPath.row].question
             cell.selectionStyle = .none
         }
         
@@ -78,9 +87,14 @@ class FAQController: UITableViewController {
         
         if (segue.identifier == "goToAnswer") {
             if let newVC = segue.destination as? FAQAnswerTableViewController {
-                newVC.questionTitle = self.faqData[self.selectedRow].question
-                newVC.questionAnwser = self.faqData[self.selectedRow].answer
+                newVC.questionTitle = self.faqData.faq[self.selectedRow].question
+                newVC.questionAnwser = self.faqData.faq[self.selectedRow].answer
             }
+        } else if (segue.identifier == "goToReference") {
+            if let newVC = segue.destination as? ReferenceTableViewController {
+                newVC.referenceInformationString = self.faqData.font
+            }
+            
         }
     }
     
@@ -98,10 +112,11 @@ class FAQController: UITableViewController {
           } else {
             do {
                 let jsonDecoder = JSONDecoder()
-                let jsonData = try jsonDecoder.decode([FAQQuestion].self, from: data!)
-                self.faqData = jsonData
+                let jsonData = try jsonDecoder.decode([FAQJSon].self, from: data!)
+                self.faqData = jsonData[0]
                 self.indicator.stopAnimating()
                 self.indicator.hidesWhenStopped = true
+                self.infoButton.isEnabled = true
                 self.tableView.reloadData()
             } catch let error {
                 print("parse error: \(error.localizedDescription)")

@@ -153,7 +153,6 @@ class ReferenceTableViewController: UITableViewController {
     
     func buildDataInformation() {
     
-        referenceInformationString = " Organização Pan-American da Saúde (OPAS), Organização Mundial da Saúde (OMS)"
         referenceUpdateDateString = "Última atualização: \(self.lastUpdate!)"
     }
     
