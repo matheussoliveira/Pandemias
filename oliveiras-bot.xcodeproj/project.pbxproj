@@ -71,7 +71,7 @@
 		2F9127732476D5EE006F7648 /* ReferenceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferenceTableViewCell.xib; sourceTree = "<group>"; };
 		2F9127762476D779006F7648 /* ReferenceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceTableViewController.swift; sourceTree = "<group>"; };
 		2F94DACD2472F32E00ED577C /* VisaoGeralTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisaoGeralTableViewCell.xib; sourceTree = "<group>"; };
-		2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oliveiras-bot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F99D07F24322A8E006C8BD3 /* Pandemias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pandemias.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F99D08224322A8E006C8BD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F99D08424322A8E006C8BD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2F99D08924322A8E006C8BD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		2F99D08024322A8E006C8BD3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */,
+				2F99D07F24322A8E006C8BD3 /* Pandemias.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			);
 			name = "oliveiras-bot";
 			productName = "oliveiras-bot";
-			productReference = 2F99D07F24322A8E006C8BD3 /* oliveiras-bot.app */;
+			productReference = 2F99D07F24322A8E006C8BD3 /* Pandemias.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -541,7 +541,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oliveiras-bot";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pandemias;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -561,7 +561,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oliveiras-bot";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pandemias;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
