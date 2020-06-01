@@ -10,7 +10,8 @@ import UIKit
 
 class FAQAnswerTableViewController: UITableViewController {
     
-    let cellId: String = "FAQAnswerTableViewCell"
+    let questionCell: String = "FAQQuestionTableViewCell"
+    let answerCell: String = "FAQAnswerTableViewCell"
     var questionTitle: String!
     var questionAnwser: String!
     
@@ -20,7 +21,8 @@ class FAQAnswerTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Registering cell
-       self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        self.tableView.register(UINib.init(nibName: questionCell, bundle: nil), forCellReuseIdentifier: questionCell)
+        self.tableView.register(UINib.init(nibName: answerCell, bundle: nil), forCellReuseIdentifier: answerCell)
     }
 
     // MARK: - Table view data source
@@ -29,40 +31,16 @@ class FAQAnswerTableViewController: UITableViewController {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let titleView = UIView()
-        let labelHeight: CGFloat = 18
-        
-        let label = UILabel(frame: CGRect(x: 0,
-                                          y: headerHight - labelHeight - 12,
-                                          width: self.view.frame.size.width,
-                                          height: labelHeight))
-        label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.numberOfLines = 0
-        
-        switch section {
-        case 0:
-            label.text = self.questionTitle
-        default:
-            label.text = "Needs to be specified"
-        }
-        
-        titleView.addSubview(label)
-
-        return titleView
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FAQAnswerTableViewCell
-        cell.answer.text = self.questionAnwser
-        
-        cell.reference.text = "PAHO"
-        return cell
+        if (indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: questionCell, for: indexPath) as! FAQQuestionTableViewCell
+            cell.question.text = self.questionTitle
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: answerCell, for: indexPath) as! FAQAnswerTableViewCell
+            cell.answer.text = self.questionAnwser
+            return cell
+        }
     }
 }
