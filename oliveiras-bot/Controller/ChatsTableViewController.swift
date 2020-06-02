@@ -39,7 +39,7 @@ class ChatsTableViewController: UITableViewController {
             let chevron = UIImage(named: "chevron-icon")
             cell.accessoryType = .disclosureIndicator
             cell.accessoryView = UIImageView(image: chevron!)
-            chatImage.image = UIImage(named: "june")
+            chatImage.image = UIImage(named: "juneIcon.pdf")
             chatName.text = "June"
             chatSubtitle.text = "Coronavírus (Covid - 19)"
         }

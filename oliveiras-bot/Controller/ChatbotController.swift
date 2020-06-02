@@ -149,6 +149,19 @@ class ChatbotController: UIViewController{
         return formatedString
     }
     
+    fileprivate func setupTitleView() {
+        let botName = UILabel()
+        botName.text = "June"
+        botName.textColor = UIColor.white
+        botName.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+        let botIcon = UIImage(named: "juneIcon.pdf")
+        let imageView = UIImageView(image:botIcon)
+        let titleView = UIStackView(arrangedSubviews: [imageView, botName])
+        titleView.axis = .horizontal
+        titleView.spacing = 16
+        navigationItem.titleView = titleView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -165,13 +178,17 @@ class ChatbotController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        
+        setupTitleView()
     }
     
     func setUpTextField(){
-        inputTextField.layer.cornerRadius = 18
-        inputTextField.layer.borderWidth = 0.8
-        inputTextField.layer.borderColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00).cgColor
-        inputTextField.attributedPlaceholder = NSAttributedString(string: "Faça uma pergunta ao bot",attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00)])
+        // Setup bot icon and name
+        
+        self.containerView.layer.borderWidth = 0.8
+        self.containerView.layer.borderColor = UIColor.white.cgColor
+        self.containerView.layer.cornerRadius = 22
+        inputTextField.attributedPlaceholder = NSAttributedString(string: "Faça uma pergunta à June",attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00)])
     }
     
     @objc func handleKeyBoardNotification(notification: NSNotification){
