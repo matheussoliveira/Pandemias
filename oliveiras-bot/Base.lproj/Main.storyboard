@@ -96,13 +96,13 @@
         <!--June-->
         <scene sceneID="SXr-6I-tWd">
             <objects>
-                <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BWn-cM-3Nr" customClass="ChatbotController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGv-KH-gv3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="651"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bNr-u4-TPP">
-                                <rect key="frame" x="0.0" y="4" width="414" height="593"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="705"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XkN-h4-7mc">
                                     <size key="itemSize" width="50" height="50"/>
@@ -126,20 +126,19 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7i-20-lNg">
-                                <rect key="frame" x="0.0" y="597" width="414" height="50"/>
+                                <rect key="frame" x="16" y="717" width="382" height="45"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta ao bot" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
-                                        <rect key="frame" x="8" y="8" width="345" height="34"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Faça uma pergunta à June" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
+                                        <rect key="frame" x="8" y="8" width="318.5" height="30.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEn-fJ-FrI">
-                                        <rect key="frame" x="361" y="8" width="45" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Enviar">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEn-fJ-FrI">
+                                        <rect key="frame" x="334.5" y="8" width="39.5" height="29"/>
+                                        <state key="normal" image="sendButton">
                                             <color key="titleColor" red="0.99607843139999996" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -157,20 +156,19 @@
                                     <constraint firstItem="FEn-fJ-FrI" firstAttribute="top" secondItem="F7i-20-lNg" secondAttribute="top" constant="8" id="dTq-ll-Qt7"/>
                                     <constraint firstItem="yZB-1A-7aI" firstAttribute="leading" secondItem="F7i-20-lNg" secondAttribute="leadingMargin" id="g9e-VX-QAP"/>
                                     <constraint firstItem="yZB-1A-7aI" firstAttribute="height" secondItem="F7i-20-lNg" secondAttribute="height" multiplier="0.68" id="ier-yN-MHB"/>
-                                    <constraint firstAttribute="height" constant="50" id="rfu-Ta-Qco"/>
+                                    <constraint firstAttribute="height" constant="45" id="rfu-Ta-Qco"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="F7i-20-lNg" firstAttribute="leading" secondItem="RNb-b7-bCZ" secondAttribute="leading" id="1wB-uN-PIl"/>
-                            <constraint firstItem="F7i-20-lNg" firstAttribute="top" secondItem="bNr-u4-TPP" secondAttribute="bottom" id="7Cj-6S-JFC"/>
+                            <constraint firstItem="F7i-20-lNg" firstAttribute="leading" secondItem="RNb-b7-bCZ" secondAttribute="leading" constant="16" id="1wB-uN-PIl"/>
+                            <constraint firstItem="F7i-20-lNg" firstAttribute="top" secondItem="bNr-u4-TPP" secondAttribute="bottom" constant="8" id="7Cj-6S-JFC"/>
                             <constraint firstItem="bNr-u4-TPP" firstAttribute="leading" secondItem="RNb-b7-bCZ" secondAttribute="leading" id="9AA-uR-RSm"/>
-                            <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="F7i-20-lNg" secondAttribute="trailing" id="Fsp-oF-nmD"/>
+                            <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="F7i-20-lNg" secondAttribute="trailing" constant="16" id="Fsp-oF-nmD"/>
                             <constraint firstItem="bNr-u4-TPP" firstAttribute="width" secondItem="fGv-KH-gv3" secondAttribute="width" id="RNt-Yu-USt"/>
                             <constraint firstItem="RNb-b7-bCZ" firstAttribute="trailing" secondItem="bNr-u4-TPP" secondAttribute="trailing" id="Yql-Zn-JgX"/>
-                            <constraint firstItem="F7i-20-lNg" firstAttribute="bottom" secondItem="RNb-b7-bCZ" secondAttribute="bottom" constant="-4" id="cJA-xl-XDs"/>
-                            <constraint firstItem="F7i-20-lNg" firstAttribute="width" secondItem="fGv-KH-gv3" secondAttribute="width" id="dZn-u3-jYD"/>
+                            <constraint firstItem="F7i-20-lNg" firstAttribute="bottom" secondItem="RNb-b7-bCZ" secondAttribute="bottom" constant="-12" id="cJA-xl-XDs"/>
                             <constraint firstItem="bNr-u4-TPP" firstAttribute="top" secondItem="RNb-b7-bCZ" secondAttribute="top" constant="4" id="uor-Ui-d3h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNb-b7-bCZ"/>
@@ -178,6 +176,7 @@
                     <navigationItem key="navigationItem" title="June" id="1Pb-kM-zPe">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="xKc-kA-16j"/>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="cJA-xl-XDs" id="yEl-AG-NSJ"/>
                         <outlet property="collectionView" destination="bNr-u4-TPP" id="lL3-Z0-uMi"/>
@@ -362,6 +361,7 @@
         <image name="chatbot" width="48" height="32"/>
         <image name="faq" width="48" height="32"/>
         <image name="june" width="29" height="30"/>
+        <image name="sendButton" width="28" height="26"/>
         <image name="stats" width="48" height="32"/>
     </resources>
 </document>
