@@ -10,6 +10,7 @@
 		07DEC2713A9706D97D46CCEC /* Pods_oliveiras_bot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC442FAC5115D5F0825E4DFF /* Pods_oliveiras_bot.framework */; };
 		0B7CEA9D246EC339004B4255 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B7CEA9C246EC339004B4255 /* Statistics.storyboard */; };
 		0B7CEAA52476C38C004B4255 /* CountriesDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */; };
+		0B9FA020248692DF008C9B86 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9FA01F248692DF008C9B86 /* ChatsTableViewController.swift */; };
 		2F3EEBFA248549F500C080AE /* FAQQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3EEBF8248549F500C080AE /* FAQQuestionTableViewCell.swift */; };
 		2F3EEBFB248549F600C080AE /* FAQQuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3EEBF9248549F500C080AE /* FAQQuestionTableViewCell.xib */; };
 		2F4A5556246EE26700AD592F /* VisaoGeralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		0B7CEA9C246EC339004B4255 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		0B7CEAA42476C38C004B4255 /* CountriesDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDictionary.swift; sourceTree = "<group>"; };
+		0B9FA01F248692DF008C9B86 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		2F3EEBF8248549F500C080AE /* FAQQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		2F3EEBF9248549F500C080AE /* FAQQuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQQuestionTableViewCell.xib; sourceTree = "<group>"; };
 		2F4A5554246EE26700AD592F /* VisaoGeralTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisaoGeralTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			children = (
 				9CD47AF92460355A0098D864 /* ChatbotController.swift */,
 				9C2D93F524643D030028F0EC /* StatisticsTableViewController.swift */,
+				0B9FA01F248692DF008C9B86 /* ChatsTableViewController.swift */,
 				9C2D93F724643D150028F0EC /* FAQController.swift */,
 				9C66058C24742AA800DF3ED9 /* FilterTableViewController.swift */,
 				9CED44D0247FD9AC00E658CC /* IntroViewController.swift */,
@@ -388,6 +391,7 @@
 				2F9127772476D779006F7648 /* ReferenceTableViewController.swift in Sources */,
 				9CF4996D2462E962005699EC /* MessageCell.swift in Sources */,
 				9CED44D1247FD9AC00E658CC /* IntroViewController.swift in Sources */,
+				0B9FA020248692DF008C9B86 /* ChatsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

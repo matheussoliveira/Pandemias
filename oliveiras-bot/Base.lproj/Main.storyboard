@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rmE-u2-3g5">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -192,7 +192,7 @@
         <!--Conversas-->
         <scene sceneID="ZAB-3y-rzL">
             <objects>
-                <tableViewController id="tfI-7j-qVk" sceneMemberID="viewController">
+                <tableViewController id="tfI-7j-qVk" customClass="ChatsTableViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Han-3x-t4p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -200,52 +200,45 @@
                         <sections>
                             <tableViewSection id="org-Py-W9D">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="MFP-JI-eW7">
-                                        <rect key="frame" x="20" y="18" width="374" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="70" id="MFP-JI-eW7">
+                                        <rect key="frame" x="20" y="18" width="374" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MFP-JI-eW7" id="DEa-QT-uJx">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM8-XB-ZlQ">
-                                                    <rect key="frame" x="16" y="16" width="48" height="48"/>
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="june" translatesAutoresizingMaskIntoConstraints="NO" id="gwc-Og-Lpp">
-                                                            <rect key="frame" x="8" y="8" width="32" height="32"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstItem="gwc-Og-Lpp" firstAttribute="top" secondItem="LM8-XB-ZlQ" secondAttribute="top" constant="8" id="4dn-Bf-yaa"/>
-                                                        <constraint firstAttribute="trailing" secondItem="gwc-Og-Lpp" secondAttribute="trailing" constant="8" id="Thi-Tj-g2Z"/>
-                                                        <constraint firstItem="gwc-Og-Lpp" firstAttribute="leading" secondItem="LM8-XB-ZlQ" secondAttribute="leading" constant="8" id="Tnt-6E-71y"/>
-                                                        <constraint firstAttribute="width" secondItem="LM8-XB-ZlQ" secondAttribute="height" multiplier="1:1" id="sCY-LK-ReY"/>
-                                                        <constraint firstAttribute="bottom" secondItem="gwc-Og-Lpp" secondAttribute="bottom" constant="8" id="zEo-x7-yzv"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owz-DB-AGQ">
-                                                    <rect key="frame" x="80" y="27" width="258" height="26"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <rect key="frame" x="70" y="14" width="38.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-8G-Fg9">
+                                                    <rect key="frame" x="20" y="14" width="42" height="42"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="XOr-8G-Fg9" secondAttribute="height" multiplier="1:1" id="4Er-nb-Sl7"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coronavírus (Covid - 19)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vz-gU-4k3">
+                                                    <rect key="frame" x="70" y="38" width="168" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="LM8-XB-ZlQ" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="top" constant="16" id="CRh-ad-IeX"/>
-                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="leading" secondItem="LM8-XB-ZlQ" secondAttribute="trailing" constant="16" id="S1h-j5-xmt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Owz-DB-AGQ" secondAttribute="trailing" constant="16" id="WV5-Ml-BU4"/>
-                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="topMargin" constant="16" id="cgT-Uc-Qn6"/>
-                                                <constraint firstAttribute="bottom" secondItem="LM8-XB-ZlQ" secondAttribute="bottom" constant="16" id="m4U-vg-JyM"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Owz-DB-AGQ" secondAttribute="bottom" constant="16" id="uL6-WY-IlH"/>
-                                                <constraint firstItem="LM8-XB-ZlQ" firstAttribute="leading" secondItem="DEa-QT-uJx" secondAttribute="leading" constant="16" id="vBn-2G-mQU"/>
+                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="leading" secondItem="XOr-8G-Fg9" secondAttribute="trailing" constant="8" id="4rh-at-NJD"/>
+                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="bottom" secondItem="XOr-8G-Fg9" secondAttribute="bottom" id="6EH-Zl-Gf8"/>
+                                                <constraint firstItem="XOr-8G-Fg9" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="topMargin" constant="3" id="DEb-pC-5K5"/>
+                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="top" secondItem="XOr-8G-Fg9" secondAttribute="top" id="LXv-kh-kQ9"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="XOr-8G-Fg9" secondAttribute="bottom" constant="3" id="Vtb-iT-qgW"/>
+                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="leading" secondItem="XOr-8G-Fg9" secondAttribute="trailing" constant="8" id="ldG-4Z-lTy"/>
+                                                <constraint firstItem="XOr-8G-Fg9" firstAttribute="leading" secondItem="DEa-QT-uJx" secondAttribute="leadingMargin" id="pVR-EW-pdO"/>
+                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Owz-DB-AGQ" secondAttribute="bottom" id="qln-UD-uFS"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="BWn-cM-3Nr" kind="show" id="kNc-eR-tbw"/>
                                         </connections>
@@ -259,6 +252,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Conversas" id="qfr-JI-gSy"/>
+                    <connections>
+                        <outlet property="chatImage" destination="XOr-8G-Fg9" id="aLZ-Er-qwO"/>
+                        <outlet property="chatName" destination="Owz-DB-AGQ" id="e7U-Si-E25"/>
+                        <outlet property="chatSubtitle" destination="2vz-gU-4k3" id="tWS-iK-wu2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUQ-vb-0vC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -361,7 +359,6 @@
     <resources>
         <image name="chatbot" width="48" height="32"/>
         <image name="faq" width="48" height="32"/>
-        <image name="june" width="29" height="30"/>
         <image name="stats" width="48" height="32"/>
     </resources>
 </document>
