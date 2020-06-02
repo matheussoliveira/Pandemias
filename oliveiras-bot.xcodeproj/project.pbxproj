@@ -537,13 +537,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FKFGBBGDU2;
+				DEVELOPMENT_TEAM = VZ4Y7Q4FJ2;
 				INFOPLIST_FILE = "oliveiras-bot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oliveiras-bot";
 				PRODUCT_NAME = Pandemias;
 				SWIFT_VERSION = 5.0;
@@ -557,13 +557,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FKFGBBGDU2;
+				DEVELOPMENT_TEAM = VZ4Y7Q4FJ2;
 				INFOPLIST_FILE = "oliveiras-bot/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oliveiras-bot";
 				PRODUCT_NAME = Pandemias;
 				SWIFT_VERSION = 5.0;

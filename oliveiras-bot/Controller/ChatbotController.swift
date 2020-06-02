@@ -198,7 +198,8 @@ class ChatbotController: UIViewController{
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             
-            bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame!.height + (tabBarController?.tabBar.frame.height)! : 0
+            
+            bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame!.height + (self.containerView.frame.height - 16) : 0 // - 16 because we are using a bottom constraing in the containerView
             
             UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
