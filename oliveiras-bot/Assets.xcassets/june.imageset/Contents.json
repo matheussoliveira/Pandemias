@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "june.jpg",
+      "filename" : "june.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "june@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "june@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
