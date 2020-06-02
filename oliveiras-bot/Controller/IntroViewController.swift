@@ -32,19 +32,19 @@ class IntroViewController: UIViewController{
         
     }
     
-    var pages : [IntroView] {
+    var pages : [TutorialView] {
         get {
-            let page1: IntroView = Bundle.main.loadNibNamed("IntroView", owner: self, options: nil)?.first as! IntroView
+            let page1: TutorialView = Bundle.main.loadNibNamed("TutorialView", owner: self, options: nil)?.first as! TutorialView
             page1.imageView.image = UIImage(named: "intro-chat")
             page1.title.text = "Conversa"
             page1.descriptionLabel.text = "Tire suas dúvidas e receba dicas sobre o Coronavírus (COVID - 19), com fontes confiáveis através de uma conversa com June"
             
-            let page2: IntroView = Bundle.main.loadNibNamed("IntroView", owner: self, options: nil)?.first as! IntroView
+            let page2: TutorialView = Bundle.main.loadNibNamed("TutorialView", owner: self, options: nil)?.first as! TutorialView
             page2.imageView.image = UIImage(named: "intro-stats")
             page2.title.text = "Estatísticas"
             page2.descriptionLabel.text = "Obtenha estatísticas atualizadas sobre os casos confirmados, recuperados, mortes e ativos, através de gráficos e uma visão geral"
             
-            let page3: IntroView = Bundle.main.loadNibNamed("IntroView", owner: self, options: nil)?.first as! IntroView
+            let page3: TutorialView = Bundle.main.loadNibNamed("TutorialView", owner: self, options: nil)?.first as! TutorialView
             page3.imageView.image = UIImage(named: "intro-faq")
             page3.title.text = "Dúvidas"
             page3.descriptionLabel.text = "Acesse respostas sobre dúvidas frequentes a respeito do Coronavírus (COVID - 19) de maneira rápida e objetiva com fontes confiáveis"
@@ -69,7 +69,7 @@ class IntroViewController: UIViewController{
             pageControl.currentPage = 0
         }
 
-        func setupScrollView(pages: [IntroView]) {
+        func setupScrollView(pages: [TutorialView]) {
             scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
             scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(pages.count), height: view.frame.height)
             scrollView.isPagingEnabled = true

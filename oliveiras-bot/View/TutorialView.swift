@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IntroView: UIView {
+class TutorialView: UIView {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var title: UILabel!

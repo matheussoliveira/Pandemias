@@ -152,6 +152,13 @@ class ChatbotController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        if launchedBefore  {
+        } else {
+            perform(#selector(showOnBoarding), with: nil, afterDelay: 0.01)
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "Chatbot"
         
@@ -166,6 +173,14 @@ class ChatbotController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+    }
+    
+    @objc func showOnBoarding(){
+        let onBoardingController = storyboard?.instantiateViewController(withIdentifier: "OnBoarding") as! IntroViewController
+        onBoardingController.modalPresentationStyle = .fullScreen
+        present(onBoardingController, animated: false) {
+            //
+        }
     }
     
     func setUpTextField(){

@@ -73,7 +73,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5aK-Vx-eHc">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rmE-u2-3g5" customClass="TabBarController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rmE-u2-3g5" customClass="TabBarController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="BLa-EH-Zw9"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="GNe-XA-9V3">
@@ -96,7 +96,7 @@
         <!--Chatbot-->
         <scene sceneID="SXr-6I-tWd">
             <objects>
-                <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BWn-cM-3Nr" customClass="ChatbotController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fGv-KH-gv3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,7 +212,7 @@
         <!--Intro View Controller-->
         <scene sceneID="lLQ-2p-iYl">
             <objects>
-                <viewController id="B2h-ah-gcl" customClass="IntroViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoarding" id="B2h-ah-gcl" customClass="IntroViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F6h-gc-Q2C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
