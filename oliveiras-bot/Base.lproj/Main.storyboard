@@ -173,7 +173,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RNb-b7-bCZ"/>
                     </view>
-                    <navigationItem key="navigationItem" title="June" id="1Pb-kM-zPe">
+                    <navigationItem key="navigationItem" title="June" largeTitleDisplayMode="never" id="1Pb-kM-zPe">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="xKc-kA-16j"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -257,7 +257,9 @@
                             <outlet property="delegate" destination="tfI-7j-qVk" id="HtW-h5-tBd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Conversas" id="qfr-JI-gSy"/>
+                    <navigationItem key="navigationItem" title="Conversas" id="qfr-JI-gSy">
+                        <barButtonItem key="backBarButtonItem" title=" " id="dC7-2d-5LS"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUQ-vb-0vC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
