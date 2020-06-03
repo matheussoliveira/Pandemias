@@ -149,18 +149,23 @@ class ChatbotController: UIViewController{
         return formatedString
     }
     
+    fileprivate func setupTitleView() {
+        let botName = UILabel()
+        botName.text = "June"
+        botName.textColor = UIColor.white
+        botName.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
+        let botIcon = UIImage(named: "juneIcon.pdf")
+        let imageView = UIImageView(image:botIcon)
+        let titleView = UIStackView(arrangedSubviews: [imageView, botName])
+        titleView.axis = .horizontal
+        titleView.spacing = 16
+        navigationItem.titleView = titleView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        if launchedBefore  {
-        } else {
-            perform(#selector(showOnBoarding), with: nil, afterDelay: 0.01)
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-        
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Chatbot"
         
         setUpTextField()
         
@@ -173,21 +178,17 @@ class ChatbotController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-    }
-    
-    @objc func showOnBoarding(){
-        let onBoardingController = storyboard?.instantiateViewController(withIdentifier: "OnBoarding") as! IntroViewController
-        onBoardingController.modalPresentationStyle = .fullScreen
-        present(onBoardingController, animated: false) {
-            //
-        }
+        
+        setupTitleView()
     }
     
     func setUpTextField(){
-        inputTextField.layer.cornerRadius = 18
-        inputTextField.layer.borderWidth = 0.8
-        inputTextField.layer.borderColor = UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00).cgColor
-        inputTextField.attributedPlaceholder = NSAttributedString(string: "Faça uma pergunta ao bot",attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00)])
+        // Setup bot icon and name
+        
+        self.containerView.layer.borderWidth = 0.8
+        self.containerView.layer.borderColor = UIColor.white.cgColor
+        self.containerView.layer.cornerRadius = 22
+        inputTextField.attributedPlaceholder = NSAttributedString(string: "Faça uma pergunta à June",attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.00)])
     }
     
     @objc func handleKeyBoardNotification(notification: NSNotification){
@@ -197,7 +198,8 @@ class ChatbotController: UIViewController{
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             
-            bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame!.height + (tabBarController?.tabBar.frame.height)! : 0
+            
+            bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame!.height + (self.containerView.frame.height - 16) : 0 // - 16 because we are using a bottom constraing in the containerView
             
             UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()

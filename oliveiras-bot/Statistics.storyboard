@@ -9,7 +9,7 @@
         <!--Estatíticas-->
         <scene sceneID="gmz-rj-ypO">
             <objects>
-                <tableViewController storyboardIdentifier="statistics" id="4lg-eB-1Dw" customClass="StatisticsTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="statistics" id="4lg-eB-1Dw" customClass="StatisticsTableViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="1" id="97Q-c4-FbQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Visão Geral" footerTitle="Última atualização" id="Vu8-re-9gT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="VisaoGeralTableViewCell" rowHeight="176" id="wth-fG-9gt" customClass="VisaoGeralTableViewCell" customModule="oliveiras_bot" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="VisaoGeralTableViewCell" rowHeight="176" id="wth-fG-9gt" customClass="VisaoGeralTableViewCell" customModule="Pandemias" customModuleProvider="target">
                                         <rect key="frame" x="20" y="399" width="374" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wth-fG-9gt" id="FZ9-Lk-TdV">
@@ -129,7 +129,7 @@
         <!--Selecionar região-->
         <scene sceneID="82N-uP-RxX">
             <objects>
-                <tableViewController storyboardIdentifier="Filter" title="Selecionar região" id="4my-nf-2pd" customClass="FilterTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Filter" title="Selecionar região" id="4my-nf-2pd" customClass="FilterTableViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Pg-X5-4Au">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +151,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="filterCell" id="hay-2E-XXD" customClass="FilterTableViewCell" customModule="oliveiras_bot" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="filterCell" id="hay-2E-XXD" customClass="FilterTableViewCell" customModule="Pandemias" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hay-2E-XXD" id="V1F-AG-Kc6">

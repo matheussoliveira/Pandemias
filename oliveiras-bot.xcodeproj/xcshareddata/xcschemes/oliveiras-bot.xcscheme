@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2F99D07E24322A8E006C8BD3"
-               BuildableName = "oliveiras-bot.app"
+               BuildableName = "Pandemias.app"
                BlueprintName = "oliveiras-bot"
                ReferencedContainer = "container:oliveiras-bot.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2F99D07E24322A8E006C8BD3"
-            BuildableName = "oliveiras-bot.app"
+            BuildableName = "Pandemias.app"
             BlueprintName = "oliveiras-bot"
             ReferencedContainer = "container:oliveiras-bot.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2F99D07E24322A8E006C8BD3"
-            BuildableName = "oliveiras-bot.app"
+            BuildableName = "Pandemias.app"
             BlueprintName = "oliveiras-bot"
             ReferencedContainer = "container:oliveiras-bot.xcodeproj">
          </BuildableReference>
