@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -25,19 +25,24 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="world-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BpY-em-iFl">
-                                                    <rect key="frame" x="20" y="7" width="29" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="world-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BpY-em-iFl">
+                                                    <rect key="frame" x="16" y="8" width="29" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="Rkn-MA-AyD"/>
+                                                        <constraint firstAttribute="width" constant="29" id="U0q-q1-ePA"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Região" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILM-TC-Pk9">
-                                                    <rect key="frame" x="57" y="11" width="53" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Região" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILM-TC-Pk9">
+                                                    <rect key="frame" x="61" y="11.5" width="70" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="r4I-Kq-OyT"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mundo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G92-gT-rkD">
-                                                    <rect key="frame" x="281.5" y="11" width="53.5" height="21"/>
+                                                    <rect key="frame" x="139" y="11.5" width="196" height="21"/>
                                                     <color key="tintColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.76078431372549016" green="0.76078431372549016" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
@@ -45,9 +50,14 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="G92-gT-rkD" firstAttribute="top" secondItem="5mT-E5-vcR" secondAttribute="topMargin" id="Q1o-hf-oKm"/>
+                                                <constraint firstItem="ILM-TC-Pk9" firstAttribute="centerY" secondItem="5mT-E5-vcR" secondAttribute="centerY" id="0Fd-Rr-nv4"/>
+                                                <constraint firstItem="G92-gT-rkD" firstAttribute="leading" secondItem="ILM-TC-Pk9" secondAttribute="trailing" constant="8" id="B0O-MV-W7G"/>
+                                                <constraint firstItem="BpY-em-iFl" firstAttribute="top" secondItem="5mT-E5-vcR" secondAttribute="top" constant="8" id="D5R-hO-rO0"/>
                                                 <constraint firstItem="G92-gT-rkD" firstAttribute="trailing" secondItem="5mT-E5-vcR" secondAttribute="trailingMargin" id="RpM-SU-txm"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="G92-gT-rkD" secondAttribute="bottom" constant="1" id="U0n-jV-M2r"/>
+                                                <constraint firstItem="G92-gT-rkD" firstAttribute="centerY" secondItem="ILM-TC-Pk9" secondAttribute="centerY" id="VTy-VG-E3U"/>
+                                                <constraint firstItem="ILM-TC-Pk9" firstAttribute="leading" secondItem="BpY-em-iFl" secondAttribute="trailing" constant="16" id="Vbw-zj-5l8"/>
+                                                <constraint firstAttribute="bottom" secondItem="BpY-em-iFl" secondAttribute="bottom" constant="8" id="lqL-JT-GVt"/>
+                                                <constraint firstItem="BpY-em-iFl" firstAttribute="leading" secondItem="5mT-E5-vcR" secondAttribute="leading" constant="16" id="zfG-oE-4s8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
@@ -64,27 +74,36 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="214"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z3M-iZ-wsy">
-                                                    <rect key="frame" x="20" y="11" width="334" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <segments>
-                                                        <segment title="Confirmados"/>
-                                                        <segment title="Recuperados"/>
-                                                        <segment title="Mortes"/>
-                                                    </segments>
-                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="selectedSegmentTintColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="changeChartType:" destination="4lg-eB-1Dw" eventType="valueChanged" id="so0-XG-kuF"/>
-                                                    </connections>
-                                                </segmentedControl>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-T7-CO0" customClass="LineChartView" customModule="Charts">
-                                                    <rect key="frame" x="20" y="50" width="334" height="153"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wqC-UN-ou3">
+                                                    <rect key="frame" x="16" y="16" width="342" height="182"/>
+                                                    <subviews>
+                                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="z3M-iZ-wsy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="342" height="32"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <segments>
+                                                                <segment title="Confirmados"/>
+                                                                <segment title="Recuperados"/>
+                                                                <segment title="Mortes"/>
+                                                            </segments>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="selectedSegmentTintColor" red="0.38823529411764707" green="0.38823529411764707" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                            <connections>
+                                                                <action selector="changeChartType:" destination="4lg-eB-1Dw" eventType="valueChanged" id="so0-XG-kuF"/>
+                                                            </connections>
+                                                        </segmentedControl>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ty6-T7-CO0" customClass="LineChartView" customModule="Charts">
+                                                            <rect key="frame" x="0.0" y="39" width="342" height="143"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        </view>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="wqC-UN-ou3" secondAttribute="trailing" constant="16" id="CNr-eY-TOb"/>
+                                                <constraint firstAttribute="bottom" secondItem="wqC-UN-ou3" secondAttribute="bottom" constant="16" id="bIG-VD-L2b"/>
+                                                <constraint firstItem="wqC-UN-ou3" firstAttribute="top" secondItem="A4N-s4-Lh9" secondAttribute="top" constant="16" id="fEC-xl-9Ij"/>
+                                                <constraint firstItem="wqC-UN-ou3" firstAttribute="leading" secondItem="A4N-s4-Lh9" secondAttribute="leading" constant="16" id="ucn-wZ-Ghe"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.1137254902" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -210,7 +229,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="iC2-0g-vWC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
