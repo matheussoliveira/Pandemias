@@ -30,8 +30,8 @@ class ChatbotController: UIViewController{
             let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
             self.messages.append(userQuestion)
             //insert user message to chatlog
-            var item = messages.count - 1
-            var insertionIndexpath = IndexPath(item: item, section: 0)
+            let item = messages.count - 1
+            let insertionIndexpath = IndexPath(item: item, section: 0)
             collectionView.insertItems(at: [insertionIndexpath])
             collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
             
@@ -48,8 +48,8 @@ class ChatbotController: UIViewController{
         let userQuestion = Message(text: "...", date: NSDate(), isFromUser: false)
         self.messages.append(userQuestion)
         //insert user message to chatlog
-        var item = messages.count - 1
-        var insertionIndexpath = IndexPath(item: item, section: 0)
+        let item = messages.count - 1
+        let insertionIndexpath = IndexPath(item: item, section: 0)
         collectionView.insertItems(at: [insertionIndexpath])
         collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
         
@@ -102,8 +102,8 @@ class ChatbotController: UIViewController{
                 DispatchQueue.main.async {
                     
                     self.messages.removeLast()
-                    var item = self.messages.count
-                    var insertionIndexpath = IndexPath(item: item, section: 0)
+                    let item = self.messages.count
+                    let insertionIndexpath = IndexPath(item: item, section: 0)
                     self.collectionView.deleteItems(at: [insertionIndexpath])
                     
                     retriedToAnswer = false
@@ -153,9 +153,6 @@ class ChatbotController: UIViewController{
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        setUpTextField()
-        setupHideKeyboardOnTap()
-        
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     
@@ -167,6 +164,18 @@ class ChatbotController: UIViewController{
         
         
         setupTitleView()
+        setupWelcomeMessage()
+        setUpTextField()
+        setupHideKeyboardOnTap()
+    }
+    
+    func setupWelcomeMessage(){
+        let welcomeMessage = Message(text: "Olá! Eu sou a June, do Pandemias, e estou aqui para te ajudar tirando suas dúvidas e dando dicas sobre o Coronavírus (COVID - 19).",
+                                     date: NSDate(), isFromUser: false)
+        self.messages.append(welcomeMessage)
+        let item = messages.count - 1
+        let insertionIndexpath = IndexPath(item: item, section: 0)
+        collectionView.insertItems(at: [insertionIndexpath])
     }
     
     func setUpTextField(){
@@ -185,8 +194,11 @@ class ChatbotController: UIViewController{
             
             let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
             
-            
-            bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame!.height + (self.containerView.frame.height - 16) : 0 // - 16 because we are using a bottom constraing in the containerView
+            if isKeyboardShowing{
+                bottomConstraint.constant = -keyboardFrame!.height - 17 +   (UIApplication.shared.statusBarFrame.size.height + (self.navigationController?.navigationBar.frame.height ?? 0.0))
+            } else {
+                bottomConstraint.constant = -6
+            }
             
             UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
                 self.view.layoutIfNeeded()
