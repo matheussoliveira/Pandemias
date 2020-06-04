@@ -23,19 +23,22 @@ class ChatbotController: UIViewController{
     
     @IBAction func sendButtonPressed(_ sender: Any) {
         let question:String = inputTextField.text ?? ""
+        
+        ///checks if user input is not empty or only whitespaces
+        if !question.trimmingCharacters(in: .whitespaces).isEmpty {
+            //insert question to messages array
+            let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
+            self.messages.append(userQuestion)
+            //insert user message to chatlog
+            var item = messages.count - 1
+            var insertionIndexpath = IndexPath(item: item, section: 0)
+            collectionView.insertItems(at: [insertionIndexpath])
+            collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
             
-        //insert question to messages array
-        let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
-        self.messages.append(userQuestion)
-        //insert user message to chatlog
-        var item = messages.count - 1
-        var insertionIndexpath = IndexPath(item: item, section: 0)
-        collectionView.insertItems(at: [insertionIndexpath])
-        collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
-        
-        inputTextField.text = nil
-        
-        getBotResponse(question: question)
+            inputTextField.text = nil
+            
+            getBotResponse(question: question)
+        }
 
     }
     
@@ -49,16 +52,6 @@ class ChatbotController: UIViewController{
         var insertionIndexpath = IndexPath(item: item, section: 0)
         collectionView.insertItems(at: [insertionIndexpath])
         collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
-        
-        //start typing indicator
-//        self.isTyping = true
-//        let item = self.messages.count
-//        print("Typing: ")
-//        print(item)
-//        let insertionIndexpath = IndexPath(item: item, section: 0)
-//        self.collectionView.insertItems(at: [insertionIndexpath])
-//        self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
-        
         
         let session = URLSession.shared
 
@@ -113,13 +106,6 @@ class ChatbotController: UIViewController{
                     var insertionIndexpath = IndexPath(item: item, section: 0)
                     self.collectionView.deleteItems(at: [insertionIndexpath])
                     
-                    
-                    //remove from typing indicator
-//                    self.isTyping = false
-//                    var indexPath = IndexPath(item: self.messages.count, section: 0)
-//                    self.collectionView.deleteItems(at: [indexPath])
-//                    self.collectionView.reloadData()
-                    
                     retriedToAnswer = false
                     //insert answer to messages array
                     for answer in queriedString {
@@ -168,6 +154,7 @@ class ChatbotController: UIViewController{
         navigationController?.navigationBar.prefersLargeTitles = true
         
         setUpTextField()
+        setupHideKeyboardOnTap()
         
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -284,5 +271,20 @@ extension ChatbotController: UICollectionViewDelegate, UICollectionViewDataSourc
 
             return cell
         }
+    }
+}
+
+extension ChatbotController {
+    /// Call this once to dismiss open keyboards by tapping anywhere in the view controller
+    func setupHideKeyboardOnTap() {
+        self.collectionView.addGestureRecognizer(self.endEditingRecognizer())
+        self.navigationController?.navigationBar.addGestureRecognizer(self.endEditingRecognizer())
+    }
+
+    /// Dismisses the keyboard from self.view
+    private func endEditingRecognizer() -> UIGestureRecognizer {
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        return tap
     }
 }
