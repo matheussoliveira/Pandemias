@@ -263,14 +263,14 @@
             </objects>
             <point key="canvasLocation" x="2815.9420289855075" y="112.5"/>
         </scene>
-        <!--Chatbot-->
+        <!--Conversas-->
         <scene sceneID="saF-U0-xkq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xmZ-e3-HXD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chatbot" image="chatbot" id="onn-or-VDu"/>
+                    <tabBarItem key="tabBarItem" title="Conversas" image="chatbot" id="onn-or-VDu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="X2l-ir-KHD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="116.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.99607843137254903" green="0.21568627450980393" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">

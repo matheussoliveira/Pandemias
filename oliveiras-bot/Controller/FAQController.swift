@@ -98,6 +98,12 @@ class FAQController: UITableViewController {
         }
     }
     
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        
+    }
+    
     // MARK: - JSON
     
     func loadJSON() {
@@ -134,6 +140,9 @@ class FAQController: UITableViewController {
         indicator.center = CGPoint(x: self.tableView.center.x, y: self.tableView.center.y - 120)
         self.tableView.addSubview(indicator)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    }
 }
 
 // Be able to use HEX colors in UIColor
@@ -155,3 +164,4 @@ extension UIColor {
        )
    }
 }
+

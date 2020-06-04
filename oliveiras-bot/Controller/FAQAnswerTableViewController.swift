@@ -14,8 +14,6 @@ class FAQAnswerTableViewController: UITableViewController {
     let answerCell: String = "FAQAnswerTableViewCell"
     var questionTitle: String!
     var questionAnwser: String!
-    
-    let headerHight: CGFloat = 55
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,5 +40,9 @@ class FAQAnswerTableViewController: UITableViewController {
             cell.answer.text = self.questionAnwser
             return cell
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
     }
 }
