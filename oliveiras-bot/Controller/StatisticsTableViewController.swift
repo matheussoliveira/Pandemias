@@ -19,6 +19,10 @@ class StatisticsTableViewController: UITableViewController {
     @IBOutlet weak var segmented: UISegmentedControl!
     @IBOutlet weak var chartView: LineChartView!
     
+    // Activity Indicator
+    
+    @IBOutlet weak var chartIndicator: UIActivityIndicatorView!
+    
     enum ChartType {
         case confirmed
         case recovered
@@ -65,8 +69,10 @@ class StatisticsTableViewController: UITableViewController {
         
         //Set Charts Properties
         setChartProperties()
+        
+        chartIndicator.startAnimating()
     }
-    
+
     func setChartProperties() {
         var index = segmented.selectedSegmentIndex
         let countryNameUS = Countries().countryBRtoUS(countryNameBR: country.name)
@@ -209,6 +215,8 @@ extension StatisticsTableViewController {
                         DispatchQueue.main.async {
                             self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: 0)
                             self.tableView.reloadData()
+                            self.chartIndicator.stopAnimating()
+                            self.chartIndicator.hidesWhenStopped = true
                         }
                     }
                 } catch { print(error) }
@@ -256,6 +264,8 @@ extension StatisticsTableViewController {
                         DispatchQueue.main.async {
                             self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: dayCounter - 1)
                             self.tableView.reloadData()
+                            self.chartIndicator.stopAnimating()
+                            self.chartIndicator.hidesWhenStopped = true
                         }
                     }
                 } catch { print(error) }
@@ -389,7 +399,7 @@ extension StatisticsTableViewController {
         
         switch section {
         case 2:
-            label.text = "Última atualização: \(lastUpdated) \nFonte: api.covid19api.com"
+            label.text = "Última atualização: \(lastUpdated) \nFonte: Johns Hopkins University (CSSE)"
             label.sizeToFit()
         default:
             label.text = ""
@@ -413,15 +423,31 @@ extension StatisticsTableViewController {
             if (self.coronaStatistics != nil) {
                 
                 if self.coronaStatistics == [0,0,0,0] {
-                    cell.confirmedNumber.text = "-"
-                    cell.recoveredNumber.text = "-"
-                    cell.activeNumber.text = "-"
-                    cell.deathsNumber.text = "-"
+                    cell.confirmedNumber.text = ""
+                    cell.recoveredNumber.text = ""
+                    cell.activeNumber.text = ""
+                    cell.deathsNumber.text = ""
+                    
+                    // Starting indicators
+                    cell.activesIndicator.startAnimating()
+                    cell.deathsIndicator.startAnimating()
+                    cell.recoveredIndicator.startAnimating()
+                    cell.confirmedIndicator.startAnimating()
                 } else {
                     cell.confirmedNumber.text = formatNumber(number: coronaStatistics[0])
                     cell.recoveredNumber.text = formatNumber(number: coronaStatistics[1])
                     cell.activeNumber.text = formatNumber(number: coronaStatistics[2])
                     cell.deathsNumber.text = formatNumber(number: coronaStatistics[3])
+                    
+                    // Stoping indicators
+                    cell.activesIndicator.stopAnimating()
+                    cell.deathsIndicator.stopAnimating()
+                    cell.recoveredIndicator.stopAnimating()
+                    cell.confirmedIndicator.stopAnimating()
+                    cell.activesIndicator.hidesWhenStopped = true
+                    cell.deathsIndicator.hidesWhenStopped = true
+                    cell.recoveredIndicator.hidesWhenStopped = true
+                    cell.confirmedIndicator.hidesWhenStopped = true
                 }
                 
             }
