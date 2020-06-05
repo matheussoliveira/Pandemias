@@ -131,7 +131,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Faça uma pergunta à June" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-1A-7aI">
                                         <rect key="frame" x="8" y="8" width="318.5" height="30.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -206,34 +206,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owz-DB-AGQ">
-                                                    <rect key="frame" x="70" y="14" width="38.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="juneIcon" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-8G-Fg9">
-                                                    <rect key="frame" x="20" y="14" width="42" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="XOr-8G-Fg9" secondAttribute="height" multiplier="1:1" id="4Er-nb-Sl7"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coronavírus (Covid - 19)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vz-gU-4k3">
-                                                    <rect key="frame" x="70" y="38" width="168" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="lRU-Dy-Def">
+                                                    <rect key="frame" x="36" y="14.5" width="167.5" height="41.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Owz-DB-AGQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="38.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coronavírus (Covid - 19)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vz-gU-4k3">
+                                                            <rect key="frame" x="0.0" y="23.5" width="167.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="leading" secondItem="XOr-8G-Fg9" secondAttribute="trailing" constant="8" id="4rh-at-NJD"/>
-                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="bottom" secondItem="XOr-8G-Fg9" secondAttribute="bottom" id="6EH-Zl-Gf8"/>
-                                                <constraint firstItem="XOr-8G-Fg9" firstAttribute="top" secondItem="DEa-QT-uJx" secondAttribute="topMargin" constant="3" id="DEb-pC-5K5"/>
-                                                <constraint firstItem="Owz-DB-AGQ" firstAttribute="top" secondItem="XOr-8G-Fg9" secondAttribute="top" id="LXv-kh-kQ9"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="XOr-8G-Fg9" secondAttribute="bottom" constant="3" id="Vtb-iT-qgW"/>
-                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="leading" secondItem="XOr-8G-Fg9" secondAttribute="trailing" constant="8" id="ldG-4Z-lTy"/>
-                                                <constraint firstItem="XOr-8G-Fg9" firstAttribute="leading" secondItem="DEa-QT-uJx" secondAttribute="leadingMargin" id="pVR-EW-pdO"/>
-                                                <constraint firstItem="2vz-gU-4k3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Owz-DB-AGQ" secondAttribute="bottom" id="qln-UD-uFS"/>
+                                                <constraint firstItem="lRU-Dy-Def" firstAttribute="leading" secondItem="DEa-QT-uJx" secondAttribute="leadingMargin" constant="16" id="SqS-XR-6T9"/>
+                                                <constraint firstItem="lRU-Dy-Def" firstAttribute="centerY" secondItem="DEa-QT-uJx" secondAttribute="centerY" id="kw2-hs-eYB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.11372549019607843" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -254,7 +247,6 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="zWQ-js-wkw"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="chatImage" destination="XOr-8G-Fg9" id="aLZ-Er-qwO"/>
                         <outlet property="chatName" destination="Owz-DB-AGQ" id="e7U-Si-E25"/>
                         <outlet property="chatSubtitle" destination="2vz-gU-4k3" id="tWS-iK-wu2"/>
                     </connections>
@@ -364,7 +356,6 @@
     <resources>
         <image name="chatbot" width="48" height="32"/>
         <image name="faq" width="48" height="32"/>
-        <image name="juneIcon" width="42" height="42"/>
         <image name="sendButton" width="28" height="26"/>
         <image name="stats" width="48" height="32"/>
     </resources>

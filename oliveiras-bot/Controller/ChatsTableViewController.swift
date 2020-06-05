@@ -10,7 +10,6 @@ import UIKit
 
 class ChatsTableViewController: UITableViewController {
     
-    @IBOutlet weak var chatImage: UIImageView!
     @IBOutlet weak var chatName: UILabel!
     @IBOutlet weak var chatSubtitle: UILabel!
     
@@ -24,8 +23,6 @@ class ChatsTableViewController: UITableViewController {
             perform(#selector(showOnBoarding), with: nil, afterDelay: 0.01)
             UserDefaults.standard.set(true, forKey: "launchedBefore")
         }
-        
-        chatImage.layer.cornerRadius = chatImage.frame.width/2
     }
     
     @objc func showOnBoarding(){
@@ -51,10 +48,7 @@ class ChatsTableViewController: UITableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if indexPath.section == 0 && indexPath.row == 0 {
-            let chevron = UIImage(named: "chevron-icon")
             cell.accessoryType = .disclosureIndicator
-            cell.accessoryView = UIImageView(image: chevron!)
-            chatImage.image = UIImage(named: "juneIcon.pdf")
             chatName.text = "June"
             chatSubtitle.text = "Coronavírus (Covid - 19)"
         }

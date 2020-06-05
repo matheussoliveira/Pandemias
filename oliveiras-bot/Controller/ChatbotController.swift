@@ -136,19 +136,6 @@ class ChatbotController: UIViewController{
         return formatedString
     }
     
-    fileprivate func setupTitleView() {
-        let botName = UILabel()
-        botName.text = "June"
-        botName.textColor = UIColor.white
-        botName.font = UIFont.systemFont(ofSize: 20.0, weight: .bold)
-        let botIcon = UIImage(named: "juneIcon.pdf")
-        let imageView = UIImageView(image:botIcon)
-        let titleView = UIStackView(arrangedSubviews: [imageView, botName])
-        titleView.axis = .horizontal
-        titleView.spacing = 16
-        navigationItem.titleView = titleView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -163,8 +150,6 @@ class ChatbotController: UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        
-        setupTitleView()
         setupWelcomeMessage()
         setUpTextField()
         setupHideKeyboardOnTap()
@@ -173,8 +158,11 @@ class ChatbotController: UIViewController{
     func setupWelcomeMessage(){
         let welcomeMessage = Message(text: "Olá! Eu sou a June, do Pandemias, e estou aqui para te ajudar tirando suas dúvidas e dando dicas sobre o Coronavírus (COVID - 19).",
                                      date: NSDate(), isFromUser: false)
+        let tipsMessage = Message(text: "Posso te ajudar a responder perguntas como: \n\n • Quais as estatísticas para o Brasil? \n • Posso usar máscara de pano? \n • Quantos casos ativos em São Paulo? \n • Quantos recuperados nas últimas 24 horas no Brasil? \n\n Entre outras.",
+                                     date: NSDate(), isFromUser: false)
         self.messages.append(welcomeMessage)
-        let item = messages.count - 1
+        self.messages.append(tipsMessage)
+        let item = messages.count - 2
         let insertionIndexpath = IndexPath(item: item, section: 0)
         collectionView.insertItems(at: [insertionIndexpath])
     }
