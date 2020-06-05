@@ -30,12 +30,21 @@ class ChatbotController: UIViewController{
             let userQuestion = Message(text: question, date: NSDate(), isFromUser: true)
             self.messages.append(userQuestion)
             //insert user message to chatlog
-            let item = messages.count - 1
-            let insertionIndexpath = IndexPath(item: item, section: 0)
+            var item = messages.count - 1
+            var insertionIndexpath = IndexPath(item: item, section: 0)
             collectionView.insertItems(at: [insertionIndexpath])
             collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
             
             inputTextField.text = nil
+            
+            //insert question to messages array
+            let loadingState = Message(text: "...", date: NSDate(), isFromUser: false)
+            self.messages.append(loadingState)
+            //insert user message to chatlog
+            item = messages.count - 1
+            insertionIndexpath = IndexPath(item: item, section: 0)
+            collectionView.insertItems(at: [insertionIndexpath])
+            collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
             
             getBotResponse(question: question)
         }
@@ -43,15 +52,6 @@ class ChatbotController: UIViewController{
     }
     
     func getBotResponse(question: String){
-        
-        //insert question to messages array
-        let userQuestion = Message(text: "...", date: NSDate(), isFromUser: false)
-        self.messages.append(userQuestion)
-        //insert user message to chatlog
-        let item = messages.count - 1
-        let insertionIndexpath = IndexPath(item: item, section: 0)
-        collectionView.insertItems(at: [insertionIndexpath])
-        collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
         
         let session = URLSession.shared
 
@@ -90,7 +90,8 @@ class ChatbotController: UIViewController{
                         retriedToAnswer = true
 
                         self.getBotResponse(question: question)
-                    } else if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == true {
+                    } else
+                    if queriedString.count == 1 && queriedString[0] == "" && retriedToAnswer == true {
                         let answer = "Desculpe, não consegui obter a resposta. Você poderia reformular a pergunta?"
                         queriedString[0] = answer
                     }
@@ -101,10 +102,12 @@ class ChatbotController: UIViewController{
 
                 DispatchQueue.main.async {
                     
-                    self.messages.removeLast()
-                    let item = self.messages.count
-                    let insertionIndexpath = IndexPath(item: item, section: 0)
-                    self.collectionView.deleteItems(at: [insertionIndexpath])
+                    if self.messages[self.messages.count-1].text == "..."{
+                        self.messages.removeLast()
+                        let item = self.messages.count
+                        let insertionIndexpath = IndexPath(item: item, section: 0)
+                        self.collectionView.deleteItems(at: [insertionIndexpath])
+                    }
                     
                     retriedToAnswer = false
                     //insert answer to messages array
@@ -118,8 +121,6 @@ class ChatbotController: UIViewController{
                             let insertionIndexpath = IndexPath(item: item, section: 0)
                             self.collectionView.insertItems(at: [insertionIndexpath])
                             self.collectionView.scrollToItem(at: insertionIndexpath, at: .bottom, animated: true)
-//                            self.collectionView.reloadData()
-
                         }
                     }
 
