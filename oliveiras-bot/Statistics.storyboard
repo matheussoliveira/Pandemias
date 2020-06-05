@@ -67,10 +67,10 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Gráficos" id="BmU-wx-wLR">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="214" id="gwe-QL-jmD">
+                                    <tableViewCell clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="214" id="gwe-QL-jmD">
                                         <rect key="frame" x="20" y="138.5" width="374" height="214"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwe-QL-jmD" id="A4N-s4-Lh9">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwe-QL-jmD" id="A4N-s4-Lh9">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="214"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -117,6 +117,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.1137254902" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.76078431369999999" green="0.76078431369999999" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -240,7 +241,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="iC2-0g-vWC">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
