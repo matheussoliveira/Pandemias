@@ -420,6 +420,12 @@ extension StatisticsTableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! VisaoGeralTableViewCell
             
+            // Starting indicators
+            cell.activesIndicator.startAnimating()
+            cell.deathsIndicator.startAnimating()
+            cell.recoveredIndicator.startAnimating()
+            cell.confirmedIndicator.startAnimating()
+            
             if (self.coronaStatistics != nil) {
                 
                 if self.coronaStatistics == [0,0,0,0] {
@@ -428,11 +434,6 @@ extension StatisticsTableViewController {
                     cell.activeNumber.text = ""
                     cell.deathsNumber.text = ""
                     
-                    // Starting indicators
-                    cell.activesIndicator.startAnimating()
-                    cell.deathsIndicator.startAnimating()
-                    cell.recoveredIndicator.startAnimating()
-                    cell.confirmedIndicator.startAnimating()
                 } else {
                     cell.confirmedNumber.text = formatNumber(number: coronaStatistics[0])
                     cell.recoveredNumber.text = formatNumber(number: coronaStatistics[1])

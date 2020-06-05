@@ -49,7 +49,6 @@ struct Country: Equatable {
             Country(name: "Camarões", image: UIImage(named: "cameroon")!),
             Country(name: "Catar", image: UIImage(named: "qatar")!),
             Country(name: "Camboja", image: UIImage(named: "cambodia")!),
-            Country(name: "Coréia do Norte", image: UIImage(named: "north-korea")!),
             Country(name: "Canadá", image: UIImage(named: "canada")!),
             Country(name: "Chade", image: UIImage(named: "chad")!),
             Country(name: "China", image: UIImage(named: "china")!),
@@ -212,27 +211,27 @@ struct Country: Equatable {
         
         let a = Array(countries[0..<12])
         let b = Array(countries[12..<30])
-        let c = Array(countries[30..<48])
-        let d = Array(countries[48..<51])
-        let e = Array(countries[51..<60])
-        let f = Array(countries[60..<64])
-        let g = Array(countries[64..<73])
-        let h = Array(countries[73..<77])
-        let i = Array(countries[77..<86])
-        let j = Array(countries[86..<89])
-        let k = Array(countries[89..<90])
-        let l = Array(countries[90..<98])
-        let m = Array(countries[98..<115])
-        let n = Array(countries[115..<123])
-        let o = Array(countries[123..<124])
-        let p = Array(countries[124..<132])
-        let q = Array(countries[132..<135])
-        let r = Array(countries[135..<143])
-        let s = Array(countries[143..<162])
-        let t = Array(countries[162..<171])
-        let u = Array(countries[171..<174])
-        let v = Array(countries[174..<177])
-        let z = Array(countries[177..<179])
+        let c = Array(countries[30..<47])
+        let d = Array(countries[47..<50])
+        let e = Array(countries[50..<59])
+        let f = Array(countries[59..<63])
+        let g = Array(countries[63..<72])
+        let h = Array(countries[72..<76])
+        let i = Array(countries[76..<85])
+        let j = Array(countries[85..<88])
+        let k = Array(countries[88..<89])
+        let l = Array(countries[89..<97])
+        let m = Array(countries[97..<114])
+        let n = Array(countries[114..<122])
+        let o = Array(countries[122..<123])
+        let p = Array(countries[123..<131])
+        let q = Array(countries[131..<134])
+        let r = Array(countries[134..<142])
+        let s = Array(countries[142..<161])
+        let t = Array(countries[161..<170])
+        let u = Array(countries[170..<173])
+        let v = Array(countries[173..<176])
+        let z = Array(countries[176..<178])
         
         
         
