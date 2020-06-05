@@ -117,10 +117,10 @@ class StatisticsTableViewController: UITableViewController {
 
         }
         
-        
     }
     
     func plotGraphic(chartColor: UIColor, chartValues: [(x: String, y: Int)], xAxisMin: Int) {
+        let data = LineChartData()
         //Array that will display the graphic
         var chartEntry = [ChartDataEntry]()
         var days: [String] = []
@@ -134,7 +134,7 @@ class StatisticsTableViewController: UITableViewController {
             days.append(xValue)
             chartEntry.append(value)
         }
-        
+    
         //Convert the entry to a data set
         let line = LineChartDataSet(chartEntry)
         line.colors = [chartColor]
@@ -143,13 +143,14 @@ class StatisticsTableViewController: UITableViewController {
         line.fillAlpha = 0.6
         line.drawFilledEnabled = true
         line.lineWidth = 2.0
+        line.highlightColor = chartColor
         
         //Data to add to the chart
-        let data = LineChartData()
         data.addDataSet(line)
         data.setDrawValues(false)
-    
         chartView.data = data
+        chartView.zoom(scaleX: 0, scaleY: 0, x: 0, y: 0)
+        
         chartView.legend.enabled = false
         chartView.xAxis.labelPosition = .bottom
         chartView.xAxis.labelTextColor = .white
@@ -159,7 +160,9 @@ class StatisticsTableViewController: UITableViewController {
         chartView.xAxis.granularity = 1.0
         chartView.xAxis.axisMinimum = Double(xAxisMin)
         chartView.leftAxis.axisMinimum = 0
-        
+        chartView.pinchZoomEnabled = false
+        chartView.drawBordersEnabled = true
+        chartView.autoScaleMinMaxEnabled = true
     }
     
     func updateGeneralData() {
@@ -256,6 +259,7 @@ extension StatisticsTableViewController {
                         DispatchQueue.main.async {
                             self.plotGraphic(chartColor: self.chartColor, chartValues: result, xAxisMin: dayCounter - 1)
                             self.tableView.reloadData()
+                            
                         }
                     }
                 } catch { print(error) }
@@ -464,6 +468,7 @@ extension StatisticsTableViewController {
             return
         } else {
             updateGeneralData()
+            chartView.zoom(scaleX: 0, scaleY: 0, x: 0, y: 0)
         }
     }
     
