@@ -9,7 +9,7 @@
         <!--Dúvidas Frequentes-->
         <scene sceneID="mlc-1v-zgx">
             <objects>
-                <tableViewController id="Yoh-nh-JxJ" customClass="FAQController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Yoh-nh-JxJ" customClass="FAQController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BJq-cx-yCL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,8 +51,8 @@
                             <outlet property="delegate" destination="Yoh-nh-JxJ" id="tgT-dy-nxy"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Dúvidas Frequentes" id="hLJ-0z-gbq">
-                        <barButtonItem key="backBarButtonItem" title="Dúvidas Frequentes" id="yek-Xr-Mdg"/>
+                    <navigationItem key="navigationItem" title="Dúvidas Frequentes" largeTitleDisplayMode="always" id="hLJ-0z-gbq">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="yek-Xr-Mdg"/>
                         <barButtonItem key="rightBarButtonItem" image="info.circle.fill" catalog="system" id="YWi-Zn-ilI">
                             <color key="tintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -60,6 +60,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoButton" destination="YWi-Zn-ilI" id="FGv-Xu-wSj"/>
                         <segue destination="7N0-Bt-LXc" kind="show" identifier="goToAnswer" id="OSb-Mx-UyB"/>
@@ -72,9 +73,9 @@
         <!--Resposta-->
         <scene sceneID="HG9-S0-fVP">
             <objects>
-                <tableViewController id="7N0-Bt-LXc" customClass="FAQAnswerTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="sSo-BM-Q66">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="747.5"/>
+                <tableViewController id="7N0-Bt-LXc" customClass="FAQAnswerTableViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="sSo-BM-Q66">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,7 +83,7 @@
                             <tableViewSection id="Z1W-6u-AmY">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQQuestionTableViewCell" id="OcC-LD-qpo">
-                                        <rect key="frame" x="20" y="18" width="374" height="44"/>
+                                        <rect key="frame" x="20" y="17.5" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OcC-LD-qpo" id="4Eh-K9-iY3">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -91,7 +92,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FAQAnswerTableViewCell" id="Sp6-zd-ONW">
-                                        <rect key="frame" x="20" y="62" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="61.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sp6-zd-ONW" id="Z0h-9Z-vuY">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -107,18 +108,18 @@
                             <outlet property="delegate" destination="7N0-Bt-LXc" id="M6D-hu-yXa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Resposta" id="ent-aG-pJK"/>
+                    <navigationItem key="navigationItem" title="Resposta" largeTitleDisplayMode="never" id="ent-aG-pJK"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyo-dI-jGR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1196" y="580"/>
         </scene>
-        <!--Fonte  de Dados-->
+        <!--Fonte de Dados-->
         <scene sceneID="h5z-ZL-Ro9">
             <objects>
-                <tableViewController id="BHq-qh-dQr" customClass="ReferenceTableViewController" customModule="oliveiras_bot" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="BHq-qh-dQr" customClass="ReferenceTableViewController" customModule="Pandemias" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="D1g-4O-g4d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="747.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -156,7 +157,8 @@ os dados sobre dúvidas frequentes. </string>
                             <outlet property="delegate" destination="BHq-qh-dQr" id="Ssd-yd-B9a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Fonte  de Dados" id="F2l-v9-HOj"/>
+                    <navigationItem key="navigationItem" title="Fonte de Dados" largeTitleDisplayMode="never" id="F2l-v9-HOj"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Otl-jH-zkj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,11 +167,12 @@ os dados sobre dúvidas frequentes. </string>
         <!--Dúvidas-->
         <scene sceneID="sJR-Nx-Sqn">
             <objects>
-                <navigationController storyboardIdentifier="FAQNavigation" id="I8I-7C-Ibq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dúvidas" image="faq" id="K7s-Er-2z9"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkE-l5-UeL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="FAQNavigation" modalTransitionStyle="flipHorizontal" id="I8I-7C-Ibq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dúvidas" image="faq" id="P4W-jG-hvj"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="Qwi-7l-pZr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Qwi-7l-pZr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.99607843137254903" green="0.21568627450980393" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -177,7 +180,6 @@ os dados sobre dúvidas frequentes. </string>
                         <segue destination="Yoh-nh-JxJ" kind="relationship" relationship="rootViewController" id="Rvs-JY-OVr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kkE-l5-UeL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-593" y="130"/>
         </scene>

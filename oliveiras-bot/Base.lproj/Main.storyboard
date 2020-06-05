@@ -263,11 +263,11 @@
             </objects>
             <point key="canvasLocation" x="2815.9420289855075" y="112.5"/>
         </scene>
-        <!--Chatbot-->
+        <!--Conversas-->
         <scene sceneID="saF-U0-xkq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xmZ-e3-HXD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chatbot" image="chatbot" id="onn-or-VDu"/>
+                    <tabBarItem key="tabBarItem" title="Conversas" image="chatbot" id="onn-or-VDu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" largeTitles="YES" id="X2l-ir-KHD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -296,6 +296,10 @@
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="4Uw-56-maZ">
                                 <rect key="frame" x="187.5" y="715" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Dnk-js-Uuu"/>
+                                    <constraint firstAttribute="width" constant="39" id="iTS-50-vuz"/>
+                                </constraints>
                                 <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
@@ -304,7 +308,6 @@
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.2156862745" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2rb-b8-EoT"/>
-                                    <constraint firstAttribute="width" constant="334" id="yFn-Kw-8eg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="PRÓXIMO">
@@ -323,23 +326,24 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ew4-tv-uEs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="671"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="delegate" destination="B2h-ah-gcl" id="F5p-jx-nbS"/>
                                 </connections>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6ft-sY-WbE" firstAttribute="trailing" secondItem="emX-OE-Kpd" secondAttribute="trailing" constant="40" id="GVC-bF-nAi"/>
-                            <constraint firstItem="6ft-sY-WbE" firstAttribute="bottom" secondItem="4Uw-56-maZ" secondAttribute="bottom" constant="110" id="OfQ-8M-fZN"/>
+                            <constraint firstItem="4Uw-56-maZ" firstAttribute="top" secondItem="Ew4-tv-uEs" secondAttribute="bottom" id="GhF-bk-5U3"/>
+                            <constraint firstItem="Ew4-tv-uEs" firstAttribute="top" secondItem="6ft-sY-WbE" secondAttribute="top" id="RLN-I6-ruI"/>
                             <constraint firstItem="6ft-sY-WbE" firstAttribute="bottom" secondItem="emX-OE-Kpd" secondAttribute="bottom" constant="45" id="WxB-Le-uEq"/>
-                            <constraint firstItem="6ft-sY-WbE" firstAttribute="trailing" secondItem="Ew4-tv-uEs" secondAttribute="trailing" id="bnp-kR-B79"/>
+                            <constraint firstItem="Ew4-tv-uEs" firstAttribute="trailing" secondItem="6ft-sY-WbE" secondAttribute="trailing" id="cu7-0h-NVo"/>
                             <constraint firstItem="emX-OE-Kpd" firstAttribute="centerX" secondItem="F6h-gc-Q2C" secondAttribute="centerX" id="gRS-m7-dv3"/>
                             <constraint firstItem="emX-OE-Kpd" firstAttribute="leading" secondItem="6ft-sY-WbE" secondAttribute="leading" constant="40" id="glK-ru-SEG"/>
-                            <constraint firstItem="Ew4-tv-uEs" firstAttribute="leading" secondItem="6ft-sY-WbE" secondAttribute="leading" id="hJl-sP-DlG"/>
-                            <constraint firstAttribute="bottom" secondItem="Ew4-tv-uEs" secondAttribute="bottom" id="n2H-Aw-PW2"/>
-                            <constraint firstItem="Ew4-tv-uEs" firstAttribute="top" secondItem="F6h-gc-Q2C" secondAttribute="top" id="ucy-Zg-4Sj"/>
+                            <constraint firstItem="Ew4-tv-uEs" firstAttribute="leading" secondItem="6ft-sY-WbE" secondAttribute="leading" id="nrZ-Lu-jAg"/>
+                            <constraint firstItem="emX-OE-Kpd" firstAttribute="top" secondItem="4Uw-56-maZ" secondAttribute="bottom" constant="25" id="qmP-uP-11d"/>
                             <constraint firstItem="4Uw-56-maZ" firstAttribute="centerX" secondItem="F6h-gc-Q2C" secondAttribute="centerX" id="xnT-78-wYx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6ft-sY-WbE"/>
@@ -354,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWG-hF-5ne" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-190" y="113"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="112.5"/>
         </scene>
     </scenes>
     <resources>

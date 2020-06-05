@@ -22,6 +22,13 @@ class VisaoGeralTableViewCell: UITableViewCell {
     @IBOutlet weak var activeView: UIView!
     @IBOutlet weak var deathsView: UIView!
     
+    // Activity Indicator
+    
+    @IBOutlet weak var confirmedIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var recoveredIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activesIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var deathsIndicator: UIActivityIndicatorView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layoutIfNeeded()
