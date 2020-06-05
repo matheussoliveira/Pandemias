@@ -56,7 +56,10 @@ class StatisticsTableViewController: UITableViewController {
         
         // Registering cell
         self.tableView.register(UINib.init(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
+        
+        chartView.isUserInteractionEnabled = true
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -163,6 +166,18 @@ class StatisticsTableViewController: UITableViewController {
         chartView.pinchZoomEnabled = false
         chartView.drawBordersEnabled = true
         chartView.autoScaleMinMaxEnabled = true
+        
+        //Remove pinch and pan gesture
+        if let gestures = chartView.gestureRecognizers {
+            for gesture in gestures {
+                if let recognizer = gesture as? UIPinchGestureRecognizer {
+                    chartView.removeGestureRecognizer(recognizer)
+                }
+                if let recognizer = gesture as? UIPanGestureRecognizer {
+                    chartView.removeGestureRecognizer(recognizer)
+                }
+            }
+        }
     }
     
     func updateGeneralData() {
@@ -510,4 +525,5 @@ extension StatisticsTableViewController: selectedCountryProtocol{
         self.tableView.reloadData()
 
     }
+    
 }
