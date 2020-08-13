@@ -5,8 +5,14 @@
 # Equipe:
 
 [Felipe Luna][00] (Designer)
+
+
 [Julia Mestre][01] (Desenvolvedora)
+
+
 [Marina Aranha][02] (Desenvolvedora)
+
+
 [Matheus Oliveira][03] (Desenvolvedor)
 
 # O que é o Pandemias?
